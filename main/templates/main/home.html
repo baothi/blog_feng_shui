@@ -1,0 +1,690 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<!-- Start Main News Area -->
+<section class="main-news-area">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8">
+        <div class="single-main-news">
+          {% for bv in baiviet1chinh %}
+            {% if bv.images %}
+              <a href="{{bv.get_url}}"></a>
+                <img src="{{ bv.images.url }}" alt="image">
+              </a>
+            {% elif bv.image_url %}
+              <a href="{{bv.get_url}}">
+                <img src="{{bv.image_url}}" alt="image">
+              </a>
+            {% else %}
+              <a href="{{bv.get_url}}">
+                <img src="{% static 'img/main-news/main-news-1.jpg' %}" alt="image">
+              </a>
+            {% endif %}
+            <div class="news-content">
+              <div class="tag"><a href="{{bv.get_category}}">{{bv.category}}</a></div>
+              <h3>
+                <a href="{{bv.get_url}}">{{bv.name}}</a>
+              </h3>
+              <span><a href="">Walters</a> / {{bv.created_date|date:"d-m-Y"}}</span>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="single-main-news-inner">
+          {% for bv in baiviet2chinh %}
+            {% if bv.images %}
+              <a href="{{bv.get_url}}"></a>
+                <img src="{{ bv.images.url }}" alt="image">
+              </a>
+            {% elif bv.image_url %}
+            <a href="{{bv.get_url}}">
+              <img src="{{bv.image_url}}" alt="image">
+            </a>
+            {% else %}
+              <a href="{{bv.get_url}}">
+                <img src="{% static 'img/main-news/main-news-2.jpg' %}" alt="image">
+              </a>
+            {% endif %}
+            <div class="news-content">
+              <div class="tag"><a href="{{bv.get_category}}">{{bv.category}}</a></div>
+              <h3>
+                <a href="{{bv.get_url}}">{{bv.name}}</a>
+              </h3>
+              <span>{{bv.created_date|date:"d-m-Y"}}</span>
+            </div>
+          {% endfor %}
+        </div>
+        
+        {% for bv in baiviet3chinh %}
+          <div class="single-main-news-box">
+            {% if bv.images %}
+            <a href="{{bv.get_url}}"></a>
+            <img src="{{ bv.images.url }}" alt="image">
+            </a>
+            {% elif bv.image_url %}
+            <a href="{{bv.get_url}}">
+              <img src="{{bv.image_url}}" alt="image">
+            </a>
+            {% else %}
+            <a href="{{bv.get_url}}">
+              <img src="{% static 'img/main-news/main-news-3.jpg' %}" alt="image">
+            </a>
+            {% endif %}
+            <div class="news-content">
+              <div class="tag"><a href="{{bv.get_category}}">{{bv.category}}</a></div>
+              <h3>
+                <a href="{{bv.get_url}}">{{bv.name}}</a>
+              </h3>
+              <span>{{bv.created_date|date:"d-m-Y"}}</span>
+            </div>
+          </div>
+        {% endfor %}
+
+
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Main News Area -->
+
+<!-- Start Default News Area -->
+<section class="default-news-area">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8">
+        <div class="most-popular-news">
+          <div class="section-title">
+            <h2>Kinh Dịch</h2>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-6">
+              {% for bv in kinhdich1 %}
+                <div class="single-most-popular-news">
+                  <div class="popular-news-image">
+                    {% if bv.images %}
+                    <a href="{{bv.get_url}}"></a>
+                    <img src="{{ bv.images.url }}" alt="image">
+                    </a>
+                    {% elif bv.image_url %}
+                    <a href="{{bv.get_url}}">
+                      <img src="{{bv.image_url}}" alt="image">
+                    </a>
+                    {% else %}
+                    <a href="{{bv.get_url}}">
+                      <img src="{% static 'img/most-popular/most-popular-1.jpg' %}" alt="image">
+                    </a>
+                    {% endif %}
+                  </div>
+
+                  <div class="popular-news-content">
+                    <span><a href="{{bv.get_category}}">{{bv.category}}</a></span>
+                    <h3>
+                      <a href="{{bv.get_url}}">{{bv.name}}</a>
+                    </h3>
+                    <p><a href="{{bv.get_url}}">Patricia</a> / {{bv.created_date|date:"d-m-Y"}}</p>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+
+            <div class="col-lg-6">
+              {% for bv in kinhdich2 %}
+                <div class="most-popular-post">
+                  <div class="row align-items-center">
+                    <div class="col-lg-4 col-sm-4">
+                      <div class="post-image">
+                        {% if bv.images %}
+                        <a href="{{bv.get_url}}"></a>
+                        <img src="{{ bv.images.url }}" alt="image">
+                        </a>
+                        {% elif bv.image_url %}
+                        <a href="{{bv.get_url}}">
+                          <img src="{{bv.image_url}}" alt="image">
+                        </a>
+                        {% else %}
+                        <a href="{{bv.get_url}}">
+                          <img src="{% static 'img/most-popular/most-popular-3.jpg' %}" alt="image">
+                        </a>
+                        {% endif %}
+                      </div>
+                    </div>
+
+                    <div class="col-lg-8 col-sm-8">
+                      <div class="post-content">
+                        <span><a href="{{bv.get_category}}">{{bv.category}}</a></span>
+                        <h3>
+                          <a href="{{bv.get_url}}">{{bv.name}}</a>
+                        </h3>
+                        <p>{{bv.created_date|date:"d-m-Y"}}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              {% endfor %}
+
+            </div>
+          </div>
+        </div>
+
+        <div class="video-news">
+          <div class="section-title">
+            <h2>Top video</h2>
+          </div>
+
+          <div class="video-slides owl-carousel owl-theme">
+            <div class="video-item">
+              <div class="video-news-image">
+                <a href="#">
+                  <img src="{% static 'img/video-news/video-news-1.jpg' %}" alt="image">
+                </a>
+
+                <a href="https://www.youtube.com/watch?v=UG8N5JT4QLc" class="popup-youtube">
+                  <i class='bx bx-play-circle'></i>
+                </a>
+              </div>
+
+              <div class="video-news-content">
+                <h3>
+                  <a href="#">Apply these 10 secret techniques to improve travel</a>
+                </h3>
+                <span>28 September, 2022</span>
+              </div>
+            </div>
+
+            <div class="video-item">
+              <div class="video-news-image">
+                <a href="#">
+                  <img src="{% static 'img/video-news/video-news-2.jpg' %}" alt="image">
+                </a>
+
+                <a href="https://www.youtube.com/watch?v=UG8N5JT4QLc" class="popup-youtube">
+                  <i class='bx bx-play-circle'></i>
+                </a>
+              </div>
+
+              <div class="video-news-content">
+                <h3>
+                  <a href="#">The lazy man’s guide to travel you to our moms</a>
+                </h3>
+                <span>28 September, 2022</span>
+              </div>
+            </div>
+
+            <div class="video-item">
+              <div class="video-news-image">
+                <a href="#">
+                  <img src="{% static 'img/video-news/video-news-3.jpg' %}" alt="image">
+                </a>
+
+                <a href="https://www.youtube.com/watch?v=UG8N5JT4QLc" class="popup-youtube">
+                  <i class='bx bx-play-circle'></i>
+                </a>
+              </div>
+
+              <div class="video-news-content">
+                <h3>
+                  <a href="#">Sony laptops are still part of the sony family</a>
+                </h3>
+                <span>28 September, 2022</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="politics-news">
+          <div class="section-title">
+            <h2>Tử Vi</h2>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-6">
+              {% for bv in tuvi1 %}
+                <div class="single-politics-news">
+                  <div class="politics-news-image">
+                    {% if bv.images %}
+                      <a href="{{bv.get_url}}"></a>
+                      <img src="{{ bv.images.url }}" alt="image">
+                    </a>
+                    {% elif bv.image_url %}
+                      <a href="{{bv.get_url}}">
+                        <img src="{{bv.image_url}}" alt="image">
+                      </a>
+                    {% else %}
+                      <a href="{{bv.get_url}}">
+                        <img src="{% static 'img/politics-news/politics-news-1.jpg' %}" alt="image">
+                      </a>
+                    {% endif %}
+                  </div>
+
+                  <div class="politics-news-content">
+                    <span><a href="{{bv.get_category}}">{{bv.category}}</a></span>
+                    <h3>
+                      <a href="{{bv.get_url}}">{{bv.name}}</a>
+                    </h3>
+                    <p><a href="{{bv.get_url}}">Jonson Steven</a> / {{bv.created_date|date:"d-m-Y"}}</p>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+
+            <div class="col-lg-6">
+              {% for bv in tuvi2 %}
+                <div class="politics-news-post">
+                  <div class="row align-items-center">
+                    <div class="col-lg-4 col-sm-4">
+                      <div class="politics-news-image">
+                        {% if bv.images %}
+                          <a href="{{bv.get_url}}"></a>
+                            <img src="{{ bv.images.url }}" alt="image">
+                          </a>
+                        {% elif bv.image_url %}
+                          <a href="{{bv.get_url}}">
+                            <img src="{{bv.image_url}}" alt="image">
+                          </a>
+                        {% else %}
+                          <a href="{{bv.get_url}}">
+                            <img src="{% static 'img/politics-news/politics-news-2.jpg' %}" alt="image">
+                          </a>
+                        {% endif %}
+                      </div>
+                    </div>
+
+                    <div class="col-lg-8 col-sm-8">
+                      <div class="politics-news-content">
+                        <h3>
+                          <a href="{{bv.get_url}}">{{bv.name}}</a>
+                        </h3>
+                        <p>{{bv.created_date|date:"d-m-Y"}}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              {% endfor %}
+
+            </div>
+          </div>
+        </div>
+
+        <div class="business-news">
+          <div class="section-title">
+            <h2>Bát Tự</h2>
+          </div>
+
+          <div class="business-news-slides owl-carousel owl-theme">
+            {% for bv in battu %}
+              <div class="single-business-news">
+                <div class="business-news-image">
+                  {% if bv.images %}
+                    <a href="{{bv.get_url}}"></a>
+                      <img src="{{ bv.images.url }}" alt="image">
+                    </a>
+                  {% elif bv.image_url %}
+                    <a href="{{bv.get_url}}">
+                      <img src="{{bv.image_url}}" alt="image">
+                    </a>
+                  {% else %}
+                    <a href="{{bv.get_url}}">
+                      <img src="{% static 'img/business-news/business-news-1.jpg' %}" alt="image">
+                    </a>
+                  {% endif %}
+                </div>
+
+                <div class="business-news-content">
+                  <span><a href="{{bv.get_category}}">{{bv.category}}</a></span>
+                  <h3>
+                    <a href="{{bv.get_url}}">{{bv.name}}</a>
+                  </h3>
+                  <p><a href="{{bv.get_url}}">Patricia</a> / {{bv.created_date|date:"d-m-Y"}}</p>
+                </div>
+              </div>
+            {% endfor %}
+
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="section-title">
+              <h2>Sports</h2>
+            </div>
+
+            <div class="single-sports-news">
+              <div class="row align-items-center">
+                <div class="col-lg-4 col-sm-4">
+                  <div class="sports-news-image">
+                    <a href="#">
+                      <img src="{% static 'img/sports-news/sports-news-1.jpg' %}" alt="image">
+                    </a>
+                  </div>
+                </div>
+
+                <div class="col-lg-8 col-sm-8">
+                  <div class="sports-news-content">
+                    <h3>
+                      <a href="#">Start a new men’s road World Championships</a>
+                    </h3>
+                    <p>28 September, 2022</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="single-sports-news">
+              <div class="row align-items-center">
+                <div class="col-lg-4 col-sm-4">
+                  <div class="sports-news-image">
+                    <a href="#">
+                      <img src="{% static 'img/sports-news/sports-news-2.jpg' %}" alt="image">
+                    </a>
+                  </div>
+                </div>
+
+                <div class="col-lg-8 col-sm-8">
+                  <div class="sports-news-content">
+                    <h3>
+                      <a href="#">He look the first wicket with the first ball in this match.</a>
+                    </h3>
+                    <p>28 September, 2022</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="single-sports-news">
+              <div class="row align-items-center">
+                <div class="col-lg-4 col-sm-4">
+                  <div class="sports-news-image">
+                    <a href="#">
+                      <img src="{% static 'img/sports-news/sports-news-3.jpg' %}" alt="image">
+                    </a>
+                  </div>
+                </div>
+
+                <div class="col-lg-8 col-sm-8">
+                  <div class="sports-news-content">
+                    <h3>
+                      <a href="#">The last time of the match is goning on</a>
+                    </h3>
+                    <p>28 September, 2022</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="section-title">
+              <h2>Tech</h2>
+            </div>
+
+            <div class="single-tech-news">
+              <div class="row align-items-center">
+                <div class="col-lg-4 col-sm-4">
+                  <div class="tech-news-image">
+                    <a href="#">
+                      <img src="{% static 'img/tech-news/tech-news-1.jpg' %}" alt="image">
+                    </a>
+                  </div>
+                </div>
+
+                <div class="col-lg-8 col-sm-8">
+                  <div class="tech-news-content">
+                    <h3>
+                      <a href="#">5 more phones have come to the market with features.</a>
+                    </h3>
+                    <p>28 September, 2022</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="single-tech-news">
+              <div class="row align-items-center">
+                <div class="col-lg-4 col-sm-4">
+                  <div class="tech-news-image">
+                    <a href="#">
+                      <img src="{% static 'img/tech-news/tech-news-2.jpg' %}" alt="image">
+                    </a>
+                  </div>
+                </div>
+
+                <div class="col-lg-8 col-sm-8">
+                  <div class="tech-news-content">
+                    <h3>
+                      <a href="#">Like humans, the new robot has a lot of memory power</a>
+                    </h3>
+                    <p>28 September, 2022</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="single-tech-news">
+              <div class="row align-items-center">
+                <div class="col-lg-4 col-sm-4">
+                  <div class="tech-news-image">
+                    <a href="#">
+                      <img src="{% static 'img/tech-news/tech-news-3.jpg' %}" alt="image">
+                    </a>
+                  </div>
+                </div>
+
+                <div class="col-lg-8 col-sm-8">
+                  <div class="tech-news-content">
+                    <h3>
+                      <a href="#">All new gadgets are being made in technology</a>
+                    </h3>
+                    <p>28 September, 2022</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="culture-news">
+          <div class="section-title">
+            <h2>Culture</h2>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="single-culture-news">
+                <div class="culture-news-image">
+                  <a href="#">
+                    <img src="{% static 'img/culture-news/culture-news-1.jpg' %}" alt="image">
+                  </a>
+                </div>
+
+                <div class="culture-news-content">
+                  <span>Culture</span>
+                  <h3>
+                    <a href="#">Entertainment activists started again a few months later</a>
+                  </h3>
+                  <p><a href="#">Steven</a> / 28 September, 2022</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <div class="culture-news-post">
+                <div class="row align-items-center">
+                  <div class="col-lg-4 col-sm-4">
+                    <div class="culture-news-image">
+                      <a href="#">
+                        <img src="{% static 'img/culture-news/culture-news-2.jpg' %}" alt="image">
+                      </a>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-8 col-sm-8">
+                    <div class="culture-news-content">
+                      <h3>
+                        <a href="#">Working in the garden is a tradition for women</a>
+                      </h3>
+                      <p>28 September, 2022</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="culture-news-post">
+                <div class="row align-items-center">
+                  <div class="col-lg-4 col-sm-4">
+                    <div class="culture-news-image">
+                      <a href="#">
+                        <img src="{% static 'img/culture-news/culture-news-3.jpg' %}" alt="image">
+                      </a>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-8 col-sm-8">
+                    <div class="culture-news-content">
+                      <h3>
+                        <a href="#">The fashion that captures the lives of women</a>
+                      </h3>
+                      <p>28 September, 2022</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="culture-news-post">
+                <div class="row align-items-center">
+                  <div class="col-lg-4 col-sm-4">
+                    <div class="culture-news-image">
+                      <a href="#">
+                        <img src="{% static 'img/culture-news/culture-news-4.jpg' %}" alt="image">
+                      </a>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-8 col-sm-8">
+                    <div class="culture-news-content">
+                      <h3>
+                        <a href="#">A group of artists performed music in a group way</a>
+                      </h3>
+                      <p>28 September, 2022</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="health-news">
+          <div class="section-title">
+            <h2>Health</h2>
+          </div>
+
+          <div class="health-news-slides owl-carousel owl-theme">
+            <div class="single-health-news">
+              <div class="health-news-image">
+                <a href="#">
+                  <img src="{% static 'img/health-news/health-news-1.jpg' %}" alt="image">
+                </a>
+              </div>
+
+              <div class="health-news-content">
+                <span>Health</span>
+                <h3>
+                  <a href="#">At present, diseases have become the main obstacle for children to get out healthy</a>
+                </h3>
+                <p><a href="#">Tikelo</a> / 28 September, 2022</p>
+              </div>
+            </div>
+
+            <div class="single-health-news">
+              <div class="health-news-image">
+                <a href="#">
+                  <img src="{% static 'img/health-news/health-news-2.jpg' %}" alt="image">
+                </a>
+              </div>
+
+              <div class="health-news-content">
+                <span>Fitness</span>
+                <h3>
+                  <a href="#">Morning yoga is very important for maintaining good physical fitness</a>
+                </h3>
+                <p><a href="#">Patricia</a> / 28 September, 2022</p>
+              </div>
+            </div>
+
+            <div class="single-health-news">
+              <div class="health-news-image">
+                <a href="#">
+                  <img src="{% static 'img/health-news/health-news-1.jpg' %}" alt="image">
+                </a>
+              </div>
+
+              <div class="health-news-content">
+                <span>Health</span>
+                <h3>
+                  <a href="#">At present, diseases have become the main obstacle for children to get out healthy</a>
+                </h3>
+                <p><a href="#">Tikelo</a> / 28 September, 2022</p>
+              </div>
+            </div>
+
+            <div class="single-health-news">
+              <div class="health-news-image">
+                <a href="#">
+                  <img src="{% static 'img/health-news/health-news-2.jpg' %}" alt="image">
+                </a>
+              </div>
+
+              <div class="health-news-content">
+                <span>Fitness</span>
+                <h3>
+                  <a href="#">Morning yoga is very important for maintaining good physical fitness</a>
+                </h3>
+                <p><a href="#">Patricia</a> / 28 September, 2022</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% include 'main/nav_bar.html' %}
+
+      
+    </div>
+  </div>
+</section>
+<!-- End Default News Area -->
+
+{% endblock%}
+{% block javascript %}
+<script type="text/javascript">
+  $(document).ready(function(){
+    var data = JSON.parse("{{data|escapejs}}");
+    var count = 0;
+    $.each(data, function (key, value) {
+      if(value.images != ''){
+        $('.widget_latest_news_thumb .bg1').each(function(index){
+            if(index == count){
+              $(this).attr('style',"background-image:url('/media/" + value.images + "')");
+            }
+        });
+        console.log("value.images :",value.images);
+        
+      }
+      else{
+        $('.widget_latest_news_thumb .bg1').each(function (index) {
+          if (index == count) {
+            $(this).attr('style',"background-image:url(" + value.image_url + ")");
+          }
+        });
+      }
+      count++;
+      console.log(count);
+      
+    })
+    
+  });
+</script>
+{% endblock %}
