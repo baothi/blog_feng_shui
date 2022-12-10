@@ -207,50 +207,7 @@
             </form>
           </div>
 
-          <section class="widget widget_latest_news_thumb">
-            <h3 class="widget-title">Latest news</h3>
-
-            <article class="item">
-              <a href="#" class="thumb">
-                <span class="fullimage cover bg1" role="img"></span>
-              </a>
-              <div class="info">
-                <h4 class="title usmall"><a href="#">Negotiations on a peace agreement between the two countries</a>
-                </h4>
-                <span>28 September, 2022</span>
-              </div>
-            </article>
-
-            <article class="item">
-              <a href="#" class="thumb">
-                <span class="fullimage cover bg2" role="img"></span>
-              </a>
-              <div class="info">
-                <h4 class="title usmall"><a href="#">Love songs helped me through heartbreak</a></h4>
-                <span>28 September, 2022</span>
-              </div>
-            </article>
-
-            <article class="item">
-              <a href="#" class="thumb">
-                <span class="fullimage cover bg3" role="img"></span>
-              </a>
-              <div class="info">
-                <h4 class="title usmall"><a href="#">This movement aims to establish women rights</a></h4>
-                <span>28 September, 2022</span>
-              </div>
-            </article>
-
-            <article class="item">
-              <a href="#" class="thumb">
-                <span class="fullimage cover bg4" role="img"></span>
-              </a>
-              <div class="info">
-                <h4 class="title usmall"><a href="#">Giving special powers to police officers to prevent crime</a></h4>
-                <span>28 September, 2022</span>
-              </div>
-            </article>
-          </section>
+          {% include 'main/nav_detail.html' %}
 
           <section class="widget widget_popular_posts_thumb">
             <h3 class="widget-title">Popular posts</h3>
@@ -458,3 +415,33 @@
 
 
 {% endblock%}
+{% block javascript %}
+<script type="text/javascript">
+  $(document).ready(function () {
+    var data = JSON.parse("{{data|escapejs}}");
+    var count = 0;
+    $.each(data, function (key, value) {
+      if (value.images != '') {
+        $('.widget_latest_news_thumb .bg1').each(function (index) {
+          if (index == count) {
+            $(this).attr('style', "background-image:url('/media/" + value.images + "')");
+          }
+        });
+        console.log("value.images :", value.images);
+
+      }
+      else {
+        $('.widget_latest_news_thumb .bg1').each(function (index) {
+          if (index == count) {
+            $(this).attr('style', "background-image:url(" + value.image_url + ")");
+          }
+        });
+      }
+      count++;
+      console.log(count);
+
+    })
+
+  });
+</script>
+{% endblock %}

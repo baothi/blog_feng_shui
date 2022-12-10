@@ -1,11 +1,17 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from .models import *
+from .forms import ContactForm
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import HttpResponse
 from django.http import JsonResponse
 from json import dumps
 import json
 from django.db.models import Count
+from django.contrib import messages
+from django.views import generic
+from django.contrib.messages.views import SuccessMessageMixin
+
+
 # Create your views here.
 
 
@@ -39,11 +45,16 @@ def home(request):
 def blog_detail(request,category_slug,blog_slug):
     try:
         detail = Blog.objects.get(category__slug=category_slug, slug=blog_slug)
+        latest_news = Blog.objects.filter(is_available=True).filter(category__is_available=True).order_by('-created_date')[:4]
+        list_json = list(latest_news.values('images','image_url'))
+        dataJSON = dumps(list_json)
     except Exception as e:
         raise e
 #     # print(detail.description)
     context = {
-        "detail": detail
+        "detail": detail,
+        "latest_news": latest_news,
+        'data': dataJSON,
     }
     return render(request,"main/blog_detail.html", context)
 
@@ -66,3 +77,21 @@ def blog_category(request,category_slug):
         "category_name": category_name
     }
     return render(request,"main/category.html", context)
+
+def contactUs(request):
+    form = ContactForm()
+    if request.method == "POST":
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Bạn đã gởi yêu cầu thành công")
+            return redirect("blog_home")
+            
+    else:
+        form = ContactForm()
+        messages.success(request, "vui lòng điền vào hồ sơ chi tiết")
+    return render(request, "main/contact_us.html", {"form": form})
+
+
+
+

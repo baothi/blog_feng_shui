@@ -51,3 +51,14 @@ class Blog(models.Model):
     def get_category(self):
         return reverse('blog_category', args=[self.category.slug])
 
+class Contact(models.Model):
+    name = models.CharField(max_length=200)
+    e_mail = models.EmailField(max_length=250)
+    phone_number = models.IntegerField()
+    subject = models.CharField(max_length=500)
+    contact_message = models.TextField()
+    timestamp = models.DateTimeField(auto_now_add=True, blank=True)
+
+    def __str__(self):
+        return str(self.name)
+
