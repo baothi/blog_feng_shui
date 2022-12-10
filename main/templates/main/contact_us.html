@@ -1,0 +1,177 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<!-- Start Page Banner -->
+<div class="page-title-area">
+    <div class="container">
+        <div class="page-title-content">
+            <h2>Contact</h2>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li>Contact</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- End Page Banner -->
+
+<!-- Start Contact Area -->
+<section class="contact-area ptb-50">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="contact-form">
+                    <div class="title">
+                        <h3>Ready to get started?</h3>
+                        <p>Your email address will not be published. Required fields are marked *</p>
+                    </div>
+
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6">
+                                <div class="form-group">
+                                    <!-- <input type="text" name="name" class="form-control" id="name" required data-error="Please enter your name" placeholder="Name"> -->
+                                    {{form.name}}
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-md-6">
+                                <div class="form-group">
+                                    <!-- <input type="email" name="email" class="form-control" id="email" required data-error="Please enter your email" placeholder="Email"> -->
+                                    {{form.e_mail}}
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-md-6">
+                                <div class="form-group">
+                                    <!-- <input type="text" name="phone_number" class="form-control" id="phone_number" required data-error="Please enter your phone number" placeholder="Phone"> -->
+                                    {{form.phone_number}}
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-md-6">
+                                <div class="form-group">
+                                    <!-- <input type="text" name="subject" class="form-control" id="subject" required data-error="Please enter your subject" placeholder="Subject"> -->
+                                    {{form.subject}}
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12 col-md-12">
+                                <div class="form-group">
+                                    <!-- <textarea name="message" id="message" class="form-control" cols="30" rows="6" required data-error="Please enter your message" placeholder="Write your message..."></textarea> -->
+                                    {{form.contact_message}}
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12">
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" id="checkme">
+                                    <label class="form-check-label" for="checkme">
+                                        Accept <a href="terms-of-service.html">Terms of Services</a> and <a href="privacy-policy.html">Privacy Policy.</a>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12 col-md-12">
+                                <button type="submit" class="default-btn">Send Message</button>
+                                <div id="msgSubmit" class="h3 text-center hidden"></div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="contact-map">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d27982.0992479593!2d-81.35428553933833!3d28.75650994456714!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88e76d5129fed6b1%3A0x1a6cd960f325cfcb!2sLake%20Mary%2C%20FL%2032746%2C%20USA!5e0!3m2!1sen!2sbd!4v1602575597158!5m2!1sen!2sbd"></iframe>
+                </div>
+                
+                <ul class="contact-info">
+                    <li>
+                        <span>Address:</span>
+                        3533 McDonald Avenue Lake Mary, FL 23546
+                    </li>
+                    <li>
+                        <span>Phone:</span>
+                        <a href="tel:15143125678">+1 (514)312-5678</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-lg-4">
+                <aside class="widget-area">
+                    <section class="widget widget_stay_connected">
+                        <h3 class="widget-title">Stay connected</h3>
+                        
+                        <ul class="stay-connected-list">
+                            <li>
+                                <a href="#">
+                                    <i class='bx bxl-facebook'></i>
+                                    120,345 Fans
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="#" class="twitter">
+                                    <i class='bx bxl-twitter'></i>
+                                    25,321 Followers
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="#" class="linkedin">
+                                    <i class='bx bxl-linkedin'></i>
+                                    7,519 Connect
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="#" class="youtube">
+                                    <i class='bx bxl-youtube'></i>
+                                    101,545 Subscribers
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="#" class="instagram">
+                                    <i class='bx bxl-instagram'></i>
+                                    10,129 Followers
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="#" class="wifi">
+                                    <i class='bx bx-wifi'></i>
+                                    952 Subscribers
+                                </a>
+                            </li>
+                        </ul>
+                    </section>
+
+                    <section class="widget widget_newsletter">
+                        <div class="newsletter-content">
+                            <h3>Subscribe to our newsletter</h3>
+                            <p>Subscribe to our newsletter to get the new updates!</p>
+                        </div>   
+
+                        <form class="newsletter-form" data-toggle="validator">
+                            <input type="email" class="input-newsletter" placeholder="Enter your email" name="EMAIL" required autocomplete="off">
+    
+                            <button type="submit">Subscribe</button>
+                            <div id="validator-newsletter" class="form-result"></div>
+                        </form>
+                    </section>
+                </aside>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Contact Area -->
+    
+{% endblock%}
