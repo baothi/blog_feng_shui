@@ -1,8 +1,14 @@
 from django import forms
 from .models import Contact
-from .models import Contact, Blog
-# from ckeditor.widgets import CKEditorWidget
+from .models import Contact, Blog, Category
+from django.forms import ModelChoiceField
+from ckeditor.widgets import CKEditorWidget
 from ckeditor_uploader.fields import RichTextUploadingField
+
+
+class NameChoiceField(ModelChoiceField):
+    def label_from_instance(self, obj):
+        return f'{obj.category_name}'
 
 class ContactForm(forms.ModelForm):
     class Meta:
@@ -20,15 +26,16 @@ class ContactForm(forms.ModelForm):
         }
 
 class CreateBlogForm(forms.ModelForm):
-    description = forms.CharField(widget=RichTextUploadingField())
+    description = forms.CharField(widget=CKEditorWidget())
+    images = forms.FileField(required=False),
+    category= NameChoiceField(queryset=Category.objects.filter(is_available=True).order_by('category_name'), required=True)
     class Meta:
         model = Blog
-        exclude = ('slug')
+        exclude = ('slug','is_available')
         widgets = {
             'author': forms.TextInput(attrs={'value': '', 'id':'author', 'type':'hidden'}),
             'name': forms.TextInput(attrs={'value': '', 'class':'form-control'}),
-            'images': forms.FileUpload(attrs={'value': ''}),
             'image_url': forms.Textarea(attrs={'class': 'form-control'}),
-            'category': forms.TextInput(attrs={'value': '','id':'Category' ,'class':'form-control'}),
+            
             'mini_description': forms.Textarea(attrs={'class': 'form-control'})
         }
