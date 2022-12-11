@@ -1,6 +1,6 @@
 from django.shortcuts import redirect, render
 from .models import *
-from .forms import ContactForm
+from .forms import ContactForm, CreateBlogForm
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import HttpResponse
 from django.http import JsonResponse
@@ -10,6 +10,7 @@ from django.db.models import Count
 from django.contrib import messages
 from django.views import generic
 from django.contrib.messages.views import SuccessMessageMixin
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 # Create your views here.
@@ -59,9 +60,12 @@ def blog_detail(request,category_slug,blog_slug):
     return render(request,"main/blog_detail.html", context)
 
 def blog_category(request,category_slug):
+    latest_news = Blog.objects.filter(is_available=True).filter(category__is_available=True).order_by('-created_date')[:4]
+    list_json = list(latest_news.values('images','image_url'))
+    dataJSON = dumps(list_json)
     category_list = Blog.objects.filter(is_available=True).filter(category__slug=category_slug).order_by('-created_date')
     page = request.GET.get('page', 1)
-    paginator = Paginator(category_list, 2)
+    paginator = Paginator(category_list, 10)
     try:
         category = paginator.page(page)
         category_name = Category.objects.get(slug=category_slug)
@@ -74,7 +78,9 @@ def blog_category(request,category_slug):
     print(category)
     context = {
         "category": category,
-        "category_name": category_name
+        "category_name": category_name,
+        "latest_news": latest_news,
+        'data': dataJSON,
     }
     return render(request,"main/category.html", context)
 
@@ -93,5 +99,10 @@ def contactUs(request):
     return render(request, "main/contact_us.html", {"form": form})
 
 
-
+class CreateBlog(LoginRequiredMixin, SuccessMessageMixin, generic.CreateView):
+    form_class = CreateBlogForm
+    template_name = "main/create_blog.html"
+    login_url = 'login'
+    success_url = "/"
+    success_message = "Your blog has been created"
 
