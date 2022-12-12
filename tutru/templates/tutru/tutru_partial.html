@@ -1,0 +1,1186 @@
+<div class="tutru">
+  <div class="wrapbg">
+    {% for arr in tutru_array %}
+      <table class="tbl">
+          <tr>
+              <td>
+                  <table class="tbltutrutop">
+                      <tr>
+                          <td class="tutrulogo vertical_top">
+                              <img src="../static/images/logo.png" alt="">
+                              <h2> Tứ Trụ Mệnh Bàn </h2>
+                          </td>
+                          <td class="vertical_top">
+                              <table class="tutrulogotext">
+                                  <tr>
+                                      <td>Họ và tên</td>
+                                      <td> : </td>
+                                      <td class="upper">{{arr.name}}</td>
+                                  </tr>
+                                  <tr>
+                                      <td>Giớ tính</td>
+                                      <td> : </td>
+                                      <td>{{arr.gio_tinh}}</td>
+                                  </tr>
+                                  <tr>
+                                      <td>Dương lịch  (GTM 07.0)</td>
+                                      <td> : </td>
+                                      <td>{{arr.hours}}:{{arr.minute}} {{arr.day}}/{{arr.month}}/{{arr.year}}</td>
+                                  </tr>
+                                  <tr>
+                                      <td>Âm Dương hợp lịch</td>
+                                      <td> : </td>
+                                      <td>{{arr.hours}}:{{arr.minute}} {{arr.day_lunar}}/{{arr.month_lunar}}/{{arr.year_lunar}}</td>
+                                  </tr>
+                              </table>
+                          </td>
+                      </tr>
+                  </table>
+              </td>
+          </tr>
+          <tr>
+              <td>
+                  <table class="tbltutrumain size2">
+                      <tr class="bol">
+                          <td class="bluebla upper">Dương Lịch</td>
+                          <td>{{arr.year}}</td>
+                          <td>{{arr.month}}</td>
+                          <td>{{arr.day}}</td>
+                          <td>{{arr.hours}}:{{arr.minute}}</td>
+                      </tr>
+                      <tr>
+                          <td class="bluebla bol upper">Chủ Tinh</td>
+                          <td>{{arr.can_thap_nam}}</td>
+                          <td>{{arr.can_thap_thang}}</td>
+                          <td class="upper">Nhật Trụ</td>
+                          <td>{{arr.can_thap_gio}}</td>
+                      </tr>
+                      <tr>
+                          <td class="bluebla bol upper">Trường Sinh Can</td>
+                          {% for value in arr.T_Sinh_Thien_Can %}
+                            <td>{{value}}</td>
+                          {% endfor %}
+                      </tr>
+                      <tr>
+                          <td class="bluebla bol upper">Bát Tự</td>
+                          <td class="size1 {{arr.chi_nam_color}} bol upper txtinnerright">
+                              <span class="{{arr.can_nam_color}}">{{arr.can_nam}}</span><br/> {{arr.chi_nam}}
+                              {% if arr.nam_kv != ''%}
+                                <span class="txtin">{{arr.nam_kv}}</span>
+                              {% endif %}
+                          </td>
+                          <td class="size1 {{arr.chi_thang_color}} bol upper txtinnerright">
+                              <span class="{{arr.can_thang_color}}">{{arr.can_thang}}</span><br/> {{arr.chi_thang}}
+                              {% if arr.thang_kv != ''%}
+                                <span class="txtin">{{arr.thang_kv}}</span>
+                              {% endif %}
+                          </td>
+                          <td class="size1 {{arr.chi_ngay_color}} bol upper txtinnerright">
+                              <span class="{{arr.can_ngay_color}}">{{arr.can_ngay}}</span><br/> {{arr.chi_ngay}}
+                              <!-- {% if arr.ngay_kv != ''%}
+                                <span class="txtin">{{arr.ngay_kv}}</span>
+                              {% endif %} -->
+                          </td>
+                          <td class="size1 {{arr.chi_gio_color}} bol upper txtinnerright">
+                              <span class="{{arr.can_gio_color}}">{{arr.can_gio}}</span><br/> {{arr.chi_gio}}
+                              {% if arr.gio_kv != ''%}
+                                <span class="txtin">{{arr.gio_kv}}</span>
+                              {% endif %}
+                          </td>
+                      </tr>
+                      <tr>
+                          <td class="bluebla bol upper">Tàng Ẩn</td>
+                          <td>
+                              <table class="tblinnerno">
+                                  <tr>
+                                    {% for key, value in arr.can_an_nam.items %}
+                                      <td class="{{key}}">{{value}}</td>
+                                    {% endfor %}
+                                  </tr>
+                              </table>
+                          </td>
+                          <td>
+                              <table class="tblinnerno">
+                                  <tr>
+                                    {% for key, value in arr.can_an_thang.items %}
+                                      <td class="{{key}}">{{value}}</td>
+                                    {% endfor %}
+                                  </tr>
+                              </table>
+                          </td>
+                          <td>
+                              <table class="tblinnerno">
+                                <tr>
+                                  {% for key, value in arr.can_an_ngay.items %}
+                                    <td class="{{key}}">{{value}}</td>
+                                  {% endfor %}
+                                </tr>
+                              </table>
+                          </td>
+                          <td>
+                              <table class="tblinnerno">
+                                  <tr>
+                                      {% for key, value in arr.can_an_gio.items %}
+                                        <td class="{{key}}">{{value}}</td>
+                                      {% endfor %}
+                                  </tr>
+                              </table>
+                          </td>
+                      </tr>
+                      <tr>
+                          <td class="bluebla bol upper">Phó Tinh</td>
+                          <td>
+                              <table class="tblinnerno">
+                                  <tr>
+                                    {% for value in arr.can_an_nam_thapthan %}
+                                      <td>{{value}}</td>
+                                    {% endfor %}
+                                  </tr>
+                              </table>
+                          </td>
+                          <td>
+                              <table class="tblinnerno">
+                                  <tr>
+                                    {% for value in arr.can_an_thang_thapthan %}
+                                      <td>{{value}}</td>
+                                    {% endfor %}
+                                  </tr>
+                              </table>
+                          </td>
+                          <td><table class="tblinnerno">
+                                  <tr>
+                                      {% for value in arr.can_an_ngay_thapthan %}
+                                      <td>{{value}}</td>
+                                    {% endfor %}
+                                  </tr>
+                              </table>
+                            </td>
+                          <td>
+                              <table class="tblinnerno">
+                                  <tr>
+                                    {% for value in arr.can_an_gio_thapthan %}
+                                      <td>{{value}}</td>
+                                    {% endfor %}
+                                  </tr>
+                              </table>
+                          </td>
+                      </tr>
+                      <tr>
+                          <td class="bluebla bol upper">Trường Sinh</td>
+                          <td>
+                            <table class="tblinnerno">
+                                <tr>
+                                  {% for value in arr.T_Sinh_Can_An_Nam %}
+                                    <td>{{value}}</td>
+                                  {% endfor %}
+                                </tr>
+                            </table>
+                          </td>
+                          <td>
+                            <table class="tblinnerno">
+                                <tr>
+                                  {% for value in arr.T_Sinh_Can_An_Thang %}
+                                    <td>{{value}}</td>
+                                  {% endfor %}
+                                </tr>
+                            </table>
+                          </td>
+                          <td>
+                            <table class="tblinnerno">
+                                <tr>
+                                  {% for value in arr.T_Sinh_Can_An_Ngay %}
+                                    <td>{{value}}</td>
+                                  {% endfor %}
+                                </tr>
+                            </table>
+                          </td>
+                          <td>
+                            <table class="tblinnerno">
+                                <tr>
+                                  {% for value in arr.T_Sinh_Can_An_Gio %}
+                                    <td>{{value}}</td>
+                                  {% endfor %}
+                                </tr>
+                            </table>
+                          </td>
+                      </tr>
+                      <tr>
+                          <td class="bluebla bol upper">Nap Âm</td>
+                          {% for value in arr.ngu_hanh_nap_am %}
+                            <td>{{value}}</td>
+                          {% endfor %}
+                      </tr>
+                  </table>
+                  <table class="tutrutblsub2 size2 tutrutblsub2nowithfirst">
+                      <tr>
+                          <td>
+                              <p><span class="bluebla bol">{{arr.month}}/{{arr.tongdaivan}}</span> - <span class="bold red">{{arr.namdaivan}}</span></p>
+                              <p><span class="bold bol red">{{ arr.dai_van.1 }}</span></p>
+                              {% for tieuvan10 in arr.tieuvan10nam %}
+                                <p><span>{{tieuvan10 | safe}}</span></p>
+                              {% endfor %}
+                          </td>
+                          <td>
+                              <p><span class="bluebla bol">{{arr.month}}/{{arr.tongdaivan|add:10}}</span> - <span class="bold red">{{arr.namdaivan|add:10}}</span></p>
+                              <p><span class="bold bol red">{{ arr.dai_van.2 }}</span></p>
+                              {% for tieuvan20 in arr.tieuvan20nam %}
+                                <p><span>{{tieuvan20 | safe}}</span></p>
+                              {% endfor %}
+                          </td>
+                          <td>
+                              <p><span class="bluebla bol">{{arr.month}}/{{arr.tongdaivan|add:20}}</span> - <span class="bold red">{{arr.namdaivan|add:20}}</span></p>
+                              <p><span class="bold bol red">{{ arr.dai_van.3 }}</span></p>
+                              {% for tieuvan30 in arr.tieuvan30nam %}
+                                <p><span>{{tieuvan30 | safe}}</span></p>
+                              {% endfor %}
+                          </td>
+                          <td>
+                              <p><span class="bluebla bol">{{arr.month}}/{{arr.tongdaivan|add:30}}</span> - <span class="bold red">{{arr.namdaivan|add:30}}</span></p>
+                              <p><span class="bold bol red">{{ arr.dai_van.4 }}</span></p>
+                              {% for tieuvan40 in arr.tieuvan40nam %}
+                                <p><span>{{tieuvan40 | safe}}</span></p>
+                              {% endfor %}
+                          </td>
+                      </tr>
+                      <tr>
+                          <td>
+                              <p><span class="bluebla bol">{{arr.month}}/{{arr.tongdaivan|add:40}}</span> - <span class="bold red">{{arr.namdaivan|add:40}}</span></p>
+                              <p><span class="bold bol red">{{ arr.dai_van.5 }}</span></p>
+                              {% for tieuvan50 in arr.tieuvan50nam %}
+                                <p><span>{{tieuvan50 | safe}}</span></p>
+                              {% endfor %}
+                          </td>
+                          <td>
+                              <p><span class="bluebla bol">{{arr.month}}/{{arr.tongdaivan|add:50}}</span> - <span class="bold red">{{arr.namdaivan|add:50}}</span></p>
+                              <p><span class="bold bol red">{{ arr.dai_van.6 }}</span></p>
+                              {% for tieuvan60 in arr.tieuvan60nam %}
+                                <p><span>{{tieuvan60 | safe}}</span></p>
+                              {% endfor %}
+                          </td>
+                          <td>
+                              <p><span class="bluebla bol">{{arr.month}}/{{arr.tongdaivan|add:60}}</span> - <span class="bold red">{{arr.namdaivan|add:60}}</span></p>
+                              <p><span class="bold bol red">{{ arr.dai_van.7 }}</span></p>
+                              {% for tieuvan70 in arr.tieuvan70nam %}
+                                <p><span>{{tieuvan70 | safe}}</span></p>
+                              {% endfor %}
+                          </td>
+                          <td>
+                              <p><span class="bluebla bol">{{arr.month}}/{{arr.tongdaivan|add:70}}</span> - <span class="bold red">{{arr.namdaivan|add:70}}</span></p>
+                              <p><span class="bold bol red">{{ arr.dai_van.8 }}</span></p>
+                              {% for tieuvan80 in arr.tieuvan80nam %}
+                                <p><span>{{tieuvan80 | safe}}</span></p>
+                              {% endfor %}
+                          </td>
+                      </tr>
+                  </table>
+                  <table class="tutrubtlsnc size2">
+                      <tr>
+                          <td class="bluebla bol upper" rowspan="2">Mệnh Cung</td>
+                          <td rowspan="2">
+                            {{arr.cung_menh.0}}
+                            <!-- <div class="grey">Thiên Xích</div> -->
+                          </td>
+                          <td class="bluebla bol upper" colspan="4">Bảng Thần Sát Nguyên Cục</td>
+                      </tr>
+                      <tr class="bluebla bol upper">
+                          <td class="tdspecwith">Niên Thần</td>
+                          <td>Nguyệt Thần</td>
+                          <td>Nhật Thần</td>
+                          <td>Thời Thần</td>
+                      </tr>
+                      <tr>
+                          <td class="bluebla bol upper">Thai Nguyên</td>
+                          <td>{{arr.thai_nguyen.0}}</td>
+                          <td rowspan="3">
+                            {% for key, value in arr.thienat_quynhan.items %}
+                              {% if key == 'nam' %}
+                                <div class="text">{{ value }}</div>
+                              {% endif %}
+                            {% endfor %}
+
+                            {% for key, value in arr.thien_loc.items %}
+                              {% if key == 'nam' %}
+                                <div class="text">{{ value }}</div>
+                              {% endif %}
+                            {% endfor %}
+
+                            {% for key, value in arr.kinh_duong.items %}
+                              {% if key == 'nam' %}
+                                <div class="text">{{ value }}</div>
+                              {% endif %}
+                            {% endfor %}
+
+                            {% for key, value in arr.kim_du.items %}
+                              {% if key == 'nam' %}
+                                <div class="text">{{ value }}</div>
+                              {% endif %}
+                            {% endfor %}
+
+                            {% for key, value in arr.van_xuong.items %}
+                              {% if key == 'nam' %}
+                                <div class="text">{{ value }}</div>
+                              {% endif %}
+                            {% endfor %}
+
+                            {% for key, value in arr.thien_y.items %}
+                              {% if key == 'nam' %}
+                                <div class="text">{{ value }}</div>
+                              {% endif %}
+                            {% endfor %}
+
+                            {% for key, value in arr.dich_ma.items %}
+                              {% if key == 'nam' %}
+                                <div class="text">{{ value }}</div>
+                              {% endif %}
+                            {% endfor %}
+
+                            {% for key, value in arr.hoa_cai.items %}
+                              {% if key == 'nam' %}
+                                <div class="text">{{ value }}</div>
+                              {% endif %}
+                            {% endfor %}
+
+                            {% for key, value in arr.tuong_tinh.items %}
+                              {% if key == 'nam' %}
+                                <div class="text">{{ value }}</div>
+                              {% endif %}
+                            {% endfor %}
+
+                            {% for key, value in arr.dao_hoa.items %}
+                              {% if key == 'nam' %}
+                                <div class="text">{{ value }}</div>
+                              {% endif %}
+                            {% endfor %}
+
+                            {% for key, value in arr.dao_hoa_sat.items %}
+                              {% if key == 'nam' %}
+                                <div class="text">{{ value }}</div>
+                              {% endif %}
+                            {% endfor %}
+
+                            {% for key, value in arr.tai_sat.items %}
+                              {% if key == 'nam' %}
+                                <div class="text">{{ value }}</div>
+                              {% endif %}
+                            {% endfor %}
+
+                            {% for key, value in arr.quoc_an_quy_nhan.items %}
+                              {% if key == 'nam' %}
+                                <div class="text">{{ value }}</div>
+                              {% endif %}
+                            {% endfor %}
+
+                          </td>
+                          <td rowspan="3">
+                            {% for key, value in arr.thienat_quynhan.items %}
+                              {% if key == 'thang' %}
+                                <div class="text">{{ value }}</div>
+                              {% endif %}
+                            {% endfor %}
+
+                            {% for key, value in arr.thien_loc.items %}
+                              {% if key == 'thang' %}
+                                <div class="text">{{ value }}</div>
+                              {% endif %}
+                            {% endfor %}
+
+                            {% for key, value in arr.kinh_duong.items %}
+                              {% if key == 'thang' %}
+                                <div class="text">{{ value }}</div>
+                              {% endif %}
+                            {% endfor %}
+
+                            {% for key, value in arr.kim_du.items %}
+                              {% if key == 'thang' %}
+                                <div class="text">{{ value }}</div>
+                              {% endif %}
+                            {% endfor %}
+
+                            {% for key, value in arr.van_xuong.items %}
+                              {% if key == 'thang' %}
+                                <div class="text">{{ value }}</div>
+                              {% endif %}
+                            {% endfor %}
+
+                            {% for key, value in arr.dich_ma.items %}
+                              {% if key == 'thang' %}
+                                <div class="text">{{ value }}</div>
+                              {% endif %}
+                            {% endfor %}
+
+                            {% for key, value in arr.hoa_cai.items %}
+                              {% if key == 'thang' %}
+                                <div class="text">{{ value }}</div>
+                              {% endif %}
+                            {% endfor %}
+
+                            {% for key, value in arr.tuong_tinh.items %}
+                              {% if key == 'thang' %}
+                                <div class="text">{{ value }}</div>
+                              {% endif %}
+                            {% endfor %}
+
+                            {% for key, value in arr.dao_hoa.items %}
+                              {% if key == 'thang' %}
+                                <div class="text">{{ value }}</div>
+                              {% endif %}
+                            {% endfor %}
+
+                            {% for key, value in arr.dao_hoa_sat.items %}
+                              {% if key == 'thang' %}
+                                <div class="text">{{ value }}</div>
+                              {% endif %}
+                            {% endfor %}
+
+                            {% for key, value in arr.kiep_sat.items %}
+                              {% if key == 'thang' %}
+                                <div class="text">{{ value }}</div>
+                              {% endif %}
+                            {% endfor %}
+
+                            {% for key, value in arr.tai_sat.items %}
+                              {% if key == 'thang' %}
+                                <div class="text">{{ value }}</div>
+                              {% endif %}
+                            {% endfor %}
+
+                            {% for key, value in arr.quoc_an_quy_nhan.items %}
+                              {% if key == 'thang' %}
+                                <div class="text">{{ value }}</div>
+                              {% endif %}
+                            {% endfor %}
+
+                            {% for key, value in arr.cothan_quatu.items %}
+                              {% if key == 'thang' %}
+                                <div class="text">{{ value }}</div>
+                              {% endif %}
+                            {% endfor %}
+
+                          </td>
+                          <td rowspan="3">
+                            {% for key, value in arr.thienat_quynhan.items %}
+                              {% if key == 'ngay' %}
+                                <div class="text">{{ value }}</div>
+                              {% endif %}
+                            {% endfor %}
+
+                            {% for key, value in arr.thien_loc.items %}
+                              {% if key == 'ngay' %}
+                                <div class="text">{{ value }}</div>
+                              {% endif %}
+                            {% endfor %}
+
+                            {% for key, value in arr.kinh_duong.items %}
+                              {% if key == 'ngay' %}
+                                <div class="text">{{ value }}</div>
+                              {% endif %}
+                            {% endfor %}
+
+                            {% for key, value in arr.kim_du.items %}
+                              {% if key == 'ngay' %}
+                                <div class="text">{{ value }}</div>
+                              {% endif %}
+                            {% endfor %}
+
+                            {% for key, value in arr.van_xuong.items %}
+                              {% if key == 'ngay' %}
+                                <div class="text">{{ value }}</div>
+                              {% endif %}
+                            {% endfor %}
+
+                            {% for key, value in arr.thien_y.items %}
+                              {% if key == 'ngay' %}
+                                <div class="text">{{ value }}</div>
+                              {% endif %}
+                            {% endfor %}
+
+                            {% for key, value in arr.dich_ma.items %}
+                              {% if key == 'ngay' %}
+                                <div class="text">{{ value }}</div>
+                              {% endif %}
+                            {% endfor %}
+
+                            {% for key, value in arr.hoa_cai.items %}
+                              {% if key == 'ngay' %}
+                                <div class="text">{{ value }}</div>
+                              {% endif %}
+                            {% endfor %}
+
+                            {% for key, value in arr.tuong_tinh.items %}
+                              {% if key == 'ngay' %}
+                                <div class="text">{{ value }}</div>
+                              {% endif %}
+                            {% endfor %}
+
+                            {% for key, value in arr.dao_hoa.items %}
+                              {% if key == 'ngay' %}
+                                <div class="text">{{ value }}</div>
+                              {% endif %}
+                            {% endfor %}
+
+                            {% for key, value in arr.dao_hoa_sat.items %}
+                              {% if key == 'ngay' %}
+                                <div class="text">{{ value }}</div>
+                              {% endif %}
+                            {% endfor %}
+
+                            {% for key, value in arr.kiep_sat.items %}
+                              {% if key == 'ngay' %}
+                                <div class="text">{{ value }}</div>
+                              {% endif %}
+                            {% endfor %}
+
+                            {% for key, value in arr.tai_sat.items %}
+                              {% if key == 'ngay' %}
+                                <div class="text">{{ value }}</div>
+                              {% endif %}
+                            {% endfor %}
+
+                            {% for key, value in arr.quoc_an_quy_nhan.items %}
+                              {% if key == 'ngay' %}
+                                <div class="text">{{ value }}</div>
+                              {% endif %}
+                            {% endfor %}
+
+                            {% for key, value in arr.cothan_quatu.items %}
+                              {% if key == 'ngay' %}
+                                <div class="text">{{ value }}</div>
+                              {% endif %}
+                            {% endfor %}
+
+                            {% if arr.khoi_canh != ''%}
+                              <div class="text">{{ arr.khoi_canh }}</div>
+                            {% endif %}
+
+                            {% if arr.thienxa != ''%}
+                              <div class="text">{{ arr.thien_xa }}</div>
+                            {% endif %}
+
+                            {% if arr.thapac_daibai != ''%}
+                              <div class="text">{{ arr.thapac_daibai }}</div>
+                            {% endif %}
+
+                            {% if arr.tamky_quynhan != ''%}
+                              <div class="text">{{ arr.tamky_quynhan }}</div>
+                            {% endif %}
+
+                          </td>
+                          <td rowspan="3">
+                            {% for key, value in arr.thienat_quynhan.items %}
+                              {% if key == 'gio' %}
+                                <div class="text">{{ value }}</div>
+                              {% endif %}
+                            {% endfor %}
+
+                            {% for key, value in arr.thien_loc.items %}
+                              {% if key == 'gio' %}
+                                <div class="text">{{ value }}</div>
+                              {% endif %}
+                            {% endfor %}
+
+                            {% for key, value in arr.kinh_duong.items %}
+                                {% if key == 'gio' %}
+                                  <div class="text">{{ value }}</div>
+                                {% endif %}
+                            {% endfor %}
+
+                            {% for key, value in arr.kim_du.items %}
+                                {% if key == 'gio' %}
+                                  <div class="text">{{ value }}</div>
+                                {% endif %}
+                            {% endfor %}
+
+                            {% for key, value in arr.van_xuong.items %}
+                              {% if key == 'gio' %}
+                                <div class="text">{{ value }}</div>
+                              {% endif %}
+                            {% endfor %}
+
+                            {% for key, value in arr.dich_ma.items %}
+                              {% if key == 'gio' %}
+                                <div class="text">{{ value }}</div>
+                              {% endif %}
+                            {% endfor %}
+
+                            {% for key, value in arr.thien_y.items %}
+                              {% if key == 'gio' %}
+                                <div class="text">{{ value }}</div>
+                              {% endif %}
+                            {% endfor %}
+
+                            {% for key, value in arr.hoa_cai.items %}
+                              {% if key == 'gio' %}
+                                <div class="text">{{ value }}</div>
+                              {% endif %}
+                            {% endfor %}
+
+                            {% for key, value in arr.tuong_tinh.items %}
+                              {% if key == 'gio' %}
+                                <div class="text">{{ value }}</div>
+                              {% endif %}
+                            {% endfor %}
+
+                            {% for key, value in arr.dao_hoa.items %}
+                              {% if key == 'gio' %}
+                                <div class="text">{{ value }}</div>
+                              {% endif %}
+                            {% endfor %}
+
+                            {% for key, value in arr.dao_hoa_sat.items %}
+                              {% if key == 'gio' %}
+                                <div class="text">{{ value }}</div>
+                              {% endif %}
+                            {% endfor %}
+
+                            {% for key, value in arr.kiep_sat.items %}
+                              {% if key == 'gio' %}
+                                <div class="text">{{ value }}</div>
+                              {% endif %}
+                            {% endfor %}
+
+                            {% for key, value in arr.tai_sat.items %}
+                              {% if key == 'gio' %}
+                                <div class="text">{{ value }}</div>
+                              {% endif %}
+                            {% endfor %}
+
+                            {% for key, value in arr.quoc_an_quy_nhan.items %}
+                              {% if key == 'gio' %}
+                                <div class="text">{{ value }}</div>
+                              {% endif %}
+                            {% endfor %}
+
+                            {% for key, value in arr.cothan_quatu.items %}
+                              {% if key == 'gio' %}
+                                <div class="text">{{ value }}</div>
+                              {% endif %}
+                            {% endfor %}
+
+                          </td>
+                      </tr>
+                      <tr>
+                          <td class="bluebla bol upper">Niên Không</td>
+                          <td>Niên Không</td>
+                      </tr>
+                      <tr>
+                          <td class="bluebla bol upper">Nhật Không</td>
+                          <td>Nhật Không</td>
+                      </tr>
+                  </table>
+              </td>
+          </tr>
+      </table>
+    {% endfor %}
+  </div>
+  <div class="extendbot">
+      <div class="gr big"><span class="grey size2">Lá số lập tại https://hocvienlyso.org</span></div>
+
+      <div class="gr grkim"><span class="color"></span><span class="text size2">Kim</span></div>
+      <div class="gr grmoc"><span class="color"></span><span class="text size2">Mộc</span></div>
+      <div class="gr grthuy"><span class="color"></span><span class="text size2">Thủy</span></div>
+      <div class="gr grhoa"><span class="color"></span><span class="text size2">Hỏa</span></div>
+      <div class="gr grtho"><span class="color"></span><span class="text size2">Thổ</span></div>
+  </div>
+</div>
+
+<!-- var html = "<div class='wrapbg'>";
+html +="<table class='tbl'><tr><td><table class='tbltutrutop'>";
+html +="<tr><td class='tutrulogo vertical_top'><img src='../static/images/logo.png' alt=''><h2> Tứ Trụ Mệnh Bàn </h2></td>";
+html +="<td class='vertical_top'><table class='tutrulogotext'><tr><td>Họ và tên</td><td> : </td>";
+html +="<td class='upper'>"+objJson_check.name+"</td></tr>";
+html +="<tr><td>Giớ tính</td><td> : </td><td>"+objJson_check.gio_tinh+"</td></tr>";
+html +="<tr><td>Dương lịch  (GTM 07.0)</td><td> : </td><td>"+objJson_check.hours+":"+objJson_check.minute+"+objJson_check.day+"/"+objJson_check.month+"/"+objJson_check.year+"</td></tr>";
+html +="<tr><td>Âm Dương hợp lịch</td><td> : </td><td>"+objJson_check.hours+":"+objJson_check.minute+" "+objJson_check.day_lunar+"/"+objJson_check.month_lunar+"/"+objJson_check.year_lunar+"</td></tr>";
+html +="</table></td></tr></table></td></tr>";
+html +="<tr><td><table class='tbltutrumain size2'><tr class='bol'>";
+html +="<td class='bluebla upper'>Dương Lịch</td><td>"+objJson_check.year+"</td><td>"+objJson_check.month+"</td><td>"+objJson_check.day+"</td><td>"+objJson_check.hours+":"+objJson_check.minute+"</td>";
+html +="</tr>";
+html +="<tr><td class='bluebla bol upper'>Chủ Tinh</td><td>"+objJson_check.can_thap_nam+"</td><td>"+objJson_check.can_thap_thang+"</td><td class='upper'>Nhật Trụ</td><td>"+objJson_check.can_thap_gio+"</td></tr>";
+html +="<tr><td class='bluebla bol upper'>Trường Sinh Can</td>";
+$.each(objJson_check.T_Sinh_Thien_Can,function(index,value){
+html +="<td>+"value+"</td>";
+});
+html +="</tr>";
+html +="<tr><td class='bluebla bol upper'>Bát Tự</td>+";
+html +="<td class='size1 "+objJson_check.chi_nam_color+" bol upper txtinnerright'>+";
+html +="<span class='"+objJson_check.can_nam_color+"'>"+objJson_check.can_nam+"</span><br/> "+objJson_check.chi_nam+";
+if (objJson_check.nam_kv != ''){
+  html +="<span class='txtin'>"+objJson_check.nam_kv+"</span>+"
+}
+html +="</td>";
+html +="<td class='size1 "+objJson_check.chi_thang_color+" bol upper txtinnerright'>";
+html +="<span class='"+objJson_check.can_thang_color+"'>"+objJson_check.can_thang+"</span><br/> "+objJson_check.chi_thang+"
+if (objJson_check.thang_kv != ''){
+  html +="<span class='txtin'>"+objJson_check.thang_kv+"</span>";
+}
+html +="</td>";
+html +="<td class='size1 "+objJson_check.chi_ngay_color+" bol upper txtinnerright'>";
+html +="<span class='"+objJson_check.can_ngay_color+"'>"+objJson_check.can_ngay+"</span><br/> "+objJson_check.chi_ngay+";
+if (objJson_check.ngay_kv != ''){
+  html +="<span class='txtin'>"+objJson_check.ngay_kv+"</span>";
+}
+html +="</td>";
+html +="<td class='size1 "+objJson_check.chi_gio_color+" bol upper txtinnerright'><span class='"+objJson_check.can_gio_color+"'>"+objJson_check.can_gio+"</span><br/> "+objJson_check.chi_gio+";
+if (objJson_check.gio_kv != ''){
+  html +="<span class='txtin'>"+objJson_check.gio_kv+"</span>";
+}
+html +="</td></tr>";
+html +="<tr><td class='bluebla bol upper'>Tàng Ẩn</td><td><table class='tblinnerno'>";
+html +="<tr>";
+$.each(objJson_check.can_an_nam,function(key,value){
+  html +="<td class='"+key+"'>"+value+"</td>";
+});
+html +="</tr></table></td>";
+html +="<td><table class='tblinnerno'><tr>";
+$.each(objJson_check.can_an_thang,function(key,value){
+  html +="<td class='"+key+"'>"+value+"</td>";
+});
+html +="</tr></table></td>";
+html +="<td><table class='tblinnerno'><tr>";
+$.each(objJson_check.can_an_ngay,function(key,value){
+  html +="<td class='"+key+"'>"+value+"</td>";
+});
+html +="</tr></table></td><td><table class='tblinnerno'><tr>+";
+$.each(objJson_check.can_an_gio,function(key,value){
+  html +="<td class='"+key+"'>"+value+"</td>+";
+});
+html +="</tr></table></td></tr><tr><td class='bluebla bol upper'>Phó Tinh</td><td><table class='tblinnerno'><tr>";
+for(var k = 0; k < objJson_check.can_an_nam_thapthan.length; k++){
+    html +="<td>"+objJson_check.can_an_nam_thapthan[k]+"</td>";
+}
+html +="</tr></table></td><td><table class='tblinnerno'><tr>";
+for(var k = 0; k < objJson_check.can_an_thang_thapthan.length; k++){
+  html +="<td>"+objJson_check.can_an_thang_thapthan[k]+"</td>";
+});
+html +="</tr></table></td><td><table class='tblinnerno'><tr>";
+for(var k = 0; k < objJson_check.can_an_ngay_thapthan.length; k++){
+  html +="<td>"+objJson_check.can_an_ngay_thapthan[k]+"</td>";
+});
+html +="</tr></table></td><td><table class='tblinnerno'><tr>";
+for(var k = 0; k < objJson_check.can_an_gio_thapthan.length; k++){
+  html +="<td>"+objJson_check.can_an_gio_thapthan[k]+"</td>";
+});
+html +="</tr></table></td></tr><tr><td class='bluebla bol upper'>Trường Sinh</td>";
+html +="<td><table class='tblinnerno'><tr>";
+for(var k = 0; k < objJson_check.T_Sinh_Can_An_Nam.length; k++){
+  html +="<td>"+objJson_check.T_Sinh_Can_An_Nam[k]+"</td>";
+});
+html +="</tr></table></td><td><table class='tblinnerno'><tr>";
+for(var k = 0; k < objJson_check.T_Sinh_Can_An_Thang.length; k++){
+  html +="<td>"+objJson_check.T_Sinh_Can_An_Thang[k]+"</td>";
+});
+html +="</tr></table></td><td><table class='tblinnerno'><tr>";
+for(var k = 0; k < objJson_check.T_Sinh_Can_An_Ngay.length; k++){
+  html +="<td>"+objJson_check.T_Sinh_Can_An_Ngay[k]+"</td>";
+});
+html +="</tr></table></td><td><table class='tblinnerno'><tr>";
+for(var k = 0; k < objJson_check.T_Sinh_Can_An_Gio.length; k++){
+  html +="<td>"+objJson_check.T_Sinh_Can_An_Gio[k]+"</td>";
+});
+html +="</tr></table></td></tr><tr><td class='bluebla bol upper'>Nap Âm</td>";
+for(var k = 0; k < objJson_check.ngu_hanh_nap_am.length; k++){
+  html +="<td>"+objJson_check.ngu_hanh_nap_am[k]+"</td>";
+});
+html +="</tr></table><table class='tutrutblsub2 size2 tutrutblsub2nowithfirst'>";
+html +="<tr><td><p><span class='bluebla bol'>"+objJson_check.month+"/"+objJson_check.tongdaivan+"</span> - <span class='bold red'>"+objJson_check.namdaivan+"</span></p>";
+html +="<p><span class='bold bol red'>"+objJson_check.dai_van.1 +"</span></p>";
+for(var k = 0; k < objJson_check.tieuvan10nam.length; k++){
+  html +="<p><span>"+objJson_check.tieuvan10nam[k] | safe +"</span></p>";
+});
+html +="</td><td><p><span class='bluebla bol'>"+objJson_check.month+"/"+objJson_check.tongdaivan|add:10+"</span> - <span class='bold red'>"+objJson_check.namdaivan|add:10+"</span></p>";
+html +="<p><span class='bold bol red'>"+ objJson_check.dai_van.2 +"</span></p>";
+for(var k = 0; k < objJson_check.tieuvan20nam.length; k++){
+  html +="<p><span>"+objJson_check.tieuvan20nam[k] | safe +"</span></p>";
+});
+html +="</td><td><p><span class='bluebla bol'>"+objJson_check.month+"/"+objJson_check.tongdaivan|add:20+"</span> - <span class='bold red'>"+objJson_check.namdaivan|add:20+"</span></p>";
+html +="<p><span class='bold bol red'>"+ objJson_check.dai_van.3 +"</span></p>";
+for(var k = 0; k < objJson_check.tieuvan30nam.length; k++){
+  html +="<p><span>"+objJson_check.tieuvan30nam[k] | safe +"</span></p>";
+});
+html +="</td><td><p><span class='bluebla bol'>"+objJson_check.month+"/"+objJson_check.tongdaivan|add:30+"</span> - <span class='bold red'>"+objJson_check.namdaivan|add:30+"</span></p>";
+html +="<p><span class='bold bol red'>"+ objJson_check.dai_van.4 +"</span></p>";
+for(var k = 0; k < objJson_check.tieuvan40nam.length; k++){
+  html +="<p><span>"+objJson_check.tieuvan40nam[k] | safe +"</span></p>";
+});
+html +="</td></tr><tr><td><p><span class='bluebla bol'>"+objJson_check.month+"/"+objJson_check.tongdaivan|add:40+"</span> - <span class='bold red'>"+objJson_check.namdaivan|add:40+"</span></p>";
+html +="<p><span class='bold bol red'>"+ objJson_check.dai_van.5 +"</span></p>";
+for(var k = 0; k < objJson_check.tieuvan50nam.length; k++){
+  html +="<p><span>"+objJson_check.tieuvan50nam[k] | safe +"</span></p>";
+});
+html +="</td><td><p><span class='bluebla bol'>"+objJson_check.month+"/"+objJson_check.tongdaivan|add:50+"</span> - <span class='bold red'>"+objJson_check.namdaivan|add:50+"</span></p>";
+html +="<p><span class='bold bol red'>"+ objJson_check.dai_van.6 +"</span></p>";
+for(var k = 0; k < objJson_check.tieuvan60nam.length; k++){
+  html +="<p><span>"+objJson_check.tieuvan60nam[k] | safe +"</span></p>";
+});
+html +="</td><td><p><span class='bluebla bol'>"+objJson_check.month+"/"+objJson_check.tongdaivan|add:60+"</span> - <span class='bold red'>"+objJson_check.namdaivan|add:60+"</span></p>";
+html +="<p><span class='bold bol red'>"+ objJson_check.dai_van.7 +"</span></p>";
+for(var k = 0; k < objJson_check.tieuvan70nam.length; k++){
+  html +="<p><span>"+objJson_check.tieuvan70nam[k] | safe +"</span></p>";
+});
+html +="</td><td><p><span class='bluebla bol'>"+objJson_check.month+"/"+objJson_check.tongdaivan|add:70+"</span> - <span class='bold red'>"+objJson_check.namdaivan|add:70+"</span></p>";
+html +="<p><span class='bold bol red'>"+ objJson_check.dai_van.8 +"</span></p>";
+for(var k = 0; k < objJson_check.tieuvan80nam.length; k++){
+  html +="<p><span>"+objJson_check.tieuvan80nam[k] | safe +"</span></p>";
+});
+html +="</td></tr></table><table class='tutrubtlsnc size2'>";
+html +="<tr><td class='bluebla bol upper' rowspan='2'>Mệnh Cung</td><td rowspan='2'>"+objJson_check.cung_menh.0+"</td><td class='bluebla bol upper' colspan='4'>Bảng Thần Sát Nguyên Cục</td></tr>";
+html +="<tr class='bluebla bol upper'><td class='tdspecwith'>Niên Thần</td><td>Nguyệt Thần</td><td>Nhật Thần</td><td>Thời Thần</td></tr>";
+html +="<tr><td class='bluebla bol upper'>Thai Nguyên</td><td>"+objJson_check.thai_nguyen.0+"</td><td rowspan='3'>";
+$.each(objJson_check.thienat_quynhan,function(key,value){
+  if (key == 'nam'){
+    html +="<td class='text'>"+value+"</td>+";
+  }
+});
+$.each(objJson_check.thien_loc,function(key,value){
+  if (key == 'nam'){
+    html +="<td class='text'>"+value+"</td>+";
+  }
+});
+$.each(objJson_check.kinh_duong,function(key,value){
+  if (key == 'nam'){
+    html +="<td class='text'>"+value+"</td>+";
+  }
+});
+$.each(objJson_check.kim_du,function(key,value){
+  if (key == 'nam'){
+    html +="<td class='text'>"+value+"</td>+";
+  }
+});
+$.each(objJson_check.van_xuong,function(key,value){
+  if (key == 'nam'){
+    html +="<td class='text'>"+value+"</td>+";
+  }
+});
+
+$.each(objJson_check.thien_y,function(key,value){
+  if (key == 'nam'){
+    html +="<td class='text'>"+value+"</td>+";
+  }
+});
+
+$.each(objJson_check.dich_ma,function(key,value){
+  if (key == 'nam'){
+    html +="<td class='text'>"+value+"</td>+";
+  }
+});
+
+$.each(objJson_check.hoa_cai,function(key,value){
+  if (key == 'nam'){
+    html +="<td class='text'>"+value+"</td>+";
+  }
+});
+
+$.each(objJson_check.tuong_tinh,function(key,value){
+  if (key == 'nam'){
+    html +="<td class='text'>"+value+"</td>+";
+  }
+});
+
+$.each(objJson_check.dao_hoa,function(key,value){
+  if (key == 'nam'){
+    html +="<td class='text'>"+value+"</td>+";
+  }
+});
+
+$.each(objJson_check.dao_hoa_sat,function(key,value){
+  if (key == 'nam'){
+    html +="<td class='text'>"+value+"</td>+";
+  }
+});
+
+$.each(objJson_check.tai_sat,function(key,value){
+  if (key == 'nam'){
+    html +="<td class='text'>"+value+"</td>+";
+  }
+});
+
+$.each(objJson_check.quoc_an_quy_nhan,function(key,value){
+  if (key == 'nam'){
+    html +="<td class='text'>"+value+"</td>+";
+  }
+});
+html +="</td><td rowspan='3'>";
+$.each(objJson_check.thienat_quynhan,function(key,value){
+  if (key == 'thang'){
+    html +="<td class='text'>"+value+"</td>+";
+  }
+});
+
+$.each(objJson_check.thien_loc,function(key,value){
+  if (key == 'thang'){
+    html +="<td class='text'>"+value+"</td>+";
+  }
+});
+
+$.each(objJson_check.kinh_duong,function(key,value){
+  if (key == 'thang'){
+    html +="<td class='text'>"+value+"</td>+";
+  }
+});
+
+$.each(objJson_check.kim_du,function(key,value){
+  if (key == 'thang'){
+    html +="<td class='text'>"+value+"</td>+";
+  }
+});
+
+$.each(objJson_check.van_xuong,function(key,value){
+  if (key == 'thang'){
+    html +="<td class='text'>"+value+"</td>+";
+  }
+});
+
+$.each(objJson_check.dich_ma,function(key,value){
+  if (key == 'thang'){
+    html +="<td class='text'>"+value+"</td>+";
+  }
+});
+
+$.each(objJson_check.hoa_cai,function(key,value){
+  if (key == 'thang'){
+    html +="<td class='text'>"+value+"</td>+";
+  }
+});
+
+$.each(objJson_check.tuong_tinh,function(key,value){
+  if (key == 'thang'){
+    html +="<td class='text'>"+value+"</td>+";
+  }
+});
+
+$.each(objJson_check.dao_hoa,function(key,value){
+  if (key == 'thang'){
+    html +="<td class='text'>"+value+"</td>+";
+  }
+});
+
+$.each(objJson_check.dao_hoa_sat,function(key,value){
+  if (key == 'thang'){
+    html +="<td class='text'>"+value+"</td>+";
+  }
+});
+
+$.each(objJson_check.kiep_sat,function(key,value){
+  if (key == 'thang'){
+    html +="<td class='text'>"+value+"</td>+";
+  }
+});
+
+$.each(objJson_check.tai_sat,function(key,value){
+  if (key == 'thang'){
+    html +="<td class='text'>"+value+"</td>+";
+  }
+});
+
+$.each(objJson_check.quoc_an_quy_nhan,function(key,value){
+  if (key == 'thang'){
+    html +="<td class='text'>"+value+"</td>+";
+  }
+});
+
+$.each(objJson_check.cothan_quatu,function(key,value){
+  if (key == 'thang'){
+    html +="<td class='text'>"+value+"</td>+";
+  }
+});
+html +="</td><td rowspan='3'>";
+
+$.each(objJson_check.thienat_quynhan,function(key,value){
+  if (key == 'ngay'){
+    html +="<td class='text'>"+value+"</td>+";
+  }
+});
+
+$.each(objJson_check.thien_loc,function(key,value){
+  if (key == 'ngay'){
+    html +="<td class='text'>"+value+"</td>+";
+  }
+});
+
+$.each(objJson_check.kinh_duong,function(key,value){
+  if (key == 'ngay'){
+    html +="<td class='text'>"+value+"</td>+";
+  }
+});
+
+$.each(objJson_check.kim_du,function(key,value){
+  if (key == 'ngay'){
+    html +="<td class='text'>"+value+"</td>+";
+  }
+});
+
+$.each(objJson_check.van_xuong,function(key,value){
+  if (key == 'ngay'){
+    html +="<td class='text'>"+value+"</td>+";
+  }
+});
+
+$.each(objJson_check.thien_y,function(key,value){
+  if (key == 'ngay'){
+    html +="<td class='text'>"+value+"</td>+";
+  }
+});
+
+$.each(objJson_check.dich_ma,function(key,value){
+  if (key == 'ngay'){
+    html +="<td class='text'>"+value+"</td>+";
+  }
+});
+
+$.each(objJson_check.hoa_cai,function(key,value){
+  if (key == 'ngay'){
+    html +="<td class='text'>"+value+"</td>+";
+  }
+});
+
+$.each(objJson_check.tuong_tinh,function(key,value){
+  if (key == 'ngay'){
+    html +="<td class='text'>"+value+"</td>+";
+  }
+});
+
+$.each(objJson_check.dao_hoa,function(key,value){
+  if (key == 'ngay'){
+    html +="<td class='text'>"+value+"</td>+";
+  }
+});
+
+$.each(objJson_check.dao_hoa_sat,function(key,value){
+  if (key == 'ngay'){
+    html +="<td class='text'>"+value+"</td>+";
+  }
+});
+
+$.each(objJson_check.kiep_sat,function(key,value){
+  if (key == 'ngay'){
+    html +="<td class='text'>"+value+"</td>+";
+  }
+});
+
+
+$.each(objJson_check.tai_sat,function(key,value){
+  if (key == 'ngay'){
+    html +="<td class='text'>"+value+"</td>+";
+  }
+});
+
+
+$.each(objJson_check.quoc_an_quy_nhan,function(key,value){
+  if (key == 'ngay'){
+    html +="<td class='text'>"+value+"</td>+";
+  }
+});
+
+$.each(objJson_check.cothan_quatu,function(key,value){
+  if (key == 'ngay'){
+    html +="<td class='text'>"+value+"</td>+";
+  }
+});
+
+if (objJson_check.khoi_canh != ''){
+  html +="<div class='text'>"+ objJson_check.khoi_canh +"</div>";
+}
+
+if (objJson_check.thienxa != ''){
+  html +="<div class='text'>"+ objJson_check.thien_xa +"</div>";
+}
+
+if (objJson_check.thapac_daibai != ''){
+  html +="<div class='text'>"+ objJson_check.thapac_daibai +"</div>";
+}
+
+if (objJson_check.tamky_quynhan != ''){
+  html +="<div class='text'>"+ objJson_check.tamky_quynhan +"</div>";
+}
+html +="</td><td rowspan='3'>";
+
+$.each(objJson_check.thienat_quynhan,function(key,value){
+  if (key == 'gio'){
+    html +="<td class='text'>"+value+"</td>+";
+  }
+});
+
+$.each(objJson_check.thien_loc,function(key,value){
+  if (key == 'gio'){
+    html +="<td class='text'>"+value+"</td>+";
+  }
+});
+
+$.each(objJson_check.kinh_duong,function(key,value){
+  if (key == 'gio'){
+    html +="<td class='text'>"+value+"</td>+";
+  }
+});
+
+$.each(objJson_check.kim_du,function(key,value){
+  if (key == 'gio'){
+    html +="<td class='text'>"+value+"</td>+";
+  }
+});
+
+$.each(objJson_check.van_xuong,function(key,value){
+  if (key == 'gio'){
+    html +="<td class='text'>"+value+"</td>+";
+  }
+});
+
+$.each(objJson_check.dich_ma,function(key,value){
+  if (key == 'gio'){
+    html +="<td class='text'>"+value+"</td>+";
+  }
+});
+
+$.each(objJson_check.thien_y,function(key,value){
+  if (key == 'gio'){
+    html +="<td class='text'>"+value+"</td>+";
+  }
+});
+
+$.each(objJson_check.hoa_cai,function(key,value){
+  if (key == 'gio'){
+    html +="<td class='text'>"+value+"</td>+";
+  }
+});
+
+$.each(objJson_check.tuong_tinh,function(key,value){
+  if (key == 'gio'){
+    html +="<td class='text'>"+value+"</td>+";
+  }
+});
+
+$.each(objJson_check.dao_hoa,function(key,value){
+  if (key == 'gio'){
+    html +="<td class='text'>"+value+"</td>+";
+  }
+});
+
+$.each(objJson_check.dao_hoa_sat,function(key,value){
+  if (key == 'gio'){
+    html +="<td class='text'>"+value+"</td>+";
+  }
+});
+
+$.each(objJson_check.kiep_sat,function(key,value){
+  if (key == 'gio'){
+    html +="<td class='text'>"+value+"</td>+";
+  }
+});
+
+$.each(objJson_check.tai_sat,function(key,value){
+  if (key == 'gio'){
+    html +="<td class='text'>"+value+"</td>+";
+  }
+});
+
+$.each(objJson_check.quoc_an_quy_nhan,function(key,value){
+  if (key == 'gio'){
+    html +="<td class='text'>"+value+"</td>+";
+  }
+});
+
+$.each(objJson_check.cothan_quatu,function(key,value){
+  if (key == 'gio'){
+    html +="<td class='text'>"+value+"</td>+";
+  }
+});
+html +="</td></tr><tr><td class='bluebla bol upper'>Niên Không</td><td>Niên Không</td></tr><tr><td class='bluebla bol upper'>Nhật Không</td><td>Nhật Không</td></tr></table></td></tr></table></div>"; -->
