@@ -34,7 +34,7 @@
           </div>
 
           <div class="article-content">
-            <span><a href="#">Patricia</a> / {{detail.created_date|date:"d-m-Y"}} / <a href="#">0 Comment</a></span>
+            <span><a href="#">{{detail.author}}</a> / {{detail.created_date|date:"d-m-Y"}} / <a href="#">{{all_comments.count}} Comment</a></span>
             <h3>{{detail.name}}</h3>
 
             {{detail.description | safe}}
@@ -81,11 +81,11 @@
           </div>
 
           <div class="comments-area">
-            <h3 class="comments-title">3 Comments:</h3>
+            <h3 class="comments-title">{{all_comments.count}} Comments:</h3>
 
             <ol class="comment-list">
               <li class="comment">
-                <div class="comment-body">
+                <!-- <div class="comment-body">
                   <footer class="comment-meta">
                     <div class="comment-author vcard">
                       <img src="{% static 'img/client/client-1.jpg' %}" class="avatar" alt="image">
@@ -104,34 +104,33 @@
                   <div class="reply">
                     <a href="#" class="comment-reply-link">Reply</a>
                   </div>
-                </div>
+                </div> -->
 
-                <ol class="children">
-                  <li class="comment">
-                    <div class="comment-body">
-                      <footer class="comment-meta">
-                        <div class="comment-author vcard">
-                          <img src="{% static 'img/client/client-2.jpg' %}" class="avatar" alt="image">
-                          <b class="fn">Steven Smith</b>
+                {% for comment in all_comments %}
+                  <ol class="children">
+                    <li class="comment">
+                      <div class="comment-body">
+                        <footer class="comment-meta">
+                          <div class="comment-author vcard">
+                            <img src="{% static 'img/client/client-2.jpg' %}" class="avatar" alt="image">
+                            <b class="fn">{{comment.author}}</b>
+                          </div>
+                          <div class="comment-metadata">
+                            <a href="index.html">
+                              <span>{{comment.comment_date|date:"d-m-Y"}}</span>
+                            </a>
+                          </div>
+                        </footer>
+                        <div class="comment-content">
+                          <p>{{comment.description}}</p>
                         </div>
-                        <div class="comment-metadata">
-                          <a href="index.html">
-                            <span>April 24, 2022 at 10:59 am</span>
-                          </a>
-                        </div>
-                      </footer>
-                      <div class="comment-content">
-                        <p>Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown
-                          printer took a galley of type and scrambled it to make a type specimen.</p>
                       </div>
-                      <div class="reply">
-                        <a href="#" class="comment-reply-link">Reply</a>
-                      </div>
-                    </div>
-                  </li>
-                </ol>
+                    </li>
+                  </ol>
+                {% endfor %}
 
-                <div class="comment-body">
+
+                <!-- <div class="comment-body">
                   <footer class="comment-meta">
                     <div class="comment-author vcard">
                       <img src="{% static 'img/client/client-3.jpg' %}" class="avatar" alt="image">
@@ -150,40 +149,16 @@
                   <div class="reply">
                     <a href="#" class="comment-reply-link">Reply</a>
                   </div>
-                </div>
+                </div> -->
               </li>
             </ol>
 
             <div class="comment-respond">
-              <h3 class="comment-reply-title">Leave a Reply</h3>
+              <h3 class="comment-reply-title">Đánh giá bài viết</h3>
 
-              <form class="comment-form">
-                <p class="comment-notes">
-                  <span id="email-notes">Your email address will not be published.</span>
-                  Required fields are marked
-                </p>
-                <p class="comment-form-author">
-                  <label>Name</label>
-                  <input type="text" id="author" placeholder="Your Name*" name="author" required="required">
-                </p>
-                <p class="comment-form-email">
-                  <label>Email</label>
-                  <input type="email" id="email" placeholder="Your Email*" name="email" required="required">
-                </p>
-                <p class="comment-form-url">
-                  <label>Website</label>
-                  <input type="url" id="url" placeholder="Website" name="url">
-                </p>
-                <p class="comment-form-comment">
-                  <label>Comment</label>
-                  <textarea name="comment" id="comment" cols="45" placeholder="Your Comment..." rows="5"
-                    maxlength="65525" required="required"></textarea>
-                </p>
-                <p class="comment-form-cookies-consent">
-                  <input type="checkbox" value="yes" name="wp-comment-cookies-consent" id="wp-comment-cookies-consent">
-                  <label for="wp-comment-cookies-consent">Save my name, email, and website in this browser for the next
-                    time I comment.</label>
-                </p>
+              <form class="comment-form" method="post">
+                {% csrf_token %}
+                {{form.as_p}}
                 <p class="form-submit">
                   <input type="submit" name="submit" id="submit" class="submit" value="Post a comment">
                 </p>
@@ -417,6 +392,10 @@
 {% endblock%}
 {% block javascript %}
 <script type="text/javascript">
+  var name = "{{ user.id }}"
+  var blog = "{{ detail.id }}"
+  document.getElementById("author").value = name;
+  document.getElementById("blog").value = blog;
   $(document).ready(function () {
     var data = JSON.parse("{{data|escapejs}}");
     var count = 0;

@@ -1,6 +1,6 @@
 from django import forms
 from .models import Contact
-from .models import Contact, Blog, Category
+from .models import Contact, Blog, Category, BlogComment
 from django.forms import ModelChoiceField
 from ckeditor.widgets import CKEditorWidget
 from ckeditor_uploader.fields import RichTextUploadingField
@@ -27,15 +27,41 @@ class ContactForm(forms.ModelForm):
 
 class CreateBlogForm(forms.ModelForm):
     description = forms.CharField(widget=CKEditorWidget())
-    images = forms.FileField(required=False),
+    # images = forms.FileField(required=False),
     category= NameChoiceField(queryset=Category.objects.filter(is_available=True).order_by('category_name'), required=True)
     class Meta:
         model = Blog
-        exclude = ('slug','is_available')
+        exclude = ('slug','is_available','images')
         widgets = {
             'author': forms.TextInput(attrs={'value': '', 'id':'author', 'type':'hidden'}),
             'name': forms.TextInput(attrs={'value': '', 'class':'form-control'}),
             'image_url': forms.Textarea(attrs={'class': 'form-control'}),
             
             'mini_description': forms.Textarea(attrs={'class': 'form-control'})
+        }
+
+class UpdateBlogForm(forms.ModelForm):
+    description = forms.CharField(widget=CKEditorWidget())
+    # images = forms.FileField(required=False),
+    category= NameChoiceField(queryset=Category.objects.filter(is_available=True).order_by('category_name'), required=True)
+    class Meta:
+        model = Blog
+        exclude = ('slug','is_available','images')
+        widgets = {
+            'author': forms.TextInput(attrs={'value': '', 'id':'author', 'type':'hidden'}),
+            'name': forms.TextInput(attrs={'value': '', 'class':'form-control'}),
+            'image_url': forms.Textarea(attrs={'class': 'form-control'}),
+            
+            'mini_description': forms.Textarea(attrs={'class': 'form-control'})
+        }
+
+class CommentBlogForm(forms.ModelForm):
+    class Meta:
+        model = BlogComment
+        fields = "__all__"
+        
+        widgets = {
+            'author': forms.TextInput(attrs={'value': '', 'id':'author', 'type':'hidden'}),
+            'blog': forms.TextInput(attrs={'value': '', 'id':'blog', 'type':'hidden'}),
+            'description': forms.Textarea(attrs={'class': 'form-control'}),
         }

@@ -1,6 +1,6 @@
 from django.shortcuts import redirect, render
 from .models import *
-from .forms import ContactForm, CreateBlogForm
+from .forms import ContactForm, CreateBlogForm, UpdateBlogForm, CommentBlogForm
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import HttpResponse
 from django.http import JsonResponse
@@ -11,6 +11,8 @@ from django.contrib import messages
 from django.views import generic
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseRedirect
 
 
 # Create your views here.
@@ -49,6 +51,16 @@ def blog_detail(request,category_slug,blog_slug):
         latest_news = Blog.objects.filter(is_available=True).filter(category__is_available=True).order_by('-created_date')[:4]
         list_json = list(latest_news.values('images','image_url'))
         dataJSON = dumps(list_json)
+        all_comments = BlogComment.objects.filter(blog = detail.id)
+        form = CommentBlogForm()
+        if request.method == "POST":
+            form = CommentBlogForm(request.POST)
+            if form.is_valid():
+                form.save()
+                messages.success(request, "Your comment on this blog has been posted")
+                return redirect('/%2F'+detail.category.slug+'/'+detail.slug)
+        else:
+            form = CommentBlogForm()
     except Exception as e:
         raise e
 #     # print(detail.description)
@@ -56,6 +68,8 @@ def blog_detail(request,category_slug,blog_slug):
         "detail": detail,
         "latest_news": latest_news,
         'data': dataJSON,
+        'form': form,
+        'all_comments': all_comments
     }
     return render(request,"main/blog_detail.html", context)
 
@@ -105,4 +119,22 @@ class CreateBlog(LoginRequiredMixin, SuccessMessageMixin, generic.CreateView):
     login_url = 'login'
     success_url = "/"
     success_message = "Your blog has been created"
+
+class UpdateBlogView(LoginRequiredMixin, SuccessMessageMixin, generic.UpdateView):
+    model = Blog
+    form_class = UpdateBlogForm
+    template_name = "main/update_blog.html"
+    login_url = 'login'
+    success_url = "/"
+    success_message = "Your blog has been updated"
+
+@login_required(login_url="login")
+def delete_blog(request ,id):
+    delete_blog = Blog.objects.get(id=id)
+    delete_blog.is_available = False
+    delete_blog.save()
+    return HttpResponseRedirect("authors/user-profile/")
+
+
+
 
