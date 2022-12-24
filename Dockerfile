@@ -25,7 +25,7 @@ COPY . /code/
 
 # Collect static files
 RUN chown -R dokku:dokku /code/
-RUN chown -R dokku:dokku /code/media/
+# RUN chown -R dokku:dokku /code/static/
 USER dokku
 
 
