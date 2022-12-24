@@ -1,0 +1,549 @@
+a{text-decoration:none;}
+.txt_rt{text-align:right;}/* text align right */
+.txt_lt{text-align:left;}/* text align left */
+.txt_center{text-align:center;}/* text align center */
+.float_rt{float:right;}/* float right */
+.float_lt{float:left;}/* float left */
+.clear{clear:both;}/* clear float */
+.pos_relative{position:relative;}/* Position Relative */
+.pos_absolute{position:absolute;}/* Position Absolute */
+.vertical_base{ vertical-align:baseline;}/* vertical align baseline */
+.vertical_top{  vertical-align:top;}/* vertical align top */
+.underline{ padding-bottom:5px; border-bottom: 1px solid #eee; margin:0 0 20px 0;}/* Add 5px bottom padding and a underline */
+nav.vertical ul li{ display:block;}/* vertical menu */
+nav.horizontal ul li{   display: inline-block;}/* horizontal menu */
+img{max-width:100%;}
+.bgwhite{ background: #fff;}
+
+.onlypc{display: block;}
+.onlymobile{display: none;}
+
+.bol{font-weight: bold;}
+.italic{font-style: italic;}
+.upper{text-transform: uppercase;}
+.center{ text-align: center;}
+.black{ color: #030303;}
+.grey {color:#a0a19c;}
+.organ{color: #ca982c;}
+.red{color: #d62e3b;}
+.green{color:#35aa1a}
+.blue{color: #2a4f86;}
+.bluebla{color: #0c2850;}
+.violet{color: #af33a7;}
+.size1{font-size: 15px !important;}
+.size2{font-size: 13px !important;}
+.size3{font-size: 12px !important;}
+.size4{font-size: 11px !important;}
+.size5{font-size: 9px;}
+
+.bgred{background-color: #dd0f0f;}
+.bgblue{background-color: #0f12dd;}
+.bgblue2{background-color: #2a4f86;}
+.bgbluebla{background-color: #0c2850;}
+.bgorgan{background-color: #ca982c;}
+.bggreen{background-color:#35aa1a}
+.bgyellow{background-color: #d0dd0f}
+/* ============================================== tu tru ============================================================*/
+.tutru{
+    width: 100%;
+    float: left;
+    font-weight: bolder;
+}
+.tutru .wrapbg{
+    background: url(../img/tutru_bg.jpg) no-repeat top center #fff;
+    width: 100%;
+    border: solid 2px #030303;
+    border-radius: 5px;
+}
+.tutru .tbl{
+    width: 100%;
+    border: none;
+}
+.tutru .tbltutrutop{
+    width: 100%;margin-top: 7px;
+}
+.tutru .tutrulogo{
+    text-align: center;
+}
+.tutru .tutrulogo img{
+    width: 300px;
+}
+.tutru .tutrulogo h2{
+    font-size: 21px;
+}
+.tutru .tutrulogotext td{
+    font-size: 13px;
+    padding: 1px 5px;
+}
+
+.tutru .tbltutrumain{
+    width: 100%;
+}
+.tutru .tbltutrumain td{
+    border: solid 1px #3C3C3B;
+    text-align: center;
+    padding: 3px 0;
+    vertical-align: middle;
+}
+.tutru .tbltutrumain tr > td:first-child{
+    border-left:none;
+    width: 65px;
+}
+.tutru .tbltutrumain tr > td:last-child{
+    border-right:none;
+}
+.tutru .tutrutblsub2{
+    width: 100%;
+}
+.tutru .tutrutblsub2 td{
+    border: solid 1px #3C3C3B;
+    text-align: center;
+    padding: 3px 0;
+    vertical-align: middle;
+}
+.tutru .tutrutblsub2 tr > td:first-child{
+    border-left:none;
+    width: 65px;
+}
+.tutru .tutrutblsub2 tr > td:last-child{
+    border-right:none;
+}
+.tutru .tutrubtlsnc{
+    width: 100%;
+}
+
+.tutru .tutrutblsub2nowithfirst tr > td:first-child{
+    border-left:none;
+    width: auto;
+}
+.tutru .tutrutblsub2nowithfirst td{
+    text-align: left;
+    padding: 3px 3px;
+}
+.tutru .tutrutblsub2nowithfirst p{
+    margin-bottom: 0;
+}
+
+
+.tutru .tutrubtlsnc td{
+    border: solid 1px #3C3C3B;
+    text-align: center;
+    padding: 3px 0;
+    vertical-align: middle;
+}
+.tutru .tutrubtlsnc tr > td:first-child{
+    border-left:none;
+    width: 65px;
+}
+.tutru .tutrubtlsnc tr > td:last-child{
+    border-right:none;
+}
+.tutru .tdspecwith{
+    width: auto !important;
+}
+.txtinnerright{
+    position: relative;
+}
+.txtinnerright .txtin{
+    position: absolute;
+    top: 1px;
+    right: 1px;
+    font-size: 10px;
+    font-weight: normal;
+    color: #3C3C3B;
+}
+
+.tblinnerno{
+    border: 0;
+    padding: 0;
+    width: 100%;
+}
+.tblinnerno td{
+    border: 0 !important;
+    padding: 0 !important;
+}
+
+/* ================================= form tu vi ==========================================================*/
+.tuvi{
+    width: 795px;
+    float: left;
+}
+.tuvi .wrapbg{
+    background: url(../images/tutru_bg.jpg) no-repeat top center #fff;
+    width: 100%;
+    border: solid 2px #94242e;
+    border-radius: 5px;
+}
+.tuvi .tbl{
+    width: 100%;
+}
+.tuvi .item{
+    width: 196px;
+    border-bottom: solid 1px #3C3C3B;
+    border-right: solid 1px #3C3C3B;
+    padding: 5px;
+    position: relative;
+    min-height: 322px;
+}
+.tuvi .bortop{
+    border-top: solid 1px #3C3C3B;
+}
+.tuvi .nobori{
+    border-right: none;
+}
+.tuvi .nobobot{
+    border-bottom: none;
+}
+
+.tuvi .itemtop{
+    width: 100%;
+    min-height: 65px;
+}
+.tuvi .itemtop .col1{
+    float: left;
+    width: 25%;
+}
+.tuvi .itemtop .col2{
+    float: left;
+    width: 50%;
+    text-align: center;
+}
+.tuvi .itemtop .col3{
+    float: left;
+    width: 25%;
+    text-align: right;
+}
+
+.tuvi .itemcen{
+    width: 100%;
+    min-height: 160px;
+}
+
+.tuvi .itemcen .col1{
+    float: left;
+    width: 50%;
+}
+.tuvi .itemcen .col2{
+    float: left;
+    width: 50%;
+    text-align: right;
+}
+
+/*.nearbot{
+    font-size: 13px;
+    width: 100%;
+}*/
+
+.tuvi .itembot{
+    width: 96%;
+	min-height: 20px;
+	position: absolute;
+    bottom: 5px;
+}
+.tuvi .itembot .col1{
+    float: left;
+    width: 25%;
+}
+.tuvi .itembot .col2{
+    float: left;
+    width: 50%;
+    text-align: center;
+}
+.tuvi .itembot .col3{
+    float: left;
+    width: 25%;
+    text-align: right;
+}
+
+.tuvi .tditembig{
+    vertical-align: top;
+    position: relative;
+}
+.tuvi .itembig{
+    width: 392px;
+    min-height: 645px;
+    border-right: solid 1px #3C3C3B;
+    border-bottom: solid 1px #3C3C3B;
+    padding: 5px;
+    position: relative;
+}
+.tuvi .itembig .title{
+    text-align: center;
+    margin: 20px 0 7px 0;
+}
+.tuvi .itembig .topline{
+    border-top: solid 1px #3C3C3B;
+    padding-top: 3px;;
+}
+.tuvi .itembig .line{
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.tblbigsub{
+    width: 100%;
+    border: solid 1px #cfcfcf;
+}
+.tblbigsub tr:nth-child(2){
+    border-bottom: solid 1px #cfcfcf;
+}
+.tblbigsub td{
+    text-align: center;
+    border-radius: 10px;
+}
+.tuvi .mgt{
+    margin-top: 5px;
+}
+/* Tuan triet*/
+.tuvi .ttitem{
+
+    color: #fff;
+    font-size: 9px;
+    text-transform: uppercase;
+    padding: 1px 15px;
+    position: absolute;
+    z-index: 9;
+}
+.tuvi .tttopleft{
+    top: -9px;
+    left: 66px;
+}
+.tuvi .tttopcen{
+    top: -9px;
+    left: 161px;
+}
+.tuvi .tttopright{
+    top: -9px;
+    left: 66px;
+}
+.tuvi .ttbotleft{
+    bottom: -6px;
+    left: 66px;
+}
+.tuvi .ttbotcen{
+    bottom: -6px;
+    left: 161px;
+}
+.tuvi .ttbotright{
+    bottom: -6px;
+    left: 66px;
+}
+.tuvi .ttbotcen2{
+    bottom: -6px;
+    left: 148px;
+}
+
+.tuvi .active{
+    background: rgba(241, 207, 104, 0.3);
+}
+.inputform{
+    width: 90%;
+    margin: 20px auto;
+    border: solid 1px #a0a19c;
+    border-radius: 5px;
+    padding: 10px;
+}
+.inputform .intro{
+    width: 100%;
+    margin-bottom: 10px;
+    border-bottom: solid thin #cfcfcf;
+    padding-bottom: 5px;
+}
+.inputform table{
+    margin: 20px 0;
+    width: 100%;
+}
+.inputform table td{
+    padding: 5px 3px;
+}
+.inputform table input[type="text"]{
+    width: 100%;
+}
+.inputform table input[type="button"]{
+    background: #ca982c;
+    color: #fff;
+    font-size: 13px;
+    text-transform: uppercase;
+    border: solid 1px #a0a19c;
+    font-weight: normal;
+    margin-right: 10px;
+    border-radius: 5px;
+    padding: 5px 15px;
+}
+.inputform table input[type="button"]:hover{
+    opacity: 0.7;
+}
+.inputform .btn{
+    text-align: center;
+    padding-top: 30px;
+}
+
+/*========================= Kinh Dịch =========================================================*/
+.dichquai{
+    width: 100%;
+    float: left;
+}
+.w788{
+    width: 788px;
+}
+.dichquai .wrapbg{
+    width: 100%;
+    border: solid 2px #030303;
+    border-radius: 5px;
+    padding: 10px;
+}
+.dichquai .tbl{
+    width: 100%;
+    border: none;
+    border-spacing: 1px;
+}
+.tbldqcolor{
+    border-collapse: separate;
+    border-spacing: 0 5px;
+    margin: 5px auto;
+}
+.tbldqcolor td{
+    font-size: 7px;
+}
+.dichquai .tblcenter{
+    margin: 0 auto;
+}
+
+.tblkinhdich{
+    width: 100%;
+}
+.tblkinhdich table td{
+    border: none;
+}
+.tblinnerleft{
+    width: 100%;
+}
+.tblinnerleft tr td{
+    padding: 3px;
+    border: solid 1px #3C3C3B;
+}
+
+.tblinnerright{
+    width: 100%;
+    margin-left: -1px;
+}
+.tblinnerright tr td{
+    padding: 3px;
+    border: solid 1px #3C3C3B;
+}
+.tblinnerright tr td:first-child{
+    padding-left: 0;
+}
+.tblinnerright tr td:first-child table td{
+    padding-left: 3px;
+}
+
+.tbldqcolorsmall{
+    border-collapse: separate !important;
+    border-spacing: 0 5px !important;
+    margin: 5px auto !important;
+}
+.tbldqcolorsmall td{
+    font-size: 3px;
+    padding: 0 !important;
+    border: none !important
+}
+
+.widthkdsmall{
+    width: 7px;
+}
+
+/* tuan */
+.dichquai p{margin-top: 10px;}
+.dichquai ul{list-style: disc;}
+.dichquai ul li{ padding-left: 5px; margin-left: 25px;}
+.tbltuan{
+    width: 100%;
+}
+.tbltuan td{
+    position: relative;
+    height: 50px;
+    border-top: solid 1px #3C3C3B;
+    border-bottom: solid 1px #3C3C3B;
+    border-right: solid 1px #3C3C3B;
+    border-left: solid 1px #3C3C3B;
+}
+.tbltuan .inner{
+    text-transform: uppercase;
+    font-weight: bold;
+    vertical-align: middle;
+    padding: 5px;
+}
+.tbltuan .item{
+    background: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #94242e;
+    position: absolute;
+    border: solid 1px #909346;
+    padding: 7px;
+    z-index: 9;
+}
+.tbltuan .itembot{
+    bottom: -18px;
+    left: 23%;
+}
+.tbltuan .itemcen{
+    top: 31px;
+    left: 67%;
+    width: 100px;
+    text-align: center;
+}
+.tbltuan .itemtop{
+    top: -18px;
+    left: 23%;
+}
+
+
+/*===============================================================================================*/
+.extendbot{
+    width: 100%;
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.extendbot .gr{
+    float: left;
+    margin-right: 10px;
+}
+.extendbot .color{
+    display: block;
+    float: left;
+    width: 20px;
+    height: 11px;
+}
+.extendbot .grkim .color{
+    background: #a0a19c;
+    margin-left: 30px;
+    margin-top: 3px;
+}
+.extendbot .grmoc .color{
+    background: #35aa1a;
+    margin-top: 3px;
+}
+.extendbot .grthuy .color{
+    background: #030303;
+    margin-top: 3px;
+}
+.extendbot .grhoa .color{
+    background: #d62e3b;
+    margin-top: 3px;
+}
+ .extendbot .grtho .color{
+    background: #ca982c;
+    margin-top: 3px;
+}
+.extendbot .text{
+    display: block;
+    float: left;
+    margin-left: 5px;
+}
+
+
+

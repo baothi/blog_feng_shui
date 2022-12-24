@@ -1,0 +1,725 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+
+
+<!-- Start Page Banner -->
+<div class="page-title-area">
+  <div class="container">
+    <div class="page-title-content">
+      <h2>Xem Tử Vi</h2>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li>Xem Tử Vi</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- End Page Banner -->
+
+<!-- Start Contact Area -->
+<section class="contact-area ptb-50">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="row">
+          <div class="contact-form">
+            <div class="title">
+              <h3>Ready to get started?</h3>
+              <p>Your email address will not be published. Required fields are marked *</p>
+            </div>
+
+            <form method="POST" action="{{ request.get_full_path }}" id="{{ form_name }}" name="{{ form_name }}">
+              {% csrf_token %}
+              <div class="row">
+                <div class="col-lg-12 col-md-12">
+                  <div class="form-group">
+                    <label>Việc Cần Xem</label>
+                    {{form.vieccanhoi}}
+                  </div>
+                </div>
+
+                <div class="col-lg-4 col-md-4">
+                  <div class="form-group">
+                    <label>Năm</label>
+                    {{form.year}}
+                  </div>
+                </div>
+
+                <div class="col-lg-4 col-md-4">
+                  <div class="form-group">
+                    <label>Tháng</label>
+                    {{form.month}}
+                  </div>
+                </div>
+
+                <div class="col-lg-4 col-md-4">
+                  <div class="form-group">
+                    <label>Ngày</label>
+                    {{form.day}}
+                  </div>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                  <div class="form-group">
+                    <label>Giờ sinh</label>
+                    {{form.hours}}
+                  </div>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                  <div class="form-group">
+                    <label>Phut</label>
+                    {{form.minute}}
+                  </div>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                  <div class="form-group">
+                    <label>Giới Tính</label>
+                    {{form.options}}
+                  </div>
+                </div>
+
+                <div class="col-lg-12 col-md-12">
+                  <button type="submit" class="default-btn">Lập Lá Số</button>
+                  <div id="msgSubmit" class="h3 text-center hidden"></div>
+                  <div class="clearfix"></div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="row">
+          <div class="conright">
+            <div class="dichquai">
+              <div class="w788"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- <section class="contact-area ptb-50">
+  <div class="container">
+    <div class="conright">
+      <div class="dichquai">
+        <div class="w788"></div>
+      </div>
+    </div>
+  </div>
+</section> -->
+<!-- End Contact Area -->
+{% endblock%}
+{% block javascript %}
+<script type="text/javascript">
+  $(document).ready(function () {
+    $('.share').hide();
+  });
+  $('#KinhDichForm').on('submit', function (e) {
+    // preventing from page reload and default actions
+    e.preventDefault();
+    // serialize the data for sending the form data.
+    var name = $('#id_name').val()
+    var nam = parseInt($('#id_year').val())
+    var thang = parseInt($('#id_month').val())
+    var ngay = parseInt($('#id_day').val())
+    var gio = parseInt($('#id_hours').val())
+    var Solar2Lunar = jdn(ngay, thang, nam, 7)
+
+    var get_day_lunar = getLunarDate(ngay, thang, nam)
+    var get_lunar_day = get_day_lunar.day
+    var get_lunar_month = get_day_lunar.month
+    var get_lunar_year = get_day_lunar.year
+
+    var getYear = getYearInfo(nam)
+    var month = getYear.find(el => el.month == parseInt(thang))
+    var now = new Date().toISOString().slice(0, 20);
+
+    jd = jdFromDate(ngay, thang, nam)
+    var tietkhi = (TIETKHI[getSunLongitude(jd, 7.0)])
+    var canchi_namduong = getYearCanChi(nam)
+
+    var serializedData = $(this).serialize() + "&canchi_namduong=" + canchi_namduong + "&tietkhi=" + tietkhi + "&get_lunar_day=" + get_lunar_day + "&get_lunar_month=" + get_lunar_month + "&get_lunar_year=" + get_lunar_year;
+    // make POST ajax call
+    $.ajax({
+      type: 'POST',
+      url: "{% url 'kinhdich' %}",
+      data: serializedData,
+      success: function (response) {
+        Resetname();
+        // $('#dichquai').html(response);
+        var objJson = JSON.parse(response);
+        var objJson_check = objJson['check_field']
+        var color_1 = color = objJson_check.ten_que.haodong == 1 ? 'red' : ''
+        var color_2 = color = objJson_check.ten_que.haodong == 2 ? 'red' : ''
+        var color_3 = color = objJson_check.ten_que.haodong == 3 ? 'red' : ''
+        var color_4 = color = objJson_check.ten_que.haodong == 4 ? 'red' : ''
+        var color_5 = color = objJson_check.ten_que.haodong == 5 ? 'red' : ''
+        var color_6 = color = objJson_check.ten_que.haodong == 6 ? 'red' : ''
+        $('.conright .dichquai .w788').html('');
+        var html = "<div class='wrapbg'><table class='tbl'>";
+        html += "<tr><td><h2 class='upper'> Trang Dịch Quái </h2></td></tr><tr><td>&nbsp;</td></tr>";
+        html += "<tr><td><table class='tbl'><tr><td style='vertical-align: top;' width='80%'><table class='tbl'><tr>";
+        html += "<td>Thời gian lập quẻ: " + objJson_check.hours + ":" + objJson_check.minute + ":" + 1 + "-" + objJson_check.day + "/" + objJson_check.month + "/" + objJson_check.year + "(giờ " + objJson_check.chi_gio + ", ngày " + objJson_check.day_lunar + "/" + objJson_check.month_lunar + "/" + objJson_check.year_lunar + " ÂD hợp lịch)</td>";
+        html += "</tr><tr>";
+        html += "<td>Can Chi: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Giờ " + objJson_check.can_gio + " " + objJson_check.chi_gio + ", ngày " + objJson_check.can_ngay + " " + objJson_check.chi_ngay + ", tháng " + objJson_check.can_thang + " " + objJson_check.chi_thang + ",năm " + objJson_check.can_nam + " " + objJson_check.chi_nam + "</td>";
+        html += "</tr><tr><td><table width='100%' class='none'><tr>";
+        html += "<td>Tiết Khí: <strong>" + objJson_check.nguyet_lenh['TietKhi'] + "</strong></td>";
+        html += "<td>NHật Thần: <strong>" + objJson_check.nhat_than + "</strong></td>";
+        html += "<td>Nguyệt lệnh: <strong>" + objJson_check.nguyet_lenh['nguhanh'] + "</strong></td>";
+        html += "</tr></table></td></tr>";
+        html += "<tr><td>Phương pháp lập quẻ: <strong>Mai Hoa</strong></td></tr>"
+        html += "<tr><td>Việc cần xem: ";
+        html += "<a href='#' class='violet'>" + objJson_check.vieccanhoi + "</a>";
+        html += "</td></tr></table></td><td><img src='../static/images/dichquai_img1.jpg' alt='' width='98%'></td></tr></table></td></tr>";
+        html += "<tr><td><table class='tbl'><tr class='boldertb bol'>";
+        html += "<td width='10%'></td>";
+        html += "<td class='violet center'>" + objJson_check.ten_que.quechinh[0] + "</td>";
+        html += "<td class='violet center'>" + objJson_check.ten_que.queho[0] + "</td>";
+        html += "<td class='violet center'>" + objJson_check.ten_que.quekq[0] + "</td>";
+        html += "<td width='10%'></td></tr><tr><td width='10%'></td><td>";
+        html += "<table width='150' class='tblcenter'><tr><td><table class='tbldqcolor' width='100'><tr>";
+        html += "" + objJson_check.que_chinh[6] + "";
+        html += "</tr><tr>";
+        html += "" + objJson_check.que_chinh[5] + "";
+        html += "</tr><tr>";
+        html += "" + objJson_check.que_chinh[4] + "";
+        html += "</tr><tr>";
+        html += "" + objJson_check.que_chinh[3] + "";
+        html += "</tr><tr>";
+        html += "" + objJson_check.que_chinh[2] + "";
+        html += "</tr><tr>";
+        html += "" + objJson_check.que_chinh[1] + "";
+        html += "</tr></table></td></tr><tr>";
+        html += "<td class='center grey size2 bol'>" + objJson_check.ten_que.quechinh[1] + "</td>";
+        html += "</tr></table></td>";
+        html += "<td><table width='150' class='tblcenter'><tr><td><table class='tbldqcolor' width='100'><tr>";
+        html += "" + objJson_check.que_ho[6] + "";
+        html += "</tr><tr>";
+        html += "" + objJson_check.que_ho[5] + "";
+        html += "</tr><tr>";
+        html += "" + objJson_check.que_ho[4] + "";
+        html += "</tr><tr>";
+        html += "" + objJson_check.que_ho[3] + "";
+        html += "</tr><tr>";
+        html += "" + objJson_check.que_ho[2] + "";
+        html += "</tr><tr>";
+        html += "" + objJson_check.que_ho[1] + "";
+        html += "</tr></table></td></tr><tr>";
+        html += "<td colspan='2' class='center grey size2 bol'>" + objJson_check.ten_que.queho[1] + "</td>";
+        html += "</tr></table></td><td><table width='150' class='tblcenter'><tr><td><table class='tbldqcolor' width='100'><tr>";
+        html += "" + objJson_check.que_kq[6] + "";
+        html += "</tr><tr>";
+        html += "" + objJson_check.que_kq[5] + "";
+        html += "</tr><tr>";
+        html += "" + objJson_check.que_kq[4] + "";
+        html += "</tr><tr>";
+        html += "" + objJson_check.que_kq[3] + "";
+        html += "</tr><tr>";
+        html += "" + objJson_check.que_kq[2] + "";
+        html += "</tr><tr>";
+        html += "" + objJson_check.que_kq[1] + "";
+        html += "</tr></table></td></tr><tr>";
+        html += "<td colspan='2' class='center grey size2 bol'>" + objJson_check.ten_que.quekq[1] + "</td>";
+        html += "</tr></table></td><td width='10%'></td></tr></table></td></tr>";
+        html += "<tr><td><hr style='width:99%; margin-bottom: 1px;'/>";
+        html += "<table class='tblkinhdich'><tr><td width='50%'><table class='tblinnerleft'>";
+        html += "<tr><td class='bol upper center' colspan='6'>" + objJson_check.ten_que.quechinh[2] + "</td></tr>"
+        html += "<tr><td class='bol'>Hào</td><td class='bol'>T/Ư</td><td class='bol'>Lục Thân</td><td class='bol'>Can Chi</td><td class='bol'>Phục Thần</td><td class='bol'>TK</td></tr>";
+        html += "<tr><td><table class='tbldqcolorsmall' width='35'><tr>";
+        html += "" + objJson_check.que_chinh[6] + "";
+        html += "</tr></table></td>";
+        if (objJson_check.ten_que.quechinh['4']['6'] != undefined) {
+          html += "<td class=''>" + objJson_check.ten_que.quechinh['4']['6'] + "</td>";
+        } else if (objJson_check.ten_que.quechinh['5']['6'] != undefined) {
+          html += "<td class=''>" + objJson_check.ten_que.quechinh['5']['6'] + "</td>";
+        } else {
+          html += "<td class=''></td>";
+        }
+        html += "<td class='" + color_6 + "'>" + objJson_check.ten_que.lucthan_quechinh[6] + "</td>";
+        html += "<td class='" + color_6 + "'>" + objJson_check.ten_que.quechinh['6']['6']['0'] + "-" + objJson_check.ten_que.quechinh['6']['6']['1'] + "</td>";
+        if (objJson_check.ten_que.lucthan_quean[6] != undefined) {
+          html += "<td>" + objJson_check.ten_que.lucthan_quean[6] + "</td>";
+        } else {
+          html += "<td></td>";
+        }
+        html += "<td class='" + color_6 + "'>" + objJson_check.kv_quechinh[6] + "</td>";
+        html += "</tr><tr><td><table class='tbldqcolorsmall' width='35'><tr>";
+        html += "" + objJson_check.que_chinh[5] + "";
+        html += "</tr></table></td>";
+        if (objJson_check.ten_que.quechinh['4']['5'] != undefined) {
+          html += "<td class=''>" + objJson_check.ten_que.quechinh['4']['5'] + "</td>";
+        } else if (objJson_check.ten_que.quechinh['5']['5'] != undefined) {
+          html += "<td class=''>" + objJson_check.ten_que.quechinh['5']['5'] + "</td>";
+        } else {
+          html += "<td class=''></td>";
+        }
+        html += "<td class='" + color_5 + "'>" + objJson_check.ten_que.lucthan_quechinh[5] + "</td>";
+        html += "<td class='" + color_5 + "'>" + objJson_check.ten_que.quechinh['6']['5']['0'] + "-" + objJson_check.ten_que.quechinh['6']['5']['1'] + "</td>";
+        if (objJson_check.ten_que.lucthan_quean[5] != undefined) {
+          html += "<td>" + objJson_check.ten_que.lucthan_quean[5] + "</td>";
+        } else {
+          html += "<td></td>";
+        }
+        html += "<td class='" + color_5 + "'>" + objJson_check.kv_quechinh[5] + "</td>";
+        html += "</tr><tr><td><table class='tbldqcolorsmall' width='35'><tr>";
+        html += "" + objJson_check.que_chinh[4] + "";
+        html += "</tr></table></td>";
+        if (objJson_check.ten_que.quechinh['4']['4'] != undefined) {
+          html += "<td class=''>" + objJson_check.ten_que.quechinh['4']['4'] + "</td>";
+        } else if (objJson_check.ten_que.quechinh['5']['4'] != undefined) {
+          html += "<td class=''>" + objJson_check.ten_que.quechinh['5']['4'] + "</td>";
+        } else {
+          html += "<td class=''></td>";
+        }
+        html += "<td class='" + color_4 + "'>" + objJson_check.ten_que.lucthan_quechinh[4] + "</td>";
+        html += "<td class='" + color_4 + "'>" + objJson_check.ten_que.quechinh['6']['4']['0'] + "-" + objJson_check.ten_que.quechinh['6']['4']['1'] + "</td>";
+        if (objJson_check.ten_que.lucthan_quean[4] != undefined) {
+          html += "<td>" + objJson_check.ten_que.lucthan_quean[4] + "</td>";
+        } else {
+          html += "<td></td>";
+        }
+        html += "<td class='" + color_4 + "'>" + objJson_check.kv_quechinh[4] + "</td>";
+        html += "</tr><tr><td><table class='tbldqcolorsmall' width='35'>";
+        html += "<tr>";
+        html += "" + objJson_check.que_chinh[3] + "";
+        html += "</tr></table></td>";
+        if (objJson_check.ten_que.quechinh['4']['3'] != undefined) {
+          html += "<td class=''>" + objJson_check.ten_que.quechinh['4']['3'] + "</td>";
+        } else if (objJson_check.ten_que.quechinh['5']['3'] != undefined) {
+          html += "<td class=''>" + objJson_check.ten_que.quechinh['5']['3'] + "</td>";
+        } else {
+          html += "<td class=''></td>";
+        }
+        html += "<td class='" + color_3 + "'>" + objJson_check.ten_que.lucthan_quechinh[3] + "</td>";
+        html += "<td class='" + color_3 + "'>" + objJson_check.ten_que.quechinh['6']['3']['0'] + "-" + objJson_check.ten_que.quechinh['6']['3']['1'] + "</td>";
+        if (objJson_check.ten_que.lucthan_quean[3] != undefined) {
+          html += "<td>" + objJson_check.ten_que.lucthan_quean[3] + "</td>";
+        } else {
+          html += "<td></td>";
+        }
+        html += "<td class='" + color_3 + "'>" + objJson_check.kv_quechinh[3] + "</td>";
+        html += "</tr><tr><td><table class='tbldqcolorsmall' width='35'><tr>";
+        html += "" + objJson_check.que_chinh[2] + "";
+        html += "</tr></table></td>";
+        if (objJson_check.ten_que.quechinh['4']['2'] != undefined) {
+          html += "<td class=''>" + objJson_check.ten_que.quechinh['4']['2'] + "</td>";
+        } else if (objJson_check.ten_que.quechinh['5']['2'] != undefined) {
+          html += "<td class=''>" + objJson_check.ten_que.quechinh['5']['2'] + "</td>";
+        } else {
+          html += "<td class=''></td>";
+        }
+        html += "<td class='" + color_2 + "'>" + objJson_check.ten_que.lucthan_quechinh[2] + "</td>";
+        html += "<td class='" + color_2 + "'>" + objJson_check.ten_que.quechinh['6']['2']['0'] + "-" + objJson_check.ten_que.quechinh['6']['2']['1'] + "</td>";
+        if (objJson_check.ten_que.lucthan_quean[2] != undefined) {
+          html += "<td>" + objJson_check.ten_que.lucthan_quean[2] + "</td>";
+        } else {
+          html += "<td></td>";
+        }
+        html += "<td class='" + color_2 + "'>" + objJson_check.kv_quechinh[2] + "</td>";
+        html += "</tr><tr><td><table class='tbldqcolorsmall' width='35'><tr>";
+        html += "" + objJson_check.que_chinh[1] + "";
+        html += "</tr></table></td>";
+        if (objJson_check.ten_que.quechinh['4']['1'] != undefined) {
+          html += "<td class=''>" + objJson_check.ten_que.quechinh['4']['1'] + "</td>";
+        } else if (objJson_check.ten_que.quechinh['5']['1'] != undefined) {
+          html += "<td class=''>" + objJson_check.ten_que.quechinh['5']['1'] + "</td>";
+        } else {
+          html += "<td class=''></td>";
+        }
+        html += "<td class='" + color_1 + "'>" + objJson_check.ten_que.lucthan_quechinh[1] + "</td>";
+        html += "<td class='" + color_1 + "'>" + objJson_check.ten_que.quechinh['6']['1']['0'] + "-" + objJson_check.ten_que.quechinh['6']['1']['1'] + "</td>";
+        if (objJson_check.ten_que.lucthan_quean[1] != undefined) {
+          html += "<td>" + objJson_check.ten_que.lucthan_quean[1] + "</td>";
+        } else {
+          html += "<td></td>";
+        }
+        html += "<td class='" + color_1 + "'>" + objJson_check.kv_quechinh[1] + "</td>";
+        html += "</tr></table></td>";
+
+        html += "<td><table class='tblinnerright'>";
+        html += "<tr><td class='bol upper center' colspan='6'>" + objJson_check.ten_que.quekq[2] + "</td></tr>";
+        html += "<tr><td class='bol'>Lục Thân</td><td class='bol'>Can Chi</td><td class='bol'>TK</td><td class='bol'>Lục Thú</td><td class='bol'>Hào</td>";
+        html += "</tr><tr>";
+        html += "<td class='" + color_6 + "'>" + objJson_check.ten_que.lucthan_kq[6] + "</td>";
+        html += "<td class='" + color_6 + "'>" + objJson_check.ten_que.quekq['6']['6']['0'] + "-" + objJson_check.ten_que.quekq['6']['6']['1'] + "</td>";
+        html += "<td class='" + color_6 + "'>" + objJson_check.kv_quekq[6] + "</td>";
+        html += "<td class='" + color_6 + "'>" + objJson_check.luc_thu[6] + "</td>";
+        html += "<td><table class='tbldqcolorsmall' width='35'><tr>";
+        html += "" + objJson_check.que_kq[6] + "";
+        html += "</tr></table></td></tr><tr>";
+        html += "<td class='" + color_5 + "'>" + objJson_check.ten_que.lucthan_kq[5] + "</td>";
+        html += "<td class='" + color_5 + "'>" + objJson_check.ten_que.quekq['6']['5']['0'] + "-" + objJson_check.ten_que.quekq['6']['5']['1'] + "</td>";
+        html += "<td class='" + color_5 + "'>" + objJson_check.kv_quekq[5] + "</td>";
+        html += "<td class='" + color_5 + "'>" + objJson_check.luc_thu[5] + "</td>";
+        html += "<td><table class='tbldqcolorsmall' width='35'><tr>";
+        html += "" + objJson_check.que_kq[5] + "";
+        html += "</tr></table></td></tr><tr>";
+        html += "<td class='" + color_4 + "'>" + objJson_check.ten_que.lucthan_kq[4] + "</td>";
+        html += "<td class='" + color_4 + "'>" + objJson_check.ten_que.quekq['6']['4']['0'] + "-" + objJson_check.ten_que.quekq['6']['4']['1'] + "</td>";
+        html += "<td class='" + color_4 + "'>" + objJson_check.kv_quekq[4] + "</td>";
+        html += "<td class='" + color_4 + "'>" + objJson_check.luc_thu[4] + "</td>";
+        html += "<td><table class='tbldqcolorsmall' width='35'><tr>";
+        html += "" + objJson_check.que_kq[4] + "";
+        html += "</tr></table></td></tr><tr>";
+        html += "<td class='" + color_3 + "'>" + objJson_check.ten_que.lucthan_kq[3] + "</td>";
+        html += "<td class='" + color_3 + "'>" + objJson_check.ten_que.quekq['6']['3']['0'] + "-" + objJson_check.ten_que.quekq['6']['3']['1'] + "</td>";
+        html += "<td class='" + color_3 + "'>" + objJson_check.kv_quekq[3] + "</td>";
+        html += "<td class='" + color_3 + "'>" + objJson_check.luc_thu[3] + "</td>";
+        html += "<td><table class='tbldqcolorsmall' width='35'><tr>";
+        html += "" + objJson_check.que_kq[3] + "";
+        html += "</tr></table></td></tr><tr>";
+        html += "<td class='" + color_2 + "'>" + objJson_check.ten_que.lucthan_kq[2] + "</td>";
+        html += "<td class='" + color_2 + "'>" + objJson_check.ten_que.quekq['6']['2']['0'] + "-" + objJson_check.ten_que.quekq['6']['2']['1'] + "</td>";
+        html += "<td class='" + color_2 + "'>" + objJson_check.kv_quekq[2] + "</td>";
+        html += "<td class='" + color_2 + "'>" + objJson_check.luc_thu[2] + "</td>";
+        html += "<td><table class='tbldqcolorsmall' width='35'><tr>";
+        html += "" + objJson_check.que_kq[2] + "";
+        html += "</tr></table></td></tr><tr>";
+        html += "<td class='" + color_1 + "'>" + objJson_check.ten_que.lucthan_kq[1] + "</td>";
+        html += "<td class='" + color_1 + "'>" + objJson_check.ten_que.quekq['6']['1']['0'] + "-" + objJson_check.ten_que.quekq['6']['1']['1'] + "</td>";
+        html += "<td class='" + color_1 + "'>" + objJson_check.kv_quekq[1] + "</td>";
+        html += "<td class='" + color_1 + "'>" + objJson_check.luc_thu[1] + "</td>";
+        html += "<td><table class='tbldqcolorsmall' width='35'><tr>";
+        html += "" + objJson_check.que_kq[1] + "";
+        html += "</tr></table></td></tr></table></td></tr></table></td></tr><tr>";
+        html += "<td>&nbsp;</td></tr>";
+
+        // ô thứ 2
+        html += "<table class='tbl'><tr><td width='50%'><table class='tblinnerleft'><tr>";
+        html += "<td class='bol'>Hào</td>";
+        // html +="<td class='bol'>Vs</td>";
+        html += "<td class='bol'>Quái Thân</td><td class='bol'>Lộc</td><td class='bol'>Mã</td><td class='bol'>Quý</td><td class='bol'>Đào</td></tr><tr>";
+        html += "<td class='" + color_6 + "'>" + objJson_check.ten_que.thien_can_que_chinh[6] + "</td>";
+        // html +="<td class='"+color_6+"'>Tử</td>";
+        if (objJson_check.ten_que.thien_can_que_chinh['quai_than'] != undefined) {
+          if (objJson_check.ten_que.thien_can_que_chinh['quai_than'][6] != undefined) {
+            html += "<td class='" + color_6 + "'>" + objJson_check.ten_que.thien_can_que_chinh['quai_than'][6] + "</td>";
+          } else {
+            html += "<td class='" + color_6 + "'>-</td>";
+          }
+        } else {
+          html += "<td class='" + color_6 + "'>-</td>";
+        }
+        html += "<td class='" + color_6 + "'>" + objJson_check.ten_que.loc_que_chinh[6] + "</td>";
+        html += "<td class='" + color_6 + "'>" + objJson_check.ten_que.dichma_que_chinh[6] + "</td>";
+        html += "<td class='" + color_6 + "'>" + objJson_check.ten_que.quynhan_que_chinh[6] + "</td>";
+        html += "<td class='" + color_6 + "'>" + objJson_check.ten_que.daohoa_que_chinh[6] + "</td>";
+        html += "</tr><tr>";
+        html += "<td class='" + color_5 + "'>" + objJson_check.ten_que.thien_can_que_chinh[5] + "</td>";
+        // html +="<td class='"+color_5+"'>Tù</td>";
+        if (objJson_check.ten_que.thien_can_que_chinh['quai_than'] != undefined) {
+          if (objJson_check.ten_que.thien_can_que_chinh['quai_than'][5] != undefined) {
+            html += "<td class='" + color_5 + "'>" + objJson_check.ten_que.thien_can_que_chinh['quai_than'][5] + "</td>";
+          } else {
+            html += "<td class='" + color_5 + "'>-</td>";
+          }
+        } else {
+          html += "<td class='" + color_5 + "'>-</td>";
+        }
+        html += "<td class='" + color_5 + "'>" + objJson_check.ten_que.loc_que_chinh[5] + "</td>";
+        html += "<td class='" + color_5 + "'>" + objJson_check.ten_que.dichma_que_chinh[5] + "</td>";
+        html += "<td class='" + color_5 + "'>" + objJson_check.ten_que.quynhan_que_chinh[5] + "</td>";
+        html += "<td class='" + color_5 + "'>" + objJson_check.ten_que.daohoa_que_chinh[5] + "</td>";
+        html += "</tr><tr>";
+        html += "<td class='" + color_4 + "'>" + objJson_check.ten_que.thien_can_que_chinh[4] + "</td>";
+        // html +="<td class='"+color_4+"'>Tù</td>";
+        if (objJson_check.ten_que.thien_can_que_chinh['quai_than'] != undefined) {
+          if (objJson_check.ten_que.thien_can_que_chinh['quai_than'][4] != undefined) {
+            html += "<td class='" + color_4 + "'>" + objJson_check.ten_que.thien_can_que_chinh['quai_than'][4] + "</td>";
+          } else {
+            html += "<td class='" + color_4 + "'>-</td>";
+          }
+        } else {
+          html += "<td class='" + color_4 + "'>-</td>";
+        }
+        html += "<td class='" + color_4 + "'>" + objJson_check.ten_que.loc_que_chinh[4] + "</td>";
+        html += "<td class='" + color_4 + "'>" + objJson_check.ten_que.dichma_que_chinh[4] + "</td>";
+        html += "<td class='" + color_4 + "'>" + objJson_check.ten_que.quynhan_que_chinh[4] + "</td>";
+        html += "<td class='" + color_4 + "'>" + objJson_check.ten_que.daohoa_que_chinh[4] + "</td>";
+        html += "</tr><tr>";
+        html += "<td class='" + color_3 + "'>" + objJson_check.ten_que.thien_can_que_chinh[3] + "</td>";
+        // html +="<td class='"+color_3+"'>Tù</td>";
+        if (objJson_check.ten_que.thien_can_que_chinh['quai_than'] != undefined) {
+          if (objJson_check.ten_que.thien_can_que_chinh['quai_than'][3] != undefined) {
+            html += "<td class='" + color_3 + "'>" + objJson_check.ten_que.thien_can_que_chinh['quai_than'][3] + "</td>";
+          } else {
+            html += "<td class='" + color_3 + "'>-</td>";
+          }
+        } else {
+          html += "<td class='" + color_3 + "'>-</td>";
+        }
+        html += "<td class='" + color_3 + "'>" + objJson_check.ten_que.loc_que_chinh[3] + "</td>";
+        html += "<td class='" + color_3 + "'>" + objJson_check.ten_que.dichma_que_chinh[3] + "</td>";
+        html += "<td class='" + color_3 + "'>" + objJson_check.ten_que.quynhan_que_chinh[3] + "</td>";
+        html += "<td class='" + color_3 + "'>" + objJson_check.ten_que.daohoa_que_chinh[3] + "</td>";
+        html += "</tr><tr>";
+        html += "<td class='" + color_2 + "'>" + objJson_check.ten_que.thien_can_que_chinh[2] + "</td>";
+        // html +="<td class='"+color_2+"'>Tù</td>";
+        if (objJson_check.ten_que.thien_can_que_chinh['quai_than'] != undefined) {
+          if (objJson_check.ten_que.thien_can_que_chinh['quai_than'][2] != undefined) {
+            html += "<td class='" + color_2 + "'>" + objJson_check.ten_que.thien_can_que_chinh['quai_than'][2] + "</td>";
+          } else {
+            html += "<td class='" + color_2 + "'>-</td>";
+          }
+        } else {
+          html += "<td class='" + color_2 + "'>-</td>";
+        }
+        html += "<td class='" + color_2 + "'>" + objJson_check.ten_que.loc_que_chinh[2] + "</td>";
+        html += "<td class='" + color_2 + "'>" + objJson_check.ten_que.dichma_que_chinh[2] + "</td>";
+        html += "<td class='" + color_2 + "'>" + objJson_check.ten_que.quynhan_que_chinh[2] + "</td>";
+        html += "<td class='" + color_2 + "'>" + objJson_check.ten_que.daohoa_que_chinh[2] + "</td>";
+        html += "</tr><tr>";
+        html += "<td class='" + color_1 + "'>" + objJson_check.ten_que.thien_can_que_chinh[1] + "</td>";
+        // html +="<td class='"+color_1+"'>Tù</td>";
+        if (objJson_check.ten_que.thien_can_que_chinh['quai_than'] != undefined) {
+          if (objJson_check.ten_que.thien_can_que_chinh['quai_than'][1] != undefined) {
+            html += "<td class='" + color_1 + "'>" + objJson_check.ten_que.thien_can_que_chinh['quai_than'][1] + "</td>";
+          } else {
+            html += "<td class='" + color_1 + "'>-</td>";
+          }
+        } else {
+          html += "<td class='" + color_1 + "'>-</td>";
+        }
+        html += "<td class='" + color_1 + "'>" + objJson_check.ten_que.loc_que_chinh[1] + "</td>";
+        html += "<td class='" + color_1 + "'>" + objJson_check.ten_que.dichma_que_chinh[1] + "</td>";
+        html += "<td class='" + color_1 + "'>" + objJson_check.ten_que.quynhan_que_chinh[1] + "</td>";
+        html += "<td class='" + color_1 + "'>" + objJson_check.ten_que.daohoa_que_chinh[1] + "</td>";
+        html += "</tr></table></td>";
+
+        html += "<td><table class='tblinnerright'><tr>"
+        html += "<td class='bol'>Hào</td>";
+        // html +="<td class='bol'>Vs</td>";
+        html += "<td class='bol'>Lộc</td><td class='bol'>Mã</td><td class='bol'>Quý</td><td class='bol'>Đào</td></tr>";
+        html += "<tr>";
+        html += "<td class='" + color_6 + "'>" + objJson_check.ten_que.thien_can_que_kq[6] + "</td>";
+        // html +="<td class='"+color_6+"'>Tù</td>";
+        html += "<td class='" + color_6 + "'>" + objJson_check.ten_que.loc_que_kq[6] + "</td>";
+        html += "<td class='" + color_6 + "'>" + objJson_check.ten_que.dichma_que_kq[6] + "</td>";
+        html += "<td class='" + color_6 + "'>" + objJson_check.ten_que.quy_nhan_que_kq[6] + "</td>";
+        html += "<td class='" + color_6 + "'>" + objJson_check.ten_que.daohoa_que_kq[6] + "</td>";
+        html += "</tr><tr>";
+        html += "<td class='" + color_5 + "'>" + objJson_check.ten_que.thien_can_que_kq[5] + "</td>";
+        // html +="<td class='"+color_5+"'>Hưu</td>";
+        html += "<td class='" + color_5 + "'>" + objJson_check.ten_que.loc_que_kq[5] + "</td>";
+        html += "<td class='" + color_5 + "'>" + objJson_check.ten_que.dichma_que_kq[5] + "</td>";
+        html += "<td class='" + color_5 + "'>" + objJson_check.ten_que.quy_nhan_que_kq[5] + "</td>";
+        html += "<td class='" + color_5 + "'>" + objJson_check.ten_que.daohoa_que_kq[5] + "</td>";
+        html += "</tr><tr>";
+        html += "<td class='" + color_4 + "'>" + objJson_check.ten_que.thien_can_que_kq[4] + "</td>";
+        // html +="<td class='"+color_4+"'>Hưu</td>";
+        html += "<td class='" + color_4 + "'>" + objJson_check.ten_que.loc_que_kq[4] + "</td>";
+        html += "<td class='" + color_4 + "'>" + objJson_check.ten_que.dichma_que_kq[4] + "</td>";
+        html += "<td class='" + color_4 + "'>" + objJson_check.ten_que.quy_nhan_que_kq[4] + "</td>";
+        html += "<td class='" + color_4 + "'>" + objJson_check.ten_que.daohoa_que_kq[4] + "</td>";
+        html += "</tr><tr>";
+        html += "<td class='" + color_3 + "'>" + objJson_check.ten_que.thien_can_que_kq[3] + "</td>";
+        // html +="<td class='"+color_3+"'>Hưu</td>";
+        html += "<td class='" + color_3 + "'>" + objJson_check.ten_que.loc_que_kq[3] + "</td>";
+        html += "<td class='" + color_3 + "'>" + objJson_check.ten_que.dichma_que_kq[3] + "</td>";
+        html += "<td class='" + color_3 + "'>" + objJson_check.ten_que.quy_nhan_que_kq[3] + "</td>";
+        html += "<td class='" + color_3 + "'>" + objJson_check.ten_que.daohoa_que_kq[3] + "</td>";
+        html += "</tr><tr>";
+        html += "<td class='" + color_2 + "'>" + objJson_check.ten_que.thien_can_que_kq[2] + "</td>";
+        // html +="<td class='"+color_2+"'>Hưu</td>";
+        html += "<td class='" + color_2 + "'>" + objJson_check.ten_que.loc_que_kq[2] + "</td>";
+        html += "<td class='" + color_2 + "'>" + objJson_check.ten_que.dichma_que_kq[2] + "</td>";
+        html += "<td class='" + color_2 + "'>" + objJson_check.ten_que.quy_nhan_que_kq[2] + "</td>";
+        html += "<td class='" + color_2 + "'>" + objJson_check.ten_que.daohoa_que_kq[2] + "</td>";
+        html += "</tr><tr>";
+        html += "<td class='" + color_1 + "'>" + objJson_check.ten_que.thien_can_que_kq[1] + "</td>";
+        // html +="<td class='"+color_1+"'>Hưu</td>";
+        html += "<td class='" + color_1 + "'>" + objJson_check.ten_que.loc_que_kq[1] + "</td>";
+        html += "<td class='" + color_1 + "'>" + objJson_check.ten_que.dichma_que_kq[1] + "</td>";
+        html += "<td class='" + color_1 + "'>" + objJson_check.ten_que.quy_nhan_que_kq[1] + "</td>";
+        html += "<td class='" + color_1 + "'>" + objJson_check.ten_que.daohoa_que_kq[1] + "</td>";
+        html += "</tr></table></td></tr></table>";
+        html += "<tr><td>&nbsp;</td></tr>"
+
+        // ô thứ 3
+        html += "<table class='tbl'><tr><td width='50%'><table class='tblinnerleft'><tr>";
+        html += "<td class='bol'>Hào</td>";
+        // html +="<td class='bol'>Vs</td>";
+        html += "<td class='bol'>Quái Thân</td><td class='bol'>Lộc</td><td class='bol'>Mã</td><td class='bol'>Quý</td><td class='bol'>Đào</td></tr><tr>";
+        html += "<td class='" + color_6 + "'>" + objJson_check.ten_que.thien_can_que_chinh[6] + "</td>";
+        // html +="<td class='"+color_6+"'>Tử</td>";
+        if (objJson_check.ten_que.thien_can_que_chinh['quai_than'] != undefined) {
+          if (objJson_check.ten_que.thien_can_que_chinh['quai_than'][6] != undefined) {
+            html += "<td class='" + color_6 + "'>" + objJson_check.ten_que.thien_can_que_chinh['quai_than'][6] + "</td>";
+          } else {
+            html += "<td class='" + color_6 + "'>-</td>";
+          }
+        } else {
+          html += "<td class='" + color_6 + "'>-</td>";
+        }
+        html += "<td class='" + color_6 + "'>" + objJson_check.ten_que.loc_que_chinh[6] + "</td>";
+        html += "<td class='" + color_6 + "'>" + objJson_check.ten_que.dichma_que_chinh[6] + "</td>";
+        html += "<td class='" + color_6 + "'>" + objJson_check.ten_que.quynhan_que_chinh[6] + "</td>";
+        html += "<td class='" + color_6 + "'>" + objJson_check.ten_que.daohoa_que_chinh[6] + "</td>";
+        html += "</tr><tr>";
+        html += "<td class='" + color_5 + "'>" + objJson_check.ten_que.thien_can_que_chinh[5] + "</td>";
+        // html +="<td class='"+color_5+"'>Tù</td>";
+        if (objJson_check.ten_que.thien_can_que_chinh['quai_than'] != undefined) {
+          if (objJson_check.ten_que.thien_can_que_chinh['quai_than'][5] != undefined) {
+            html += "<td class='" + color_5 + "'>" + objJson_check.ten_que.thien_can_que_chinh['quai_than'][5] + "</td>";
+          } else {
+            html += "<td class='" + color_5 + "'>-</td>";
+          }
+        } else {
+          html += "<td class='" + color_5 + "'>-</td>";
+        }
+        html += "<td class='" + color_5 + "'>" + objJson_check.ten_que.loc_que_chinh[5] + "</td>";
+        html += "<td class='" + color_5 + "'>" + objJson_check.ten_que.dichma_que_chinh[5] + "</td>";
+        html += "<td class='" + color_5 + "'>" + objJson_check.ten_que.quynhan_que_chinh[5] + "</td>";
+        html += "<td class='" + color_5 + "'>" + objJson_check.ten_que.daohoa_que_chinh[5] + "</td>";
+        html += "</tr><tr>";
+        html += "<td class='" + color_4 + "'>" + objJson_check.ten_que.thien_can_que_chinh[4] + "</td>";
+        // html +="<td class='"+color_4+"'>Tù</td>";
+        if (objJson_check.ten_que.thien_can_que_chinh['quai_than'] != undefined) {
+          if (objJson_check.ten_que.thien_can_que_chinh['quai_than'][4] != undefined) {
+            html += "<td class='" + color_4 + "'>" + objJson_check.ten_que.thien_can_que_chinh['quai_than'][4] + "</td>";
+          } else {
+            html += "<td class='" + color_4 + "'>-</td>";
+          }
+        } else {
+          html += "<td class='" + color_4 + "'>-</td>";
+        }
+        html += "<td class='" + color_4 + "'>" + objJson_check.ten_que.loc_que_chinh[4] + "</td>";
+        html += "<td class='" + color_4 + "'>" + objJson_check.ten_que.dichma_que_chinh[4] + "</td>";
+        html += "<td class='" + color_4 + "'>" + objJson_check.ten_que.quynhan_que_chinh[4] + "</td>";
+        html += "<td class='" + color_4 + "'>" + objJson_check.ten_que.daohoa_que_chinh[4] + "</td>";
+        html += "</tr><tr>";
+        html += "<td class='" + color_3 + "'>" + objJson_check.ten_que.thien_can_que_chinh[3] + "</td>";
+        // html +="<td class='"+color_3+"'>Tù</td>";
+        if (objJson_check.ten_que.thien_can_que_chinh['quai_than'] != undefined) {
+          if (objJson_check.ten_que.thien_can_que_chinh['quai_than'][3] != undefined) {
+            html += "<td class='" + color_3 + "'>" + objJson_check.ten_que.thien_can_que_chinh['quai_than'][3] + "</td>";
+          } else {
+            html += "<td class='" + color_3 + "'>-</td>";
+          }
+        } else {
+          html += "<td class='" + color_3 + "'>-</td>";
+        }
+        html += "<td class='" + color_3 + "'>" + objJson_check.ten_que.loc_que_chinh[3] + "</td>";
+        html += "<td class='" + color_3 + "'>" + objJson_check.ten_que.dichma_que_chinh[3] + "</td>";
+        html += "<td class='" + color_3 + "'>" + objJson_check.ten_que.quynhan_que_chinh[3] + "</td>";
+        html += "<td class='" + color_3 + "'>" + objJson_check.ten_que.daohoa_que_chinh[3] + "</td>";
+        html += "</tr><tr>";
+        html += "<td class='" + color_2 + "'>" + objJson_check.ten_que.thien_can_que_chinh[2] + "</td>";
+        // html +="<td class='"+color_2+"'>Tù</td>";
+        if (objJson_check.ten_que.thien_can_que_chinh['quai_than'] != undefined) {
+          if (objJson_check.ten_que.thien_can_que_chinh['quai_than'][2] != undefined) {
+            html += "<td class='" + color_2 + "'>" + objJson_check.ten_que.thien_can_que_chinh['quai_than'][2] + "</td>";
+          } else {
+            html += "<td class='" + color_2 + "'>-</td>";
+          }
+        } else {
+          html += "<td class='" + color_2 + "'>-</td>";
+        }
+        html += "<td class='" + color_2 + "'>" + objJson_check.ten_que.loc_que_chinh[2] + "</td>";
+        html += "<td class='" + color_2 + "'>" + objJson_check.ten_que.dichma_que_chinh[2] + "</td>";
+        html += "<td class='" + color_2 + "'>" + objJson_check.ten_que.quynhan_que_chinh[2] + "</td>";
+        html += "<td class='" + color_2 + "'>" + objJson_check.ten_que.daohoa_que_chinh[2] + "</td>";
+        html += "</tr><tr>";
+        html += "<td class='" + color_1 + "'>" + objJson_check.ten_que.thien_can_que_chinh[1] + "</td>";
+        // html +="<td class='"+color_1+"'>Tù</td>";
+        if (objJson_check.ten_que.thien_can_que_chinh['quai_than'] != undefined) {
+          if (objJson_check.ten_que.thien_can_que_chinh['quai_than'][1] != undefined) {
+            html += "<td class='" + color_1 + "'>" + objJson_check.ten_que.thien_can_que_chinh['quai_than'][1] + "</td>";
+          } else {
+            html += "<td class='" + color_1 + "'>-</td>";
+          }
+        } else {
+          html += "<td class='" + color_1 + "'>-</td>";
+        }
+        html += "<td class='" + color_1 + "'>" + objJson_check.ten_que.loc_que_chinh[1] + "</td>";
+        html += "<td class='" + color_1 + "'>" + objJson_check.ten_que.dichma_que_chinh[1] + "</td>";
+        html += "<td class='" + color_1 + "'>" + objJson_check.ten_que.quynhan_que_chinh[1] + "</td>";
+        html += "<td class='" + color_1 + "'>" + objJson_check.ten_que.daohoa_que_chinh[1] + "</td>";
+        html += "</tr></table></td>";
+
+        html += "<td><table class='tblinnerright'><tr>"
+        html += "<td class='bol'>Hào</td>";
+        // html +="<td class='bol'>Vs</td>";
+        html += "<td class='bol'>Lộc</td><td class='bol'>Mã</td><td class='bol'>Quý</td><td class='bol'>Đào</td></tr>";
+        html += "<tr>";
+        html += "<td class='" + color_6 + "'>" + objJson_check.ten_que.thien_can_que_kq[6] + "</td>";
+        // html +="<td class='"+color_6+"'>Tù</td>";
+        html += "<td class='" + color_6 + "'>" + objJson_check.ten_que.loc_que_kq[6] + "</td>";
+        html += "<td class='" + color_6 + "'>" + objJson_check.ten_que.dichma_que_kq[6] + "</td>";
+        html += "<td class='" + color_6 + "'>" + objJson_check.ten_que.quy_nhan_que_kq[6] + "</td>";
+        html += "<td class='" + color_6 + "'>" + objJson_check.ten_que.daohoa_que_kq[6] + "</td>";
+        html += "</tr><tr>";
+        html += "<td class='" + color_5 + "'>" + objJson_check.ten_que.thien_can_que_kq[5] + "</td>";
+        // html +="<td class='"+color_5+"'>Hưu</td>";
+        html += "<td class='" + color_5 + "'>" + objJson_check.ten_que.loc_que_kq[5] + "</td>";
+        html += "<td class='" + color_5 + "'>" + objJson_check.ten_que.dichma_que_kq[5] + "</td>";
+        html += "<td class='" + color_5 + "'>" + objJson_check.ten_que.quy_nhan_que_kq[5] + "</td>";
+        html += "<td class='" + color_5 + "'>" + objJson_check.ten_que.daohoa_que_kq[5] + "</td>";
+        html += "</tr><tr>";
+        html += "<td class='" + color_4 + "'>" + objJson_check.ten_que.thien_can_que_kq[4] + "</td>";
+        // html +="<td class='"+color_4+"'>Hưu</td>";
+        html += "<td class='" + color_4 + "'>" + objJson_check.ten_que.loc_que_kq[4] + "</td>";
+        html += "<td class='" + color_4 + "'>" + objJson_check.ten_que.dichma_que_kq[4] + "</td>";
+        html += "<td class='" + color_4 + "'>" + objJson_check.ten_que.quy_nhan_que_kq[4] + "</td>";
+        html += "<td class='" + color_4 + "'>" + objJson_check.ten_que.daohoa_que_kq[4] + "</td>";
+        html += "</tr><tr>";
+        html += "<td class='" + color_3 + "'>" + objJson_check.ten_que.thien_can_que_kq[3] + "</td>";
+        // html +="<td class='"+color_3+"'>Hưu</td>";
+        html += "<td class='" + color_3 + "'>" + objJson_check.ten_que.loc_que_kq[3] + "</td>";
+        html += "<td class='" + color_3 + "'>" + objJson_check.ten_que.dichma_que_kq[3] + "</td>";
+        html += "<td class='" + color_3 + "'>" + objJson_check.ten_que.quy_nhan_que_kq[3] + "</td>";
+        html += "<td class='" + color_3 + "'>" + objJson_check.ten_que.daohoa_que_kq[3] + "</td>";
+        html += "</tr><tr>";
+        html += "<td class='" + color_2 + "'>" + objJson_check.ten_que.thien_can_que_kq[2] + "</td>";
+        // html +="<td class='"+color_2+"'>Hưu</td>";
+        html += "<td class='" + color_2 + "'>" + objJson_check.ten_que.loc_que_kq[2] + "</td>";
+        html += "<td class='" + color_2 + "'>" + objJson_check.ten_que.dichma_que_kq[2] + "</td>";
+        html += "<td class='" + color_2 + "'>" + objJson_check.ten_que.quy_nhan_que_kq[2] + "</td>";
+        html += "<td class='" + color_2 + "'>" + objJson_check.ten_que.daohoa_que_kq[2] + "</td>";
+        html += "</tr><tr>";
+        html += "<td class='" + color_1 + "'>" + objJson_check.ten_que.thien_can_que_kq[1] + "</td>";
+        // html +="<td class='"+color_1+"'>Hưu</td>";
+        html += "<td class='" + color_1 + "'>" + objJson_check.ten_que.loc_que_kq[1] + "</td>";
+        html += "<td class='" + color_1 + "'>" + objJson_check.ten_que.dichma_que_kq[1] + "</td>";
+        html += "<td class='" + color_1 + "'>" + objJson_check.ten_que.quy_nhan_que_kq[1] + "</td>";
+        html += "<td class='" + color_1 + "'>" + objJson_check.ten_que.daohoa_que_kq[1] + "</td>";
+        html += "</tr></table></td></tr></table>";
+
+
+        html += "<br/></div>";
+        $('.conright .dichquai .w788').append(html);
+        $("tr:empty").remove();
+        htmlToImg(objJson_check.hours, objJson_check.minute, objJson_check.day, objJson_check.month, objJson_check.year)
+      }
+    });
+  });
+
+  function htmlToImg() {
+    var elm = $('.w788')[0];
+    var w = $('.w788').width();
+    var h = $('.w788').height();
+    var type = "png";
+    var filename = "htmltoimage";
+    html2canvas(elm).then(function (canvas) {
+      var img = Canvas2Image.convertToImage(canvas, w, h);
+      $('.dichquai').html(img);
+      $("<div class='w788'></div>").prependTo(".dichquai");
+      // $(".dichquai").after(img);
+      // Canvas2Image.saveAsImage(canvas, lebar,tinggi, type, filename)
+      // Canvas2Image.saveAsImage(canvas, w,h, type, filename)
+    })
+  }
+
+  function Resetname() {
+    var name = $('#id_name').val('')
+    $('.wrapbg').remove();
+    $('.extendbot').remove();
+    // $('.container').find('.inputform').attr('style', 'display:none');
+    $('.share').show();
+    $('.reset').show();
+  }
+</script>
+{% endblock %}

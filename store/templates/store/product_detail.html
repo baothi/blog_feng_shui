@@ -1,0 +1,271 @@
+{% extends "base.html" %}
+{% load static %}
+{% load humanize %}
+{% block content %}
+<!-- Start Page Banner -->
+<div class="page-title-area">
+  <div class="container">
+    <div class="page-title-content">
+      <h2>{{ detail_product.product_name }}</h2>
+    </div>
+  </div>
+</div>
+<!-- End Page Banner -->
+
+<!-- Start Error Area -->
+<section class="error-area ptb-50 d-flex justify-content-center">
+  <div class="col-9">
+    <div class="col-12 pt-4">
+      <div class="row g-2">
+        <div class="col-sm-5 pdlistimg">
+          <div class="col-12 bigimg">
+              {% if detail_product.images %}
+                <img id="change-image" src="{{ detail_product.images.url }}" alt="image" width="100%" />
+              {% elif detail_product.image_url %}
+                <img id="change-image" src="{{detail_product.image_url}}" alt="image" width="100%" />
+              {% else %}
+                <img id="change-image" src="{% static 'img/news-details/news-details-1.jpg' %}" alt="image" width="100%" />
+              {% endif %}
+          </div>
+          <div class="col-12 pt-3">
+            <div class="row g-4">
+              {% for bv in product_gallery %}
+                
+                {% if bv.images %}
+                  <div class="col-3">
+                  <img src="{{ bv.images.url }}" alt="image" width="100%">
+                  </div>
+                {% elif bv.image_url %}
+                  <div class="col-3">
+                    <img src="{{bv.image_url}}" alt="image" width="100%">
+                  </div>
+                {% else %}
+                  <div class="col-3">
+                    <img src="assets/img/products/f_product1.png" alt="" width="100%" />
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-7 ps-4">
+          <div class="col-12 border border-1 p-4">
+            <div class="row g-2">
+              <div class="col-sm-8 fw-bold fs-3">
+                {{detail_product.price|floatformat:2|intcomma}} đ
+              </div>
+              <div class="col-sm-4 fw-bold text-success">
+                Còn hàng
+              </div>
+            </div>
+            <div class="col-12">
+              <p>SKU: {{detail_product.sku}}</p>
+              <p>Xuất xứ: China</p>
+              <p>Hàng đẹp cực chất, xài ngon</p>
+            </div>
+            <div class="col-12 border-bottom border-bottom-1 pt-4">
+              &nbsp;
+            </div>
+            <div class="col-12 pt-4">
+              <div class="fw-bold">Color</div>
+              <ul class="list-unstyled ">
+                <li class="float-start">
+                  <div class="border border-1 me-3 p-1">
+                    <span class="bgblue spancolor cursor float-none m-0">&nbsp;</span>
+                  </div>
+                </li>
+                <li class="float-start">
+                  <div class="border border-1 me-3 p-1 sizeactive">
+                    <span class="bgred spancolor cursor float-none m-0">&nbsp;</span>
+                  </div>
+                </li>
+                <li class="float-start">
+                  <div class="border border-1 me-3 p-1">
+                    <span class="bgorgan spancolor cursor float-none m-0">&nbsp;</span>
+                  </div>
+                </li>
+                <li class="float-start">
+                  <div class="border border-1 me-3 p-1">
+                    <span class="bgpink spancolor cursor float-none m-0">&nbsp;</span>
+                  </div>
+                </li>
+              </ul>
+              <div class="clear"></div>
+            </div>
+            <div class="clear">&nbsp;</div>
+            <div class="col-12">
+              <div class="row g-3">
+                <div class="col-sm-4">
+                  <div class="fw-bold">Size</div>
+                  <select class="form-control pt-0">
+                    <option value="XL">XL</option>
+                  </select>
+                </div>
+                <div class="col-sm-3">
+                  <div class="fw-bold">Quantity</div>
+                  <input type="number" class="form-control text-center" value="1" mín="1">
+                </div>
+              </div>
+            </div>
+            <div class="col-12 border-bottom border-bottom-1 pt-3">
+              &nbsp;
+            </div>
+            <div class="col-12 pt-5">
+              <button class="btn btn-danger" onclick="location.href='cart.html'">ADD TO CART</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Error Area -->
+<!-- Start Terms of service Area -->
+<section class="terms-of-service-area ptb-50">
+  <div class="container">
+    <div class="faq-accordion">
+      <ul class="accordion">
+        <li class="accordion-item">
+          <a class="accordion-title active" href="javascript:void(0)">
+            <i class='bx bx-plus'></i>
+            Chi Tiết Sản Phẩm
+          </a>
+
+          <div class="accordion-content show">
+            {{detail_product.description| safe}}
+          </div>
+        </li>
+
+        <li class="accordion-item">
+          <a class="accordion-title" href="javascript:void(0)">
+            <i class='bx bx-plus'></i>
+            Tư Vấn Sản Phẩm
+          </a>
+
+          <div class="accordion-content">
+            <form method="post">
+              {% csrf_token %}
+              <div class="row">
+                {{form.as_p}}
+            
+                <div class="col-lg-12 col-md-12">
+                  <button type="submit" class="default-btn">Send Message</button>
+                  <div id="msgSubmit" class="h3 text-center hidden"></div>
+                  <div class="clearfix"></div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </li>
+
+        <li class="accordion-item">
+          <a class="accordion-title" href="javascript:void(0)">
+            <i class='bx bx-plus'></i>
+            Can I have multiple activities in a single feature?
+          </a>
+
+          <p class="accordion-content">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+            ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+            nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
+            anim id est laborum.
+          </p>
+        </li>
+
+        <li class="accordion-item">
+          <a class="accordion-title" href="javascript:void(0)">
+            <i class='bx bx-plus'></i>
+            Which material types can you work with?
+          </a>
+
+          <p class="accordion-content">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+            ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+            nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
+            anim id est laborum.
+          </p>
+        </li>
+
+        <li class="accordion-item">
+          <a class="accordion-title" href="javascript:void(0)">
+            <i class='bx bx-plus'></i>
+            Why choose our services in your business?
+          </a>
+
+          <p class="accordion-content">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+            ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+            nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
+            anim id est laborum.
+          </p>
+        </li>
+
+        <li class="accordion-item">
+          <a class="accordion-title" href="javascript:void(0)">
+            <i class='bx bx-plus'></i>
+            What do I need to know about mobile?
+          </a>
+
+          <p class="accordion-content">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+            ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+            nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
+            anim id est laborum.
+          </p>
+        </li>
+
+        <li class="accordion-item">
+          <a class="accordion-title" href="javascript:void(0)">
+            <i class='bx bx-plus'></i>
+            How to get start with us?
+          </a>
+
+          <p class="accordion-content">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+            ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+            nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
+            anim id est laborum.
+          </p>
+        </li>
+
+        <li class="accordion-item">
+          <a class="accordion-title" href="javascript:void(0)">
+            <i class='bx bx-plus'></i>
+            Do I need a blog?
+          </a>
+
+          <p class="accordion-content">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+            ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+            nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
+            anim id est laborum.
+          </p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+<!-- End Terms of service Area -->
+{% endblock%}
+{% block javascript %}
+<script type="text/javascript">
+  var product = "{{ detail_product.id }}"
+  document.getElementById("product").value = product;
+  $(document).ready(function () {
+  });
+
+  $(function () {
+    $('.menulink').click(function (e) {
+      e.preventDefault();
+      $("#bg").attr('src', "img/picture1.jpg");
+    });
+  });
+
+</script>
+{% endblock %}

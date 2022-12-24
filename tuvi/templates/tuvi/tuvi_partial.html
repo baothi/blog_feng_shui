@@ -1,0 +1,1846 @@
+<div class="tuvi">
+  <div class="wrapbg">
+    {% for arr in tuvi_array %}
+      <table class="tbl">
+        <tr>
+          <td>
+            <!-- item 1 -->
+            <div class="item {{arr.active_menh.TỴ}}">
+              <div class="wrapitem">
+                <div class="itemtop">
+                  <div class="col1">
+                    {% for key, value in arr.thiencan_12cung.items %}
+                      {% if key == 'TỴ' %}
+                        <div class="line black size3">{{value}}.Tỵ</div>
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                  <div class="col2">
+                    {% for key, value in arr.cung_menhthan.items %}
+                      {% if key == 'TỴ' %}
+                        <div class="line black size1 bol upper">{{value}}</div>
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_tuvi.items %}
+                      {% if key == 'TỴ' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                  <div class="col3">
+                    <div class="line black size3">
+                      {% for key, value in arr.daivan_tuvi.items %}
+                        {% if key == 'TỴ' %}
+                          {{value}}
+                        {% endif %}
+                      {% endfor %}
+                    </div>
+                    {% for key, value in arr.tieuvan_tungnamtuvi.items %}
+                      {% if key == 'TỴ' %}
+                        {{value  | safe}}
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                </div>
+                <div class="itemcen">
+                  <div class="col1">
+                    {% for key, value in arr.vong_locton.items %}
+                      {% if key == 'TỴ' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.thienkhoi_thienviet.items %}
+                      {% if key == 'TỴ' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.thienquan_thienphuc.items %}
+                      {% if key == 'TỴ' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_theochi.items %}
+                      {% if key == 'TỴ' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_theothang.items %}
+                      {% if key == 'TỴ' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_theongay.items %}
+                      {% if key == 'TỴ' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_theogio.items %}
+                      {% if key == 'TỴ' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.cacbo_saokhac.items %}
+                      {% if key == 'TỴ' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                  <div class="col2">
+                    {% for key, value in arr.vong_locton.items %}
+                      {% if key == 'TỴ XẤU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.thienquan_thienphuc.items %}
+                      {% if key == 'TỴ XẤU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_theothang.items %}
+                      {% if key == 'TỴ XẤU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_theochi.items %}
+                      {% if key == 'TỴ XẤU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_theogio.items %}
+                      {% if key == 'TỴ XẤU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.cacbo_saokhac.items %}
+                      {% if key == 'TỴ XẤU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+
+                  </div>
+                </div>
+                <div class="nearbot size3">
+                  {% for key, value in arr.luuvong_locton.items %}
+                      {% if key == 'TỴ' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                </div>
+                <div class="itembot">
+                  <div class="col1">
+                    <div class="line black size3 italic">Mão</div>
+                  </div>
+                  <div class="col2">
+                    {% for key, value in arr.vongtruong_sinhtuvi.items %}
+                      {% if key == 'TỴ' %}
+                        <div class="line black size3 bol">{{value}}</div>
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                  <div class="col3">
+                    <div class="line black size3">Th4</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td>
+            <!-- item 2 -->
+            <div class="item {{arr.active_menh.NGỌ}}">
+              <div class="wrapitem">
+                <div class="itemtop">
+                  <div class="col1">
+                    {% for key, value in arr.thiencan_12cung.items %}
+                      {% if key == 'NGỌ' %}
+                        <div class="line black size3">{{value}}.Ngọ</div>
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                  <div class="col2">
+                    {% for key, value in arr.cung_menhthan.items %}
+                      {% if key == 'NGỌ' %}
+                        <div class="line black size1 bol upper">{{value}}</div>
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_tuvi.items %}
+                      {% if key == 'NGỌ' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                  <div class="col3">
+                    <div class="line black size3">
+                      {% for key, value in arr.daivan_tuvi.items %}
+                        {% if key == 'NGỌ' %}
+                          {{value}}
+                        {% endif %}
+                      {% endfor %}
+                    </div>
+                    {% for key, value in arr.tieuvan_tungnamtuvi.items %}
+                      {% if key == 'NGỌ' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                </div>
+                <div class="itemcen">
+                  <div class="col1">
+                    {% for key, value in arr.vong_locton.items %}
+                      {% if key == 'NGỌ' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.thienkhoi_thienviet.items %}
+                      {% if key == 'NGỌ' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.thienquan_thienphuc.items %}
+                      {% if key == 'NGỌ' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_theochi.items %}
+                      {% if key == 'NGỌ' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_theothang.items %}
+                      {% if key == 'NGỌ' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_theongay.items %}
+                      {% if key == 'NGỌ' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_theogio.items %}
+                      {% if key == 'NGỌ' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.cacbo_saokhac.items %}
+                      {% if key == 'NGỌ' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                  <div class="col2">
+                    {% for key, value in arr.vong_locton.items %}
+                      {% if key == 'NGỌ XẤU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.thienquan_thienphuc.items %}
+                      {% if key == 'NGỌ XẤU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_theochi.items %}
+                      {% if key == 'NGỌ XẤU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_theothang.items %}
+                      {% if key == 'NGỌ XẤU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_theogio.items %}
+                      {% if key == 'NGỌ XẤU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.cacbo_saokhac.items %}
+                      {% if key == 'NGỌ XẤU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+
+                  </div>
+                </div>
+                <div class="nearbot size3">
+                  {% for key, value in arr.luuvong_locton.items %}
+                    {% if key == 'NGỌ' %}
+                      {{value | safe}}
+                    {% endif %}
+                  {% endfor %}
+                </div>
+                <div class="itembot">
+                  <div class="col1">
+                    <div class="line black size3 italic">Mão</div>
+                  </div>
+                  <div class="col2">
+                    {% for key, value in arr.vongtruong_sinhtuvi.items %}
+                      {% if key == 'NGỌ' %}
+                        <div class="line black size3 bol">{{value}}</div>
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                  <div class="col3">
+                    <div class="line black size3">Th4</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td>
+            <!-- item 3 -->
+            <div class="item {{arr.active_menh.MÙI}}">
+              <div class="wrapitem">
+                <div class="itemtop">
+                  <div class="col1">
+                    {% for key, value in arr.thiencan_12cung.items %}
+                      {% if key == 'MÙI' %}
+                        <div class="line black size3">{{value}}.Mùi</div>
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                  <div class="col2">
+                    {% for key, value in arr.cung_menhthan.items %}
+                      {% if key == 'MÙI' %}
+                        <div class="line black size1 bol upper">{{value}}</div>
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_tuvi.items %}
+                      {% if key == 'MÙI' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                  <div class="col3">
+                    <div class="line black size3">
+                      {% for key, value in arr.daivan_tuvi.items %}
+                        {% if key == 'MÙI' %}
+                          {{value}}
+                        {% endif %}
+                      {% endfor %}
+                    </div>
+                    {% for key, value in arr.tieuvan_tungnamtuvi.items %}
+                      {% if key == 'MÙI' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                </div>
+                <div class="itemcen">
+                  <div class="col1">
+                    {% for key, value in arr.vong_locton.items %}
+                      {% if key == 'MÙI' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.thienkhoi_thienviet.items %}
+                      {% if key == 'MÙI' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.thienquan_thienphuc.items %}
+                      {% if key == 'MÙI' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_theochi.items %}
+                      {% if key == 'MÙI' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_theothang.items %}
+                      {% if key == 'MÙI' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_theongay.items %}
+                      {% if key == 'MÙI' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_theogio.items %}
+                      {% if key == 'MÙI' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.cacbo_saokhac.items %}
+                      {% if key == 'MÙI' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                  <div class="col2">
+                    {% for key, value in arr.vong_locton.items %}
+                      {% if key == 'MÙI XẤU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.thienquan_thienphuc.items %}
+                      {% if key == 'MÙI XẤU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_theochi.items %}
+                      {% if key == 'MÙI XẤU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_theothang.items %}
+                      {% if key == 'MÙI XẤU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_theogio.items %}
+                      {% if key == 'MÙI XẤU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.cacbo_saokhac.items %}
+                      {% if key == 'MÙI XẤU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+
+                  </div>
+                </div>
+                <div class="nearbot size3">
+                  {% for key, value in arr.luuvong_locton.items %}
+                    {% if key == 'MÙI' %}
+                      {{value | safe}}
+                    {% endif %}
+                  {% endfor %}
+                </div>
+                <div class="itembot">
+                  <div class="col1">
+                    <div class="line black size3 italic">Mão</div>
+                  </div>
+                  <div class="col2">
+                    {% for key, value in arr.vongtruong_sinhtuvi.items %}
+                      {% if key == 'MÙI' %}
+                        <div class="line black size3 bol">{{value}}</div>
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                  <div class="col3">
+                    <div class="line black size3">Th4</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td>
+            <!-- item 4 -->
+            <div class="item nobori {{arr.active_menh.THÂN}}">
+              <!-- <div class="ttitem ttbotleft bgblue2">Triệt</div> -->
+              {% for key, value in arr.khong_tuantriet.items %}
+                {% if key == 'thandau' %}
+                  {{value | safe}}
+                {% endif %}
+              {% endfor %}
+              <div class="wrapitem">
+                <div class="itemtop">
+                  <div class="col1">
+                    {% for key, value in arr.thiencan_12cung.items %}
+                      {% if key == 'THÂN' %}
+                        <div class="line black size3">{{value}}.Thân</div>
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                  <div class="col2">
+                    {% for key, value in arr.cung_menhthan.items %}
+                      {% if key == 'THÂN' %}
+                        <div class="line black size1 bol upper">{{value}}</div>
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_tuvi.items %}
+                      {% if key == 'THÂN' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                  <div class="col3">
+                    <div class="line black size3">
+                      {% for key, value in arr.daivan_tuvi.items %}
+                        {% if key == 'THÂN' %}
+                          {{value}}
+                        {% endif %}
+                      {% endfor %}
+                    </div>
+                    {% for key, value in arr.tieuvan_tungnamtuvi.items %}
+                      {% if key == 'THÂN' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                </div>
+                <div class="itemcen">
+                  <div class="col1">
+                    {% for key, value in arr.vong_locton.items %}
+                      {% if key == 'THÂN' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.thienkhoi_thienviet.items %}
+                      {% if key == 'THÂN' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.thienquan_thienphuc.items %}
+                      {% if key == 'THÂN' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_theochi.items %}
+                      {% if key == 'THÂN' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_theothang.items %}
+                      {% if key == 'THÂN' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_theongay.items %}
+                      {% if key == 'THÂN' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                     {% for key, value in arr.ansao_theogio.items %}
+                      {% if key == 'THÂN' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.cacbo_saokhac.items %}
+                      {% if key == 'THÂN' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                  <div class="col2">
+                    {% for key, value in arr.vong_locton.items %}
+                      {% if key == 'THÂN XẤU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.thienquan_thienphuc.items %}
+                      {% if key == 'THÂN XẤU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+
+                    {% for key, value in arr.ansao_theochi.items %}
+                      {% if key == 'THÂN XẤU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_theothang.items %}
+                      {% if key == 'THÂN XẤU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_theogio.items %}
+                      {% if key == 'THÂN XẤU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.cacbo_saokhac.items %}
+                      {% if key == 'THÂN XẤU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+
+                  </div>
+                </div>
+                <div class="nearbot size3">
+                  {% for key, value in arr.luuvong_locton.items %}
+                    {% if key == 'THÂN' %}
+                      {{value | safe}}
+                    {% endif %}
+                  {% endfor %}
+                </div>
+                <div class="itembot">
+                  <div class="col1">
+                    <div class="line black size3 italic">Mão</div>
+                  </div>
+                  <div class="col2">
+                    {% for key, value in arr.vongtruong_sinhtuvi.items %}
+                      {% if key == 'THÂN' %}
+                        <div class="line black size3 bol">{{value}}</div>
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                  <div class="col3">
+                    <div class="line black size3">Th4</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <!-- item 5 -->
+            <div class="item {{arr.active_menh.THÌN}}">
+              <!-- <div class="ttitem tttopleft bgblue2">Triệt</div> -->
+                {% for key, value in arr.khong_tuantriet.items %}
+                  {% if key == 'thinty' %}
+                    {{value | safe}}
+                  {% endif %}
+                {% endfor %}
+              <div class="wrapitem">
+                <div class="itemtop">
+                  <div class="col1">
+                    {% for key, value in arr.thiencan_12cung.items %}
+                      {% if key == 'THÌN' %}
+                        <div class="line black size3">{{value}}.Thìn</div>
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                  <div class="col2">
+                    {% for key, value in arr.cung_menhthan.items %}
+                      {% if key == 'THÌN' %}
+                        <div class="line black size1 bol upper">{{value}}</div>
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_tuvi.items %}
+                      {% if key == 'THÌN' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                  <div class="col3">
+                    <div class="line black size3">
+                      {% for key, value in arr.daivan_tuvi.items %}
+                        {% if key == 'THÌN' %}
+                          {{value}}
+                        {% endif %}
+                      {% endfor %}
+                    </div>
+                    {% for key, value in arr.tieuvan_tungnamtuvi.items %}
+                      {% if key == 'THÌN' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                </div>
+                <div class="itemcen">
+                  <div class="col1">
+                    {% for key, value in arr.vong_locton.items %}
+                      {% if key == 'THÌN' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.thienquan_thienphuc.items %}
+                      {% if key == 'THÌN' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_theochi.items %}
+                      {% if key == 'THÌN' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_theothang.items %}
+                      {% if key == 'THÌN' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_theongay.items %}
+                      {% if key == 'THÌN' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_theogio.items %}
+                      {% if key == 'THÌN' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.cacbo_saokhac.items %}
+                      {% if key == 'THÌN' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                  <div class="col2">
+                    {% for key, value in arr.vong_locton.items %}
+                      {% if key == 'THÌN XẤU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.thienquan_thienphuc.items %}
+                      {% if key == 'THÌN XẤU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+
+                    {% for key, value in arr.ansao_theochi.items %}
+                      {% if key == 'THÌN XẤU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_theothang.items %}
+                      {% if key == 'THÌN XẤU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_theogio.items %}
+                      {% if key == 'THÌN XẤU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.cacbo_saokhac.items %}
+                      {% if key == 'THÌN XẤU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+
+                  </div>
+                </div>
+                <div class="nearbot size3">
+                  {% for key, value in arr.luuvong_locton.items %}
+                    {% if key == 'THÌN' %}
+                      {{value | safe}}
+                    {% endif %}
+                  {% endfor %}
+                </div>
+                <div class="itembot">
+                  <div class="col1">
+                    <div class="line black size3 italic">Mão</div>
+                  </div>
+                  <div class="col2">
+                    {% for key, value in arr.vongtruong_sinhtuvi.items %}
+                      {% if key == 'THÌN' %}
+                        <div class="line black size3 bol">{{value}}</div>
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                  <div class="col3">
+                    <div class="line black size3">Th4</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td colspan="2" rowspan="2" class="tditembig">
+            <!-- item 6 big -->
+            <div class="itembig">
+              <!-- <div class="ttitem tttopcen bgblue2">Triệt</div> -->
+              {% for key, value in arr.khong_tuantriet.items %}
+                {% if key == 'ngomui' %}
+                  {{value | safe}}
+                {% endif %}
+              {% endfor %}
+              <div class="wrapitem">
+                <div class="title black size2 bol upper">Học Viện Lý Số Nguyên Cát</div>
+                <div class="line black size2 bol upper"><span class="topline">{{arr.name}}</span></div>
+                <div class="line red size2 bol">{{arr.tuoi_tuvi}}</div>
+                <div class="line blue size2 bol">Tử Phủ Vũ Lâm</div>
+                <div class="line blue size2">Bản mệnh: {{arr.cucso_nguhanh}}</div>
+                <div class="line blue size2"><span class="black size2">Mệnh quái:</span> <span class="bol">Môn-Thổ-Tây Tứ Mệnh</span></div>
+                <div class="line blue size2">Bản mệnh: Thạch lựu mộc-Thổ ngũ cục</div>
+                <div class="line blue size3">Bản mệnh: Thạch lựu mộc-Thổ ngũ cục</div>
+                <div class="line blue size2">Bản mệnh: Thạch lựu mộc-Thổ ngũ cục</div>
+                <div class="line blue size2">Không phạm tam tai</div>
+                <div class="line black size4">{{arr.timezone_text}}</div>
+                <table class="tblbigsub">
+                  <tr>
+                    <td>DL</td>
+                    <td>{{arr.year_birthday}}</td>
+                    <td>{{arr.month_birthday}}</td>
+                    <td>{{arr.day_birthday}}</td>
+                    <td>{{arr.hours_birthday}}:{{arr.minute_birthday}}</td>
+                  </tr>
+                  <tr>
+                    <td>AL</td>
+                    <td>{{arr.year_lunar}}</td>
+                    <td>{{arr.month_lunar}}</td>
+                    <td>{{arr.day_lunar}}</td>
+                    <td>{{arr.hours_birthday}}:{{arr.minute_birthday}}</td>
+                  </tr>
+                  <tr>
+                    <td>&nbsp;</td>
+                    <td>{{arr.can_thap_nam}}</td>
+                    <td>{{arr.can_thap_thang}}</td>
+                    <td class="upper">Nhật Chủ</td>
+                    <td>{{arr.can_thap_gio}}</td>
+                  </tr>
+                  <tr>
+                    <td>&nbsp;</td>
+                    <td class="upper {{arr.can_nam_color}}">{{arr.can_nam}}</td>
+                    <td class="upper {{arr.can_thang_color}}">{{arr.can_thang}}</td>
+                    <td class="upper {{arr.can_ngay_color}}">{{arr.can_ngay}}</td>
+                    <td class="upper {{arr.can_gio_color}}">{{arr.can_gio}}</td>
+                  </tr>
+                  <tr>
+                    <td>&nbsp;</td>
+                    <td class="upper {{arr.chi_nam_color}}">{{arr.chi_nam}}</td>
+                    <td class="upper {{arr.chi_thang_color}}">{{arr.chi_thang}}</td>
+                    <td class="upper {{arr.chi_ngay_color}}">{{arr.chi_ngay}}</td>
+                    <td class="upper {{arr.chi_gio_color}}">{{arr.chi_gio}}</td>
+                  </tr>
+                  <tr>
+                    <td class="size4">&nbsp;</td>
+                    <td class="size4">
+                      {% for key, value in arr.can_an_nam.items %}
+                        <span class="{{key}}">{{value}}</span>
+                      {% endfor %}
+                    </td>
+                    <td class="size4">
+                      {% for key, value in arr.can_an_thang.items %}
+                        <span class="{{key}}">{{value}}</span>
+                      {% endfor %}
+                    </td>
+                    <td class="size4">
+                      {% for key, value in arr.can_an_ngay.items %}
+                        <span class="{{key}}">{{value}}</span>
+                      {% endfor %}
+                    </td>
+                    <td class="size4">
+                      {% for key, value in arr.can_an_gio.items %}
+                        <span class="{{key}}">{{value}}</span>
+                      {% endfor %}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="size4">&nbsp;</td>
+                    <td class="size4">
+                      {% for value in arr.can_an_nam_thapthan %}
+                        <span>{{value}}</span>
+                      {% endfor %}
+                    </td>
+                    <td class="size4">
+                      {% for value in arr.can_an_thang_thapthan %}
+                        <span>{{value}}</span>
+                      {% endfor %}
+                    </td>
+                    <td class="size4">
+                      {% for value in arr.can_an_ngay_thapthan %}
+                        <span>{{value}}</span>
+                      {% endfor %}
+                    </td>
+                    <td class="size4">
+                      {% for value in arr.can_an_gio_thapthan %}
+                        <span>{{value}}</span>
+                      {% endfor %}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="5" class="blue size4">Đại vận đầu tiên: Ất-Dậu-Thuận (Ngày khởi vận 23/11/2013) </td>
+                  </tr>
+                </table>
+                <div class="line black size4 mgt">Lập tại: <span class="blue">hocvienso.org</span> (lúc 19:21 20/10/2020)</div>
+              </div>
+              <!-- <div class="ttitem ttbotcen2 bggreen">Tuần - Triệt</div> -->
+              {% for key, value in arr.khong_tuantriet.items %}
+                {% if key == 'tysuu' %}
+                  {{value | safe}}
+                {% endif %}
+              {% endfor %}
+            </div>
+            {{arr.duongchi_cungmenh.menh | safe}}
+          </td>
+          <td>
+            <!-- item 7 -->
+            <div class="item nobori {{arr.active_menh.DẬU}}">
+              <div class="wrapitem">
+                <div class="itemtop">
+                  <div class="col1">
+                    {% for key, value in arr.thiencan_12cung.items %}
+                      {% if key == 'DẬU' %}
+                        <div class="line black size3">{{value}}.Dậu</div>
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                  <div class="col2">
+                    {% for key, value in arr.cung_menhthan.items %}
+                      {% if key == 'DẬU' %}
+                        <div class="line black size1 bol upper">{{value}}</div>
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_tuvi.items %}
+                      {% if key == 'DẬU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                  <div class="col3">
+                    <div class="line black size3">
+                      {% for key, value in arr.daivan_tuvi.items %}
+                        {% if key == 'DẬU' %}
+                          {{value}}
+                        {% endif %}
+                      {% endfor %}
+                    </div>
+                    {% for key, value in arr.tieuvan_tungnamtuvi.items %}
+                      {% if key == 'DẬU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                </div>
+                <div class="itemcen">
+                  <div class="col1">
+                    {% for key, value in arr.thienkhoi_thienviet.items %}
+                      {% if key == 'DẬU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.thienquan_thienphuc.items %}
+                      {% if key == 'DẬU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_theochi.items %}
+                      {% if key == 'DẬU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_theothang.items %}
+                      {% if key == 'DẬU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_theongay.items %}
+                      {% if key == 'DẬU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_theogio.items %}
+                      {% if key == 'DẬU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.vong_locton.items %}
+                      {% if key == 'DẬU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.cacbo_saokhac.items %}
+                      {% if key == 'DẬU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                  <div class="col2">
+                    {% for key, value in arr.vong_locton.items %}
+                      {% if key == 'DẬU XẤU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.thienquan_thienphuc.items %}
+                      {% if key == 'DẬU XẤU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_theochi.items %}
+                      {% if key == 'DẬU XẤU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_theothang.items %}
+                      {% if key == 'DẬU XẤU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_theogio.items %}
+                      {% if key == 'DẬU XẤU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.cacbo_saokhac.items %}
+                      {% if key == 'DẬU XẤU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+
+                  </div>
+                </div>
+                <div class="nearbot size3">
+                  {% for key, value in arr.luuvong_locton.items %}
+                    {% if key == 'DẬU' %}
+                      {{value | safe}}
+                    {% endif %}
+                  {% endfor %}
+                </div>
+                <div class="itembot">
+                  <div class="col1">
+                    <div class="line black size3 italic">Mão</div>
+                  </div>
+                  <div class="col2">
+                    {% for key, value in arr.vongtruong_sinhtuvi.items %}
+                      {% if key == 'DẬU' %}
+                        <div class="line black size3 bol">{{value}}</div>
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                  <div class="col3">
+                    <div class="line black size3">Th4</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <!-- item 8 -->
+            <div class="item {{arr.active_menh.MÃO}}">
+              <!-- <div class="ttitem ttbotright bgorgan">Tuần</div> -->
+              {% for key, value in arr.khong_tuantriet.items %}
+                {% if key == 'danmao' %}
+                  {{value | safe}}
+                {% endif %}
+              {% endfor %}
+              <div class="wrapitem">
+                <div class="itemtop">
+                  <div class="col1">
+                    {% for key, value in arr.thiencan_12cung.items %}
+                      {% if key == 'MÃO' %}
+                        <div class="line black size3">{{value}}.Mão</div>
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                  <div class="col2">
+                    {% for key, value in arr.cung_menhthan.items %}
+                      {% if key == 'MÃO' %}
+                        <div class="line black size1 bol upper">{{value}}</div>
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_tuvi.items %}
+                      {% if key == 'MÃO' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                  <div class="col3">
+                    <div class="line black size3">
+                      {% for key, value in arr.daivan_tuvi.items %}
+                        {% if key == 'MÃO' %}
+                          {{value}}
+                        {% endif %}
+                      {% endfor %}
+                    </div>
+                    {% for key, value in arr.tieuvan_tungnamtuvi.items %}
+                      {% if key == 'MÃO' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                </div>
+                <div class="itemcen">
+                  <div class="col1">
+                    {% for key, value in arr.vong_locton.items %}
+                      {% if key == 'MÃO' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.thienkhoi_thienviet.items %}
+                      {% if key == 'MÃO' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.thienquan_thienphuc.items %}
+                      {% if key == 'MÃO' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_theochi.items %}
+                      {% if key == 'MÃO' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_theothang.items %}
+                      {% if key == 'MÃO' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_theongay.items %}
+                      {% if key == 'MÃO' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_theogio.items %}
+                      {% if key == 'MÃO' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.cacbo_saokhac.items %}
+                      {% if key == 'MÃO' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                  <div class="col2">
+                    {% for key, value in arr.vong_locton.items %}
+                      {% if key == 'MÃO XẤU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.thienquan_thienphuc.items %}
+                      {% if key == 'MÃO XẤU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_theochi.items %}
+                      {% if key == 'MÃO XẤU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_theothang.items %}
+                      {% if key == 'MÃO XẤU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_theogio.items %}
+                      {% if key == 'MÃO XẤU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.cacbo_saokhac.items %}
+                      {% if key == 'MÃO XẤU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+
+                  </div>
+                </div>
+                <div class="nearbot size3">
+                  {% for key, value in arr.luuvong_locton.items %}
+                    {% if key == 'MÃO' %}
+                      {{value | safe}}
+                    {% endif %}
+                  {% endfor %}
+                </div>
+                <div class="itembot">
+                  <div class="col1">
+                    <div class="line black size3 italic">Mão</div>
+                  </div>
+                  <div class="col2">
+                    {% for key, value in arr.vongtruong_sinhtuvi.items %}
+                      {% if key == 'MÃO' %}
+                        <div class="line black size3 bol">{{value}}</div>
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                  <div class="col3">
+                    <div class="line black size3">Th4</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td>
+            <!-- item 9 -->
+            <div class="item nobori {{arr.active_menh.TUẤT}}">
+              <!-- <div class="ttitem ttbotright bgorgan">Tuần</div> -->
+              {% for key, value in arr.khong_tuantriet.items %}
+                {% if key == 'tuathoi' %}
+                  {{value | safe}}
+                {% endif %}
+              {% endfor %}
+              <div class="wrapitem">
+                <div class="itemtop">
+                  <div class="col1">
+                    {% for key, value in arr.thiencan_12cung.items %}
+                      {% if key == 'TUẤT' %}
+                        <div class="line black size3">{{value}}.Tuất</div>
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                  <div class="col2">
+                    {% for key, value in arr.cung_menhthan.items %}
+                      {% if key == 'TUẤT' %}
+                        <div class="line black size1 bol upper">{{value}}</div>
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_tuvi.items %}
+                      {% if key == 'TUẤT' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                  <div class="col3">
+                    <div class="line black size3">
+                      {% for key, value in arr.daivan_tuvi.items %}
+                        {% if key == 'TUẤT' %}
+                          {{value}}
+                        {% endif %}
+                      {% endfor %}
+                    </div>
+                    {% for key, value in arr.tieuvan_tungnamtuvi.items %}
+                      {% if key == 'TUẤT' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                </div>
+                <div class="itemcen">
+                  <div class="col1">
+                    {% for key, value in arr.vong_locton.items %}
+                      {% if key == 'TUẤT' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.thienquan_thienphuc.items %}
+                      {% if key == 'TUẤT' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_theochi.items %}
+                      {% if key == 'TUẤT' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_theothang.items %}
+                      {% if key == 'TUẤT' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_theongay.items %}
+                      {% if key == 'TUẤT' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_theogio.items %}
+                      {% if key == 'TUẤT' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.cacbo_saokhac.items %}
+                      {% if key == 'TUẤT' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                  <div class="col2">
+                    {% for key, value in arr.vong_locton.items %}
+                      {% if key == 'TUẤT XẤU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.thienquan_thienphuc.items %}
+                      {% if key == 'TUẤT XẤU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_theochi.items %}
+                      {% if key == 'TUẤT XẤU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_theothang.items %}
+                      {% if key == 'TUẤT XẤU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_theogio.items %}
+                      {% if key == 'TUẤT XẤU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.cacbo_saokhac.items %}
+                      {% if key == 'TUẤT XẤU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+
+                  </div>
+                </div>
+                <div class="nearbot size3">
+                  {% for key, value in arr.luuvong_locton.items %}
+                    {% if key == 'TUẤT' %}
+                      {{value | safe}}
+                    {% endif %}
+                  {% endfor %}
+                </div>
+                <div class="itembot">
+                  <div class="col1">
+                    <div class="line black size3 italic">Mão</div>
+                  </div>
+                  <div class="col2">
+                    {% for key, value in arr.vongtruong_sinhtuvi.items %}
+                      {% if key == 'TUẤT' %}
+                        <div class="line black size3 bol">{{value}}</div>
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                  <div class="col3">
+                    <div class="line black size3">Th4</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <!-- item 10 -->
+            <div class="item nobobot {{arr.active_menh.DẦN}}">
+              <div class="wrapitem">
+                <div class="itemtop">
+                  <div class="col1">
+                    {% for key, value in arr.thiencan_12cung.items %}
+                      {% if key == 'DẦN' %}
+                        <div class="line black size3">{{value}}.Dần</div>
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                  <div class="col2">
+                    {% for key, value in arr.cung_menhthan.items %}
+                      {% if key == 'DẦN' %}
+                        <div class="line black size1 bol upper">{{value}}</div>
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_tuvi.items %}
+                      {% if key == 'DẦN' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                  <div class="col3">
+                    <div class="line black size3">
+                      {% for key, value in arr.daivan_tuvi.items %}
+                        {% if key == 'DẦN' %}
+                          {{value}}
+                        {% endif %}
+                      {% endfor %}
+                    </div>
+                    {% for key, value in arr.tieuvan_tungnamtuvi.items %}
+                      {% if key == 'DẦN' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                </div>
+                <div class="itemcen">
+                  <div class="col1">
+                    {% for key, value in arr.vong_locton.items %}
+                      {% if key == 'DẦN' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.thienkhoi_thienviet.items %}
+                      {% if key == 'DẦN' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.thienquan_thienphuc.items %}
+                      {% if key == 'DẦN' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_theochi.items %}
+                      {% if key == 'DẦN' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_theothang.items %}
+                      {% if key == 'DẦN' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_theongay.items %}
+                      {% if key == 'DẦN' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_theogio.items %}
+                      {% if key == 'DẦN' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.cacbo_saokhac.items %}
+                      {% if key == 'DẦN' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                  <div class="col2">
+                    {% for key, value in arr.vong_locton.items %}
+                      {% if key == 'DẦN XẤU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.thienquan_thienphuc.items %}
+                      {% if key == 'DẦN XẤU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_theochi.items %}
+                      {% if key == 'DẦN XẤU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_theothang.items %}
+                      {% if key == 'DẦN XẤU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_theogio.items %}
+                      {% if key == 'DẦN XẤU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.cacbo_saokhac.items %}
+                      {% if key == 'DẦN XẤU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+
+                  </div>
+                </div>
+                <div class="nearbot size3">
+                  {% for key, value in arr.luuvong_locton.items %}
+                    {% if key == 'DẦN' %}
+                      {{value | safe}}
+                    {% endif %}
+                  {% endfor %}
+                </div>
+                <div class="itembot">
+                  <div class="col1">
+                    <div class="line black size3 italic">Mão</div>
+                  </div>
+                  <div class="col2">
+                    {% for key, value in arr.vongtruong_sinhtuvi.items %}
+                      {% if key == 'DẦN' %}
+                        <div class="line black size3 bol">{{value}}</div>
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                  <div class="col3">
+                    <div class="line black size3">Th4</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td>
+            <!-- item 11 -->
+            <div class="item nobobot {{arr.active_menh.SỬU}}">
+              <div class="wrapitem">
+                <div class="itemtop">
+                  <div class="col1">
+                    {% for key, value in arr.thiencan_12cung.items %}
+                      {% if key == 'SỬU' %}
+                        <div class="line black size3">{{value}}.Sửu</div>
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                  <div class="col2">
+                    {% for key, value in arr.cung_menhthan.items %}
+                      {% if key == 'SỬU' %}
+                        <div class="line black size1 bol upper">{{value}}</div>
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_tuvi.items %}
+                      {% if key == 'SỬU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                  <div class="col3">
+                    <div class="line black size3">
+                      {% for key, value in arr.daivan_tuvi.items %}
+                        {% if key == 'SỬU' %}
+                          {{value}}
+                        {% endif %}
+                      {% endfor %}
+                    </div>
+                    {% for key, value in arr.tieuvan_tungnamtuvi.items %}
+                      {% if key == 'SỬU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                </div>
+                <div class="itemcen">
+                  <div class="col1">
+                    {% for key, value in arr.vong_locton.items %}
+                      {% if key == 'SỬU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.thienkhoi_thienviet.items %}
+                      {% if key == 'SỬU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_theochi.items %}
+                      {% if key == 'SỬU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_theothang.items %}
+                      {% if key == 'SỬU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_theongay.items %}
+                      {% if key == 'SỬU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_theogio.items %}
+                      {% if key == 'SỬU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.cacbo_saokhac.items %}
+                      {% if key == 'SỬU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                  <div class="col2">
+                    {% for key, value in arr.vong_locton.items %}
+                      {% if key == 'SỬU XẤU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_theochi.items %}
+                      {% if key == 'SỬU XẤU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_theothang.items %}
+                      {% if key == 'SỬU XẤU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_theogio.items %}
+                      {% if key == 'SỬU XẤU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.cacbo_saokhac.items %}
+                      {% if key == 'SỬU XẤU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+
+                  </div>
+                </div>
+                <div class="nearbot size3">
+                  {% for key, value in arr.luuvong_locton.items %}
+                    {% if key == 'SỬU' %}
+                      {{value | safe}}
+                    {% endif %}
+                  {% endfor %}
+                </div>
+                <div class="itembot">
+                  <div class="col1">
+                    <div class="line black size3 italic">Mão</div>
+                  </div>
+                  <div class="col2">
+                    {% for key, value in arr.vongtruong_sinhtuvi.items %}
+                      {% if key == 'SỬU' %}
+                        <div class="line black size3 bol">{{value}}</div>
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                  <div class="col3">
+                    <div class="line black size3">Th4</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td>
+            <!-- item 12 -->
+            <div class="item nobobot {{arr.active_menh.TÝ}}">
+              <div class="wrapitem">
+                <div class="itemtop">
+                  <div class="col1">
+                    {% for key, value in arr.thiencan_12cung.items %}
+                      {% if key == 'TÝ' %}
+                        <div class="line black size3">{{value}}.Tý</div>
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                  <div class="col2">
+                    {% for key, value in arr.cung_menhthan.items %}
+                      {% if key == 'TÝ' %}
+                        <div class="line black size1 bol upper">{{value}}</div>
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_tuvi.items %}
+                      {% if key == 'TÝ' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                  <div class="col3">
+                    <div class="line black size3">
+                      {% for key, value in arr.daivan_tuvi.items %}
+                        {% if key == 'TÝ' %}
+                          {{value}}
+                        {% endif %}
+                      {% endfor %}
+                    </div>
+                    {% for key, value in arr.tieuvan_tungnamtuvi.items %}
+                      {% if key == 'TÝ' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                </div>
+                <div class="itemcen">
+                  <div class="col1">
+                    {% for key, value in arr.vong_locton.items %}
+                      {% if key == 'TÝ' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.thienkhoi_thienviet.items %}
+                      {% if key == 'TÝ' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.thienquan_thienphuc.items %}
+                      {% if key == 'TÝ' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_theochi.items %}
+                      {% if key == 'TÝ' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_theothang.items %}
+                      {% if key == 'TÝ' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_theongay.items %}
+                      {% if key == 'TÝ' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_theogio.items %}
+                      {% if key == 'TÝ' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.cacbo_saokhac.items %}
+                      {% if key == 'TÝ' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                  <div class="col2">
+                    {% for key, value in arr.vong_locton.items %}
+                      {% if key == 'TÝ XẤU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_theochi.items %}
+                      {% if key == 'TÝ XẤU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_theothang.items %}
+                      {% if key == 'TÝ XẤU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_theogio.items %}
+                      {% if key == 'TÝ XẤU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.cacbo_saokhac.items %}
+                      {% if key == 'TÝ XẤU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+
+                  </div>
+                </div>
+                <div class="nearbot size3">
+                  {% for key, value in arr.luuvong_locton.items %}
+                    {% if key == 'TÝ' %}
+                      {{value | safe}}
+                    {% endif %}
+                  {% endfor %}
+                </div>
+                <div class="itembot">
+                  <div class="col1">
+                    <div class="line black size3 italic">Mão</div>
+                  </div>
+                  <div class="col2">
+                    {% for key, value in arr.vongtruong_sinhtuvi.items %}
+                      {% if key == 'TÝ' %}
+                        <div class="line black size3 bol">{{value}}</div>
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                  <div class="col3">
+                    <div class="line black size3">Th4</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td>
+            <!-- item 13 -->
+            <div class="item nobori nobobot {{arr.active_menh.HỢI}}">
+              <div class="wrapitem">
+                <div class="itemtop">
+                  <div class="col1">
+                    {% for key, value in arr.thiencan_12cung.items %}
+                      {% if key == 'HỢI' %}
+                        <div class="line black size3">{{value}}.Hợi</div>
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                  <div class="col2">
+                    {% for key, value in arr.cung_menhthan.items %}
+                      {% if key == 'HỢI' %}
+                        <div class="line black size1 bol upper">{{value}}</div>
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_tuvi.items %}
+                      {% if key == 'HỢI' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                  <div class="col3">
+                    <div class="line black size3">
+                      {% for key, value in arr.daivan_tuvi.items %}
+                        {% if key == 'HỢI' %}
+                          {{value}}
+                        {% endif %}
+                      {% endfor %}
+                    </div>
+                    {% for key, value in arr.tieuvan_tungnamtuvi.items %}
+                      {% if key == 'HỢI' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                </div>
+                <div class="itemcen">
+                  <div class="col1">
+                    {% for key, value in arr.vong_locton.items %}
+                      {% if key == 'HỢI' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.thienkhoi_thienviet.items %}
+                      {% if key == 'HỢI' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.thienquan_thienphuc.items %}
+                      {% if key == 'HỢI' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_theochi.items %}
+                      {% if key == 'HỢI' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_theothang.items %}
+                      {% if key == 'HỢI' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_theongay.items %}
+                      {% if key == 'HỢI' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_theogio.items %}
+                      {% if key == 'HỢI' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.cacbo_saokhac.items %}
+                      {% if key == 'HỢI' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                  <div class="col2">
+                    {% for key, value in arr.vong_locton.items %}
+                      {% if key == 'HỢI XẤU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                   {% for key, value in arr.thienquan_thienphuc.items %}
+                      {% if key == 'HỢI XẤU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_theochi.items %}
+                      {% if key == 'HỢI XẤU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_theothang.items %}
+                      {% if key == 'HỢI XẤU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.ansao_theogio.items %}
+                      {% if key == 'HỢI XẤU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                    {% for key, value in arr.cacbo_saokhac.items %}
+                      {% if key == 'HỢI XẤU' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+
+                  </div>
+                </div>
+                <div class="nearbot size3">
+                  {% for key, value in arr.luuvong_locton.items %}
+                      {% if key == 'HỢI' %}
+                        {{value | safe}}
+                      {% endif %}
+                    {% endfor %}
+                </div>
+                <div class="itembot">
+                  <div class="col1">
+                    <div class="line black size3 italic">Mão</div>
+                  </div>
+                  <div class="col2">
+                    {% for key, value in arr.vongtruong_sinhtuvi.items %}
+                      {% if key == 'HỢI' %}
+                        <div class="line black size3 bol">{{value}}</div>
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                  <div class="col3">
+                    <div class="line black size3">Th4</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    {% endfor %}
+  </div>
+  <div class="extendbot">
+    <div class="gr"><span class="black size2">V.</span><span class="green size2">Miếu</span></div>
+    <div class="gr"><span class="black size2">V.</span><span class="green size2">Vương</span></div>
+    <div class="gr"><span class="black size2">V.</span><span class="green size2">Đắc</span></div>
+    <div class="gr"><span class="black size2">V.</span><span class="green size2">Bình Hóa</span></div>
+    <div class="gr"><span class="black size2">V.</span><span class="green size2">Hàm</span></div>
+    <div class="gr"><span class="black size2">V.</span><span class="green size2">Lưu Thiên</span></div>
+
+    <div class="gr grkim"><span class="color"></span><span class="text size2">Kim</span></div>
+    <div class="gr grmoc"><span class="color"></span><span class="text size2">Mộc</span></div>
+    <div class="gr grthuy"><span class="color"></span><span class="text size2">Thủy</span></div>
+    <div class="gr grhoa"><span class="color"></span><span class="text size2">Hỏa</span></div>
+    <div class="gr grtho"><span class="color"></span><span class="text size2">Thổ</span></div>
+  </div>
+  <div class="extendbot">
+    <div class="gr"><span class="black size2">LĐ.</span><span class="green size2">Lưu Niên Ngày</span></div>
+    <div class="gr"><span class="black size2">LM.</span><span class="green size2">Lưu Niên Tháng</span></div>
+    <div class="gr"><span class="black size2">LY.</span><span class="green size2">Lưu Niên Năm</span></div>
+  </div>
+</div>

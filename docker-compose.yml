@@ -1,0 +1,116 @@
+version: '3.9'
+services:
+  db:
+    container_name: postgres
+    image: postgres:14.6
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: blog_feng_shui
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_PORT: 5432
+      DATABASE_HOST: 127.0.0.1
+    restart: always
+
+  pgadmin-compose:
+    container_name: pgadmin4
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "test@gmail.com"
+      PGADMIN_DEFAULT_PASSWORD: "test123!"
+    ports:
+      - "16543:80"
+    depends_on:
+      - db
+    restart: always
+    
+  web:
+    image: blog_feng_shui_web
+    container_name: blog_feng_shui
+    environment:
+      - DATABASE_URL=postgres://db/blog_feng_shui
+      - SITE_URL=http://localhost:8000
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: "python /code/manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - .:/code
+    working_dir: /code
+    environment:
+      DEBUG: 'true'
+    ports:
+      - "8000:8000"
+    restart: always
+    depends_on:
+      - db
+
+volumes:
+  pgdata:
+
+
+# docker exec -i postgres pg_restore -Fc -v -U postgres --dbname phongthuy_thanhnhan < phongthuy_thanhnhan.sql
+# docker exec -i 36f1963068f2 psql -U postgres -d phongthuy_thanhnhan < phongthuy_thanhnhan.sql
+# docker-compose run postgres pg_dump -h postgres -U postgres ecommerce_shopping > ecommerce_shopping.dump
+# docker exec -t 8c95c34a51da pg_dumpall -c -U postgres > blog_feng_shui.sql
+
+# docker exec -t postgres /usr/bin/pg_dump -U postgres phongthuy_thanhnhan | gzip -9 > phongthuy_thanhnhan.sql.gz  (run for window)
+# docker exec tools_postgres_1 bash -c "pg_dump --username=postgres --no-password --format=t ecommerce_shopping | gzip > backup_local_$(date +%Y-%m-%d).tar.gz"
+# docker exec -i supply_web_1 rails c
+# docker-compose run --rm web
+# docker system prune -a
+# docker-compose build
+# python manage.py collectstatic
+# docker-compose -f production.yml up -d
+# docker compose run web python manage.py migrate
+# docker compose run web /usr/local/bin/python manage.py makemigrations
+# docker compose run web /usr/local/bin/python manage.py makemigrations thongtin
+# docker-compose run web python manage.py createsuperuser
+# sudo chmod 666 /var/run/docker.sock
+# docker compose run web python manage.py collectstatic
+# docker-compose run web python manage.py startapp kinhdich
+# sudo chmod -R 777 admin
+# sudo chown -R baothi:baothi category
+# docker exec postgres pg_restore -U postgres -d phongthuy_thanhnhan phongthuy_thanhnhan.sql
+# https://stackoverflow.com/questions/42811727/django-connection-to-postgres-by-docker-compose
+# background-color : #0e76bd !important     #FFF8DC bgblue3
+# docker cp 81bb5ba62e11:/code/media/ /home/   ===> cach copy tu docker ra ngoai
+# scp -r root@dokku:/home/media/ /home/bao/ ====> cach copy tu server ve local
+# dokku run phongthuy_thanhnhan python manage.py migrate
+
+# dokku apps:create phongthuy
+# dokku git:initialize phongthuy
+# dokku postgres:create phongthuy
+# dokku postgres:link database app
+# git remote add dokku dokku@165.22.62.199:phongthuy
+
+# root@dokku-12-09-22:~# dokku domains:report blog_feng_shui
+# =====> blog_feng_shui domains information
+#        Domains app enabled:           false                    
+#        Domains app vhosts:                                     
+#        Domains global enabled:        false                    
+#        Domains global vhosts:
+
+# dokku domains:set <app> <domain>
+
+# root@dokku-12-09-22:~# dokku domains:report blog_feng_shui
+# =====> blog_feng_shui domains information
+#        Domains app enabled:           true                     
+#        Domains app vhosts:            thezoo.website           
+#        Domains global enabled:        false                    
+#        Domains global vhosts:  
+
+# dokku proxy:help
+# dokku proxy:report
+# dokku proxy:ports-set blog_feng_shui http:80:6000
+
+# https://github.com/dokku/dokku-letsencrypt
+# dokku config:set --no-restart blog_feng_shui DOKKU_LETSENCRYPT_EMAIL=baothi246@gmail.com
+# dokku letsencrypt:enable myapp
+# dokku run blog_feng_shui python manage.py migrate
+
+
+

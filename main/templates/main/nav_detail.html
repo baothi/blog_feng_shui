@@ -1,0 +1,31 @@
+{% load static %}
+<section class="widget widget_latest_news_thumb">
+  <h3 class="widget-title">Bài Viết Mới Nhất</h3>
+  
+  {% for bv in latest_news %}
+    <article class="item">
+      {% if bv.images %}
+      <a href="{{bv.get_url}}" class="thumb">
+        <span class="fullimage cover bg1" role="img"></span>
+      </a>
+      {% elif bv.image_url %}
+      <a href="{{bv.get_url}}" class="thumb">
+        <span class="fullimage cover bg1" role="img"></span>
+      </a>
+      {% else %}
+      <a href="{{bv.get_url}}" class="thumb">
+        <span class="fullimage cover bg1" role="img"></span>
+      </a>
+      {% endif %}
+      <!-- <a href="#" class="thumb">
+        <span class="fullimage cover bg1" role="img"></span>
+      </a> -->
+      <div class="info">
+        <h4 class="title usmall"><a href="{{bv.get_url}}">{{bv.name}}</a>
+        </h4>
+        <span>{{bv.created_date|date:"d-m-Y"}}</span>
+      </div>
+    </article>
+  {% endfor %}
+
+</section>

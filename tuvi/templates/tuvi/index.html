@@ -1,0 +1,197 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+
+
+<!-- Start Page Banner -->
+<div class="page-title-area">
+  <div class="container">
+    <div class="page-title-content">
+      <h2>Xem Tử Vi</h2>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li>Xem Tử Vi</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- End Page Banner -->
+
+<!-- Start Contact Area -->
+<section class="contact-area ptb-50">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="row">
+          <div class="contact-form">
+            <div class="title">
+              <h3>Ready to get started?</h3>
+              <p>Your email address will not be published. Required fields are marked *</p>
+            </div>
+
+            <form method="POST" action="{{ request.get_full_path }}" id="{{ form_name }}" name="{{ form_name }}">
+              {% csrf_token %}
+              <div class="row">
+                <div class="col-lg-12 col-md-12">
+                  <div class="form-group">
+                    <label>Họ và tên</label>
+                    {{form.name}}
+                  </div>
+                </div>
+
+                <div class="col-lg-4 col-md-4">
+                  <div class="form-group">
+                    <label>Năm</label>
+                    {{form.year}}
+                  </div>
+                </div>
+
+                <div class="col-lg-4 col-md-4">
+                  <div class="form-group">
+                    <label>Tháng</label>
+                    {{form.month}}
+                  </div>
+                </div>
+
+                <div class="col-lg-4 col-md-4">
+                  <div class="form-group">
+                    <label>Ngày</label>
+                    {{form.day}}
+                  </div>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                  <div class="form-group">
+                    <label>Giờ sinh</label>
+                    {{form.hours}}
+                  </div>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                  <div class="form-group">
+                    <label>Phut</label>
+                    {{form.minute}}
+                  </div>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                  <div class="form-group">
+                    <label>Giới Tính</label>
+                    {{form.options}}
+                  </div>
+                </div>
+
+                <div class="col-lg-12 col-md-12">
+                  <button type="submit" class="default-btn">Lập Lá Số</button>
+                  <div id="msgSubmit" class="h3 text-center hidden"></div>
+                  <div class="clearfix"></div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <!-- <div class="row"><div id="tuvi"></div></div> -->
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="contact-area ptb-50">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div id="tuvi"></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- End Contact Area -->
+{% endblock%}
+{% block javascript %}
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('.share').hide();
+    });
+    $('#TuViForm').on('submit', function(e){
+        // preventing from page reload and default actions
+        e.preventDefault();
+        // serialize the data for sending the form data.
+        var name = $('#id_name').val()
+        var nam = parseInt($('#id_year').val())
+        var thang = parseInt($('#id_month').val())
+        var ngay = parseInt($('#id_day').val())
+        var gio = parseInt($('#id_hours').val())
+
+
+
+        var timezone = $('#id_timezone').val()
+        var timezone_text = $('#id_timezone option:selected').text()
+        var Solar2Lunar = jdn(ngay,thang,nam,7)
+        // console.log("convertSolar2Lunar : ",Solar2Lunar)
+        var getYear = getYearInfo(nam)
+        // console.log("getYearInfo 2222", getYearInfo(2020))
+        var month = getYear.find(el => el.month ==  parseInt(thang))
+        var now = new Date().toISOString().slice(0,20);
+        // console.log("==============Date.now()========", timezone_text)
+
+        jd = jdFromDate(ngay,thang,nam)
+        // console.log("ngay soc vong: ",getSunLongitude(jd,7.0))
+        var tietkhi = (TIETKHI[getSunLongitude(jd,7.0)])
+        var get_day_lunar = getLunarDate(ngay, thang, nam)
+        var get_lunar_day = get_day_lunar.day
+        var get_lunar_month = get_day_lunar.month
+        var get_lunar_year = get_day_lunar.year
+        day_getyear = month.day
+        month_getyear = month.month
+        year_getyear = month.year
+        leap_getyear = month.leap
+        jd_getyear = month.jd
+        // console.log("tietkhi", getGioHoangDao(jd_getyear))
+        // tietkhi = tietkhi(jd)
+        // console.log("getLunarDate: ", getLunarDate(ngay, thang, nam))
+        // console.log("jdAtVST",getSelectedMonth())
+        var canchi_namduong = getYearCanChi(nam)
+        var serializedData = $(this).serialize() + "&canchi_namduong=" 
+                             + canchi_namduong +"&tietkhi="+tietkhi +"&timezone_text="
+                             +timezone_text+"&get_lunar_day="+ get_lunar_day+"&get_lunar_month="
+                             +get_lunar_month+"&get_lunar_year="+get_lunar_year;
+        // console.log("timezone",serializedData)
+        // make POST ajax call
+        $.ajax({
+            type: 'POST',
+            url: "{% url 'tuvi' %}",
+            data: serializedData,
+            success: function (response) {
+                $('#tuvi').html(response);
+                // htmlToImg();
+
+            }
+        });
+    });
+
+    function htmlToImg(){
+        var elm = $('.tuvi')[0];
+        var w = $('.tuvi').width();
+        var h = $('.tuvi').height();
+        console.log("width : ",w)
+        console.log("width : ",h)
+        var type = "png";
+        var filename = "htmltoimage";
+        html2canvas(elm).then(function(canvas){
+            var img = Canvas2Image.convertToImage(canvas, w, h);
+            $('#tuvi').html(img);
+            // $("#tutru").after(img);
+            // Canvas2Image.saveAsImage(canvas, lebar,tinggi, type, filename)
+        })
+    }
+
+    function Resetname(){
+        var name = $('#id_name').val('')
+        $('.wrapbg').remove();
+        $('.extendbot').remove();
+        $('.container').find('.inputform').attr('style', 'display:none');
+        $('.share').show();
+        $('.reset').show();
+    }
+</script>
+{% endblock %}

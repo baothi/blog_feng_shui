@@ -1,0 +1,110 @@
+{% extends 'base.html' %} 
+{% block content %}
+<!-- Start Page Banner -->
+<div class="page-title-area">
+  <div class="container">
+    <div class="page-title-content">
+      <h2>Register</h2>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li>Register</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- End Page Banner -->
+
+<!-- Start Register Area -->
+<section class="register-area ptb-50">
+  <div class="container">
+    <div class="register-form">
+      <h2>Register</h2>
+
+      <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+          <label>First Name</label>
+          <!-- <input type="text" class="form-control" placeholder="Name"> -->
+          {{form.first_name}}
+        </div>
+
+        <div class="form-group">
+          <label>Last Name</label>
+          <!-- <input type="text" class="form-control" placeholder="Name"> -->
+          {{form.last_name}}
+        </div>
+
+        <div class="form-group">
+          <label>User Name</label>
+          <!-- <input type="text" class="form-control" placeholder="Name"> -->
+          {{form.username}}
+        </div>
+
+        <div class="form-group">
+          <label>Email</label>
+          <!-- <input type="text" class="form-control" placeholder="Email"> -->
+          {{form.email}}
+        </div>
+
+        <div class="form-group">
+          <label>Password</label>
+          <!-- <input type="text" class="form-control" placeholder="Password"> -->
+          {{form.password1}}
+        </div>
+
+        <div class="form-group">
+          <label>Confirm password</label>
+          <!-- <input type="text" class="form-control" placeholder="Confirm Password"> -->
+          {{form.password2}}
+        </div>
+
+        <div class="row align-items-center">
+          <div class="col-lg-6 col-md-6 col-sm-6">
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input" id="checkme">
+              <label class="form-check-label" for="checkme">Show password?</label>
+            </div>
+          </div>
+        </div>
+        <h4 class="mt-4">Rules</h4>
+        <ul class="list-group">
+          <li class="list-group-item">
+            1. Mật khẩu của bạn không được quá giống với thông tin cá nhân khác của bạn.
+          </li>
+          <li class="list-group-item">
+            2. Mật khẩu của bạn phải chứa ít nhất 8 ký tự.
+          </li>
+          <li class="list-group-item">
+            3. Mật khẩu của bạn không được trùng tên đăng nhập thường dùng.
+          </li>
+          <li class="list-group-item">4. Mật khẩu của bạn không được hoàn toàn bằng số.</li>
+        </ul>
+
+        <button type="submit">Register now</button>
+      </form>
+
+      <div class="important-text">
+        <p>Already have an account? <a href="{% url 'login' %}">Login now!</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Register Area -->
+{% endblock content %}
+{% block javascript %}
+<script type="text/javascript">
+  $(document).ready(function () {
+    $('#checkme').click(function () {
+      if($('#checkme').is(":checked")){
+        $('#id_password1').attr('type', 'text');
+        $('#id_password2').attr('type', 'text');
+      }else{
+        $('#id_password1').attr('type', 'password');
+        $('#id_password2').attr('type', 'password');
+      }
+    });
+  });
+</script>
+{% endblock %}
+
+
