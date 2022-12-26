@@ -86,7 +86,7 @@ class TuTruForm(forms.Form):
     month = forms.ChoiceField(widget = forms.Select(attrs={'class': 'form-control'}),
         choices=((str(x), x) for x in range(1,13)), initial='1', required = True,)
     year = forms.ChoiceField(widget = forms.Select(attrs={'class': 'form-control'}),
-        choices=((str(x), x) for x in range(1900,2044)), initial='1998', required = True,)
+        choices=((str(x), str(x)) for x in range(1900,2044)), initial='1998', required = True,)
     hours = forms.ChoiceField(widget = forms.Select(attrs={'class': 'form-control'}),
         choices=((str(x), x) for x in range(0,24)), initial='21', required = True,)
     minute = forms.ChoiceField(widget = forms.Select(attrs={'class': 'form-control'}),

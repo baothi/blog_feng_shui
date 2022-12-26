@@ -295,7 +295,7 @@ jQuery(function ($) {
 	});
 
 	// Nice Select JS
-	$('select').niceSelect();
+	//$('select').niceSelect();
 
 	// Count Time 
 	function makeTimer() {
