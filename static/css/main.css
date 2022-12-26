@@ -75,12 +75,15 @@ img{max-width:100%;}
     font-size: 13px;
     padding: 1px 5px;
 }
+.tutru td p{
+    font-size: 14px;
+}
 
 .tutru .tbltutrumain{
     width: 100%;
 }
 .tutru .tbltutrumain td{
-    border: solid 1px #3C3C3B;
+    border: solid 0.5px #cfcfcf;
     text-align: center;
     padding: 3px 0;
     vertical-align: middle;
@@ -96,7 +99,7 @@ img{max-width:100%;}
     width: 100%;
 }
 .tutru .tutrutblsub2 td{
-    border: solid 1px #3C3C3B;
+    border: solid 0.5px #cfcfcf;
     text-align: center;
     padding: 3px 0;
     vertical-align: middle;
@@ -126,7 +129,7 @@ img{max-width:100%;}
 
 
 .tutru .tutrubtlsnc td{
-    border: solid 1px #3C3C3B;
+    border: solid 1px #cfcfcf;
     text-align: center;
     padding: 3px 0;
     vertical-align: middle;
@@ -388,7 +391,7 @@ img{max-width:100%;}
 }
 .dichquai .wrapbg{
     width: 100%;
-    border: solid 2px #030303;
+    border: solid 2px #cfcfcf;
     border-radius: 5px;
     padding: 10px;
 }
@@ -420,8 +423,13 @@ img{max-width:100%;}
 }
 .tblinnerleft tr td{
     padding: 3px;
-    border: solid 1px #3C3C3B;
+    border: solid 1px #cfcfcf;
 }
+
+.dichquai td{
+    color: #333333;
+}
+
 
 .tblinnerright{
     width: 100%;
@@ -429,7 +437,7 @@ img{max-width:100%;}
 }
 .tblinnerright tr td{
     padding: 3px;
-    border: solid 1px #3C3C3B;
+    border: solid 1px #cfcfcf;
 }
 .tblinnerright tr td:first-child{
     padding-left: 0;
@@ -546,4 +554,54 @@ img{max-width:100%;}
 }
 
 
+/* ======================================= CUSTOM ================================ */
+.clear{clear: both;}
+.bgblue{ background: #39569e;}
+.bgred{ background: #dc472e;}
+.bgorgan{ background: #f18527;}
+.bgpink{ background: #c8359d;}
+.cursor{cursor: pointer;}
+.spancolor{
+  width: 25px;
+  height: 18px;
+  display: block;
+  float: left;
+  margin: -3px 0 0 5px;
+}
 
+.proitem .proitemhide{
+  background: rgb(233 236 239 / 70%);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.proitem:hover .proitemhide{
+  display: flex;
+}
+
+.sizeactive{
+  border: solid 1px #f18527 !important;
+}
+
+.pdlistimg .bigimg img{
+  max-height: 450px;
+}
+
+.cartnum{
+  position: absolute;
+  background: #dc472e;
+  color: #fff;
+  top: -7px;
+  right: -19px;
+  padding: 0px 6px;
+  border-radius: 30px;
+  font-size: 11px;
+}
+
+.nice-select .list{ width: 100%;}
