@@ -389,6 +389,10 @@ img{max-width:100%;}
 .w788{
     width: 788px;
 }
+.dichquai *{
+    color: #000 !important;
+    opacity: 1;
+}
 .dichquai .wrapbg{
     width: 100%;
     border: solid 2px #cfcfcf;
