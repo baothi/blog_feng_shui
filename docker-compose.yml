@@ -81,10 +81,10 @@ volumes:
 # scp -r root@dokku:/home/media/ /home/bao/ ====> cach copy tu server ve local
 # dokku run phongthuy_thanhnhan python manage.py migrate
 
-# dokku apps:create phongthuy
-# dokku git:initialize phongthuy
-# dokku postgres:create phongthuy
-# dokku postgres:link database app
+# dokku apps:create blog_feng_shui
+# dokku git:initialize blog_feng_shui
+# dokku postgres:create blog_feng_shui
+# dokku postgres:link blog_feng_shui blog_feng_shui
 # git remote add dokku dokku@165.22.62.199:phongthuy
 
 # root@dokku-12-09-22:~# dokku domains:report blog_feng_shui
@@ -98,6 +98,9 @@ volumes:
 
 # root@dokku-12-09-22:~# dokku domains:report blog_feng_shui
 # =====> blog_feng_shui domains information
+
+# dokku domains:set phongthuy_thanhnhan phongthuydaivuong.vn
+# dokku domains:add phongthuy_thanhnhan phongthuydaivuong.com
 #        Domains app enabled:           true                     
 #        Domains app vhosts:            thezoo.website           
 #        Domains global enabled:        false                    
